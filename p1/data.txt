@@ -1,8 +1,6 @@
 CSCB07 Project Phase 1: the Database
 
-Information will be stored using a class called Database. It will have methods to add information, and update the information in the database. 
-
-All information will be stored in 3 CSV files: client.csv, admin.csv, and flight.csv
+All data will be stored in 3 CSV files: client.csv, admin.csv, and flight.csv.
 
 client.csv will store all the clients data, with one client per line, in this form:
 
@@ -14,7 +12,8 @@ email, password
 
 flight.csv will store all flight data, with one flight per line, in this form:
 
-flightID, arrivalTime, departTime, origin, destination, airline, avaliableSeats, flightTime, cost
+flightID, arrivalTime, departTime, origin, destination, airline, availableSeats, flightTime, cost
 
+The data will be accessed using a class called Database. It will have methods to add new data, and update the old data in the database. 
 
-all this information will be loaded when the program is started, and updated when the program is closed.
+All this data will be loaded when the app is started, and updated when the update methods from the Database class are called.
