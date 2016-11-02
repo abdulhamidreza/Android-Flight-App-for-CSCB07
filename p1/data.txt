@@ -1,0 +1,20 @@
+CSCB07 Project Phase 1: the Database
+
+Information will be stored using a class called Database. It will have methods to add information, and update the information in the database. 
+
+All information will be stored in 3 CSV files: client.csv, admin.csv, and flight.csv
+
+client.csv will store all the clients data, with one client per line, in this form:
+
+email, password, firstName, lastName, address, creditCard, first flight ID, second flight ID, ... last flight ID
+
+admin.csv will store all admins data, with one admin per line, in this form:
+
+email, password
+
+flight.csv will store all flight data, with one flight per line, in this form:
+
+flightID, arrivalTime, departTime, origin, destination, airline, avaliableSeats, flightTime, cost
+
+
+all this information will be loaded when the program is started, and updated when the program is closed.
