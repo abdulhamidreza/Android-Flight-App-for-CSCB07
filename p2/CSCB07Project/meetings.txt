@@ -1,0 +1,7 @@
+Meeting notes:
+First planning meeting 10/11/16 4:20pm
+Present: William, Stephen, Won
+Outcomes:
+Stephen will do Flight, FlightManager, and FlightService
+William will do Itinerary and Database
+Won will do User, Client and Admin
