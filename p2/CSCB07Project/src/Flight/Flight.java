@@ -109,5 +109,9 @@ public class Flight {
 		return null;
 	}
 	
+	public Duration timeBetweenFlights(Flight flight) {
+		return null;
+	}
+	
 
 }
