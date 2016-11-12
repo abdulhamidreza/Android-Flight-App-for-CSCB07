@@ -3,8 +3,12 @@
  */
 package FlightServices;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +24,8 @@ import driver.Driver;
 public class FlightManager implements FlightService {
 
 	private Map<String, List<Flight>> allFlights;
+
+  private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 	
 	
 	public FlightManager(List<Flight> flights) {
@@ -38,14 +44,24 @@ public class FlightManager implements FlightService {
 	 * @see FlightServices.FlightService#getItinerary(java.lang.String, java.lang.String, java.util.Date)
 	 */
 	@Override
-	public List<?> getItinerary(String origin, String destination, Date departDate) {
+	public List<?> getItinerary(String origin, String destination, String departureDate) throws ParseException {
 		Stack<String> location = new Stack<String>();
 		Stack<Flight> connection = new Stack<Flight>();
 		List<Stack<Flight>> paths = new ArrayList<Stack<Flight>>();
+		
+		Calendar wantedDepartDate = new GregorianCalendar();
+		wantedDepartDate.setTime(date.parse(departureDate));
+		int departYear = wantedDepartDate.get(Calendar.YEAR);
+		int departMonth = wantedDepartDate.get(Calendar.MONTH);
+		int departDate = wantedDepartDate.get(Calendar.DATE);		
+		
 		location.push(origin);
+		
 		for (Flight flight: allFlights.get(origin)) {
-			if (flight.getDepartureDate().equals(departDate)) { // change to compare departure dates
-				// add in other if else statements and stuff then lead to recursive algo
+		  // Confirms departure dates are the same
+			if (flight.getDepartureDate().get(Calendar.YEAR) == departYear
+			    && flight.getDepartureDate().get(Calendar.MONTH) == departMonth
+			    && flight.getDepartureDate().get(Calendar.DATE) == departDate) {
 				if(flight.getDestination().equals(destination)) {
 					Stack<Flight> temp = new Stack<Flight>();
 					temp.push(flight);
@@ -64,7 +80,6 @@ public class FlightManager implements FlightService {
 	private void getFlights(Flight flight, String destination, 
 			Stack<String> location, Stack<Flight> connection, List<Stack<Flight>> paths) {
 		for (Flight nextFlight: allFlights.get(flight.getDestination())){
-			// should compare duration times
 			if (flight.timeBetweenFlights(nextFlight).compareTo(Driver.MIN_LAYOVER) >= 0
 					&& flight.timeBetweenFlights(nextFlight).compareTo(Driver.MAX_LAYOVER) <= 0) {
 				if(nextFlight.getDestination().equals(destination)) {

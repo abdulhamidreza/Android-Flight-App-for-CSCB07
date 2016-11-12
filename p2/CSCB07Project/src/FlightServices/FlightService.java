@@ -3,7 +3,7 @@
  */
 package FlightServices;
 
-import java.util.Date;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -11,6 +11,6 @@ import java.util.List;
  *
  */
 public interface FlightService {
-	public List<?> getItinerary(String origin, String deestination, Date departDate);
+	public List<?> getItinerary(String origin, String deestination, String departDate) throws ParseException;
 	public void sortFlight(List<?> itinerary, String sortBy);
 }

@@ -3,8 +3,13 @@
  */
 package Flight;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Date;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * @author lucsteph
@@ -12,8 +17,8 @@ import java.util.Date;
  */
 public class Flight {
 	private int flightId;
-	private Date arrivalDate;
-	private Date departureDate;
+	private Calendar arrivalDate;
+	private Calendar departureDate;
 	private String origin;
 	private String destination;
 	private String airline;
@@ -21,13 +26,18 @@ public class Flight {
 	private Duration flightTime;
 	private double cost;
 	
-	public Flight (String origin, String destonation, String airline, Date departureDate,
-			Date arrivalDate, int availableSeats, double cost) {
+
+  private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	
+	public Flight (String origin, String destonation, String airline, String departureDate,
+			String arrivalDate, int availableSeats, double cost) throws ParseException {
 		this.origin = origin;
 		this.destination = destonation;
 		this.airline = airline;
-		this.departureDate = departureDate;
-		this.arrivalDate = arrivalDate;
+		this.departureDate = new GregorianCalendar();
+		this.arrivalDate = new GregorianCalendar();
+		setDepartureDate(departureDate);
+		setArrivalDate(arrivalDate);
 		Flight.availableSeats = availableSeats; // see if this works
 		this.cost = cost;
 		
@@ -41,20 +51,20 @@ public class Flight {
 		this.flightId = flightId;
 	}
 
-	public Date getArrivalDate() {
+	public Calendar getArrivalDate() {
 		return arrivalDate;
 	}
 
-	public void setArrivalDate(Date arrivalDate) {
-		this.arrivalDate = arrivalDate;
+	public void setArrivalDate(String arrivalDate) throws ParseException {
+		this.arrivalDate.setTime(dateTime.parse(arrivalDate));
 	}
 
-	public Date getDepartureDate() {
+	public Calendar getDepartureDate() {
 		return departureDate;
 	}
 
-	public void setDepartureDate(Date departureDate) {
-		this.departureDate = departureDate;
+	public void setDepartureDate(String departureDate) throws ParseException {
+		this.departureDate.setTime(dateTime.parse(departureDate));
 	}
 
 	public String getOrigin() {
@@ -105,12 +115,14 @@ public class Flight {
 		this.cost = cost;
 	}
 	
-	public Duration compareTimes(Date arrival, Date departure) {
-		return null;
+	public Duration getDuration() {
+    long hours = ChronoUnit.HOURS.between(arrivalDate.toInstant(), departureDate.toInstant());	  
+		return Duration.ofHours(hours);
 	}
 	
 	public Duration timeBetweenFlights(Flight flight) {
-		return null;
+    long hours = ChronoUnit.HOURS.between(arrivalDate.toInstant(), flight.getDepartureDate().toInstant());  
+		return Duration.ofHours(hours);
 	}
 	
 
