@@ -39,6 +39,7 @@ public class Flight {
 		setDepartureDate(departureDate);
 		setArrivalDate(arrivalDate);
 		Flight.availableSeats = availableSeats; // see if this works
+		setDuration();
 		this.cost = cost;
 		
 	}
@@ -57,6 +58,7 @@ public class Flight {
 
 	public void setArrivalDate(String arrivalDate) throws ParseException {
 		this.arrivalDate.setTime(dateTime.parse(arrivalDate));
+		this.setDuration();
 	}
 
 	public Calendar getDepartureDate() {
@@ -65,6 +67,7 @@ public class Flight {
 
 	public void setDepartureDate(String departureDate) throws ParseException {
 		this.departureDate.setTime(dateTime.parse(departureDate));
+		this.setDuration();
 	}
 
 	public String getOrigin() {
@@ -91,21 +94,22 @@ public class Flight {
 		this.airline = airline;
 	}
 
-	public static int getAvailableSeats() {
+	public int getAvailableSeats() {
 		return availableSeats;
 	}
 
-	public static void setAvailableSeats(int availableSeats) {
+	public void setAvailableSeats(int availableSeats) {
 		Flight.availableSeats = availableSeats;
 	}
 
-	public Duration getFlightTime() {
+	public Duration getDuration() {
 		return flightTime;
 	}
-
-	public void setFlightTime(Duration flightTime) {
-		this.flightTime = flightTime;
-	}
+	
+	private void setDuration() {
+    long min = ChronoUnit.MINUTES.between(arrivalDate.toInstant(), departureDate.toInstant());
+    this.flightTime = Duration.ofMinutes(min);
+  }
 
 	public double getCost() {
 		return cost;
@@ -115,13 +119,8 @@ public class Flight {
 		this.cost = cost;
 	}
 	
-	public Duration getDuration() {
-    long hours = ChronoUnit.HOURS.between(arrivalDate.toInstant(), departureDate.toInstant());	  
-		return Duration.ofHours(hours);
-	}
-	
 	public Duration timeBetweenFlights(Flight flight) {
-    long hours = ChronoUnit.HOURS.between(arrivalDate.toInstant(), flight.getDepartureDate().toInstant());  
+    long hours = ChronoUnit.HOURS.between(flight.getDepartureDate().toInstant(), arrivalDate.toInstant());  
 		return Duration.ofHours(hours);
 	}
 	
