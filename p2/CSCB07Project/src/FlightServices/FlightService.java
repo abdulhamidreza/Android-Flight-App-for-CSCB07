@@ -6,11 +6,13 @@ package FlightServices;
 import java.text.ParseException;
 import java.util.List;
 
+import Itinerary.Itinerary;
+
 /**
  * @author lucsteph
  *
  */
 public interface FlightService {
 	public List<?> getItinerary(String origin, String deestination, String departDate) throws ParseException;
-	public void sortFlight(List<?> itinerary, String sortBy);
+	public void sortFlight(List<Itinerary> itinerary, String sortBy);
 }

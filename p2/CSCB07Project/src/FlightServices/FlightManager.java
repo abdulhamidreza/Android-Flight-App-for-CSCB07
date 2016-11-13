@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import Comparator.ItineraryCostComparator;
+import Comparator.ItineraryTimeComparator;
 import Flight.Flight;
+import Itinerary.Itinerary;
 import driver.Driver;
 
 /**
@@ -110,9 +113,19 @@ public class FlightManager implements FlightService {
 	 * @see FlightServices.FlightService#sortFlight(java.util.List, java.lang.String)
 	 */
 	@Override
-	public void sortFlight(List<?> itinerary, String sortBy) {
-		// TODO Auto-generated method stub
-
+	public void sortFlight(List<Itinerary> itineraries, String sortBy) {
+		switch (sortBy) {
+		  case "Time":
+		    ItineraryTimeComparator itinTimeComp = new ItineraryTimeComparator();
+		    itineraries.sort(itinTimeComp);
+		    break;
+		  case "Cost":
+		    ItineraryCostComparator itinCostComp = new ItineraryCostComparator();
+        itineraries.sort(itinCostComp);
+        break;
+      default:
+        System.out.println(String.format("Was told to sort by %1$s", sortBy));
+        break;        
+		}
 	}
-
 }

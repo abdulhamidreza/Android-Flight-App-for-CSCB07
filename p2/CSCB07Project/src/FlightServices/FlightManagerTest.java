@@ -3,8 +3,6 @@
  */
 package FlightServices;
 
-import static org.junit.Assert.*;
-
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +94,9 @@ public class FlightManagerTest {
    */
   @Test
   public void testFlightManager() throws ParseException {
-    System.out.println(fm.getItinerary("Toronto", "New York", "2016-05-30"));
+    for (Object flights: fm.getItinerary("Toronto", "New York", "2016-05-30")) {
+      System.out.println(flights);
+    }
   }
 
 
