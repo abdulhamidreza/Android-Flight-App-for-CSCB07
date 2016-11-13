@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -219,7 +220,7 @@ public class FlightTest {
   @Test
   public void testGetDuration() {
     assertEquals("Flight1 origin should be ", 
-        "6H", flight1.getDuration().toString().substring(3));
+        Duration.ofHours(6), flight1.getDuration());
   }
 
   /**
@@ -228,9 +229,9 @@ public class FlightTest {
    */
   @Test
   public void testSetDuration() throws ParseException {
-    flight1.setArrivalDate("2016-06-31 05:05");
+    flight1.setArrivalDate("2016-05-31 10:45");
     assertEquals("Flight1 origin should be ", 
-        "750H", flight1.getDuration().toString().substring(3));
+        Duration.ofMinutes(700), flight1.getDuration());
   }
 
   /**
@@ -239,7 +240,7 @@ public class FlightTest {
   @Test
   public void testTimeBetweenFlights() {
     assertEquals("Flight1 origin should be ", 
-        "18H", flight1.timeBetweenFlights(flight4).toString().substring(3));
+        Duration.ofHours(18), flight1.timeBetweenFlights(flight4));
   }
 
 }

@@ -23,7 +23,7 @@ public class Flight {
 	private String destination;
 	private String airline;
 	private static int availableSeats;
-	private Duration flightTime;
+	private Duration flightDuration;
 	private double cost;
 	
 
@@ -103,12 +103,12 @@ public class Flight {
 	}
 
 	public Duration getDuration() {
-		return flightTime;
+		return flightDuration;
 	}
 	
 	private void setDuration() {
-    long min = ChronoUnit.MINUTES.between(arrivalDate.toInstant(), departureDate.toInstant());
-    this.flightTime = Duration.ofMinutes(min);
+    long min = ChronoUnit.MINUTES.between(departureDate.toInstant(), arrivalDate.toInstant());
+    this.flightDuration = Duration.ofMinutes(min);
   }
 
 	public double getCost() {
@@ -120,9 +120,15 @@ public class Flight {
 	}
 	
 	public Duration timeBetweenFlights(Flight flight) {
-    long hours = ChronoUnit.HOURS.between(flight.getDepartureDate().toInstant(), arrivalDate.toInstant());  
-		return Duration.ofHours(hours);
+    long min = ChronoUnit.MINUTES.between(arrivalDate.toInstant(), flight.getDepartureDate().toInstant());  
+		return Duration.ofMinutes(min);
 	}
+
+  @Override
+  public String toString() {
+    return "Flight [ origin=" + origin
+        + ", destination=" + destination + "]";
+  }
 	
 
 }

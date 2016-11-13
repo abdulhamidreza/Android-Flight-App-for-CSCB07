@@ -23,21 +23,25 @@ import driver.Driver;
  */
 public class FlightManager implements FlightService {
 
-	private Map<String, List<Flight>> allFlights;
+	private Map<String, List<Flight>> mapOfFlights;
+
 
   private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 	
 	
 	public FlightManager(List<Flight> flights) {
-		allFlights = new HashMap<String, List<Flight>>();
+		mapOfFlights = new HashMap<String, List<Flight>>();
 		for (Flight flight: flights) {
-			if (allFlights.containsKey(flight.getOrigin())) {
-				allFlights.get(flight.getOrigin()).add(flight);				
+			if (mapOfFlights.containsKey(flight.getOrigin())) {
+				mapOfFlights.get(flight.getOrigin()).add(flight);				
 			} else {
-				allFlights.put(flight.getOrigin(), new ArrayList<Flight>());
-				allFlights.get(flight.getOrigin()).add(flight);	
+				mapOfFlights.put(flight.getOrigin(), new ArrayList<Flight>());
+				mapOfFlights.get(flight.getOrigin()).add(flight);	
 			}
-		}		
+		}
+/*		System.out.println(mapOfFlights.keySet());
+		
+		System.out.println(mapOfFlights);*/
 	}
 	
 	/* (non-Javadoc)
@@ -57,7 +61,7 @@ public class FlightManager implements FlightService {
 		
 		location.push(origin);
 		
-		for (Flight flight: allFlights.get(origin)) {
+		for (Flight flight: mapOfFlights.get(origin)) {
 		  // Confirms departure dates are the same
 			if (flight.getDepartureDate().get(Calendar.YEAR) == departYear
 			    && flight.getDepartureDate().get(Calendar.MONTH) == departMonth
@@ -66,7 +70,7 @@ public class FlightManager implements FlightService {
 					Stack<Flight> temp = new Stack<Flight>();
 					temp.push(flight);
 					paths.add(temp);
-				} else {
+				} else if (mapOfFlights.containsKey(flight.getDestination())){
 					connection.push(flight);
 					getFlights(flight, destination, location, connection, paths);
 					connection.pop();
@@ -79,17 +83,20 @@ public class FlightManager implements FlightService {
 	
 	private void getFlights(Flight flight, String destination, 
 			Stack<String> location, Stack<Flight> connection, List<Stack<Flight>> paths) {
-		for (Flight nextFlight: allFlights.get(flight.getDestination())){
-			if (flight.timeBetweenFlights(nextFlight).compareTo(Driver.MIN_LAYOVER) >= 0
+		for (Flight nextFlight: mapOfFlights.get(flight.getDestination())){
+		  /*System.out.println(flight.timeBetweenFlights(nextFlight).compareTo(Driver.MIN_LAYOVER));
+		  System.out.println(flight.timeBetweenFlights(nextFlight).compareTo(Driver.MAX_LAYOVER));
+			*/if (flight.timeBetweenFlights(nextFlight).compareTo(Driver.MIN_LAYOVER) >= 0
 					&& flight.timeBetweenFlights(nextFlight).compareTo(Driver.MAX_LAYOVER) <= 0) {
 				if(nextFlight.getDestination().equals(destination)) {
 					Stack<Flight> temp = new Stack<Flight>();
 					for(Flight flights: connection) {
 						temp.push(flights);
 					}
-					temp.push(flight);
+					temp.push(nextFlight);
 					paths.add(temp);
-				} else if (!location.contains(nextFlight.getOrigin())) {
+				} else if (!location.contains(nextFlight.getOrigin())
+				    && mapOfFlights.containsKey(nextFlight.getDestination())) {
 					location.push(nextFlight.getOrigin());
 					connection.push(nextFlight);
 					getFlights(nextFlight, destination, location, connection, paths);
