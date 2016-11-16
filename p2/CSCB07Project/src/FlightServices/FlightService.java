@@ -14,5 +14,5 @@ import itinerary.Itinerary;
  */
 public interface FlightService {
 	public List<?> getItinerary(String origin, String deestination, String departDate) throws ParseException;
-	public void sortFlight(List<Itinerary> itinerary, String sortBy);
+	public void sortFlight(List<Itinerary> itinerary, String sortBy, boolean increasing);
 }

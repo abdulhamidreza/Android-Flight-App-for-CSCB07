@@ -7,11 +7,12 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 import Flight.Flight;
+import itinerary.Itinerary;
 
 /**
  * @author Stephen
@@ -49,7 +50,7 @@ public class FlightManagerTest {
     flight4 = new Flight("Toronto", "Jamaica", "Air Canada", 
         "2016-05-30 23:05", "2016-05-31 05:05", 240, 400);
     flight5 = new Flight("China", "New York", "Air Canada", 
-        "2016-06-31 06:00", "2016-05-31 05:05", 240, 400);
+        "2016-06-31 06:00", "2017-05-31 05:05", 240, 400);
     flight6 = new Flight("China", "Germany", "Air Canada", 
         "2016-06-31 05:45", "2016-07-28 05:05", 240, 400);
     flight7 = new Flight("China", "New York", "Air Canada", 
@@ -94,18 +95,24 @@ public class FlightManagerTest {
    */
   @Test
   public void testFlightManager() throws ParseException {
-    for (Object flights: fm.getItinerary("Toronto", "New York", "2016-05-30")) {
-      System.out.println(flights);
+    for (Itinerary flights: fm.getItinerary("Toronto", "New York", "2016-05-30")) {
+      //System.out.println(flights);
     }
   }
 
 
- /* *//**
+  /**
    * Test method for {@link FlightServices.FlightManager#sortFlight(java.util.List, java.lang.String)}.
-   *//*
+ * @throws ParseException 
+   */
   @Test
-  public void testSortFlight() {
-    fail("Not yet implemented");
-  }*/
+  public void testSortFlight() throws ParseException {
+    List<Itinerary> paths = fm.getItinerary("Toronto", "New York", "2016-05-30");
+    fm.sortFlight(paths, "Time", false);
+    for (Itinerary flights: paths) {
+      System.out.println(flights);
+    }
+    
+  }
 
 }

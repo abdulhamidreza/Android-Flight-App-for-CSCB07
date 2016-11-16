@@ -68,7 +68,7 @@ public class Itinerary {
 
 	private void setTotalTime() {
 		long min = ChronoUnit.MINUTES.between(
-				flights.get(0).getDepartureDate().toInstant(), flights.get(-1).getArrivalDate().toInstant());
+				flights.get(0).getDepartureDate().toInstant(), flights.get(flights.size() - 1).getArrivalDate().toInstant());
 	    this.totalTime = Duration.ofMinutes(min);
 	}
 
@@ -105,5 +105,11 @@ public class Itinerary {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Itinerary [" + flights + "]";
+	}
+	
 	
 }

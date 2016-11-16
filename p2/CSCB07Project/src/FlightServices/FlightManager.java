@@ -51,7 +51,7 @@ public class FlightManager implements FlightService {
 	 * @see FlightServices.FlightService#getItinerary(java.lang.String, java.lang.String, java.util.Date)
 	 */
 	@Override
-	public List<?> getItinerary(String origin, String destination, String departureDate) throws ParseException {
+	public List<Itinerary> getItinerary(String origin, String destination, String departureDate) throws ParseException {
 		Stack<String> location = new Stack<String>();
 		Stack<Flight> connection = new Stack<Flight>();
 		List<Stack<Flight>> paths = new ArrayList<Stack<Flight>>();
@@ -81,7 +81,17 @@ public class FlightManager implements FlightService {
 			}
 		}
 		
-		return paths;
+		List<Itinerary> allItinerary = new ArrayList<Itinerary>();
+		
+		for (Stack<Flight> path: paths) {
+			Itinerary newPath = new Itinerary();
+			for (Flight flight: path) {
+				newPath.addFlight(flight);
+			}
+			allItinerary.add(newPath);
+		}
+		
+		return allItinerary;
 	}
 	
 	private void getFlights(Flight flight, String destination, 
@@ -113,19 +123,27 @@ public class FlightManager implements FlightService {
 	 * @see FlightServices.FlightService#sortFlight(java.util.List, java.lang.String)
 	 */
 	@Override
-	public void sortFlight(List<Itinerary> itineraries, String sortBy) {
+	public void sortFlight(List<Itinerary> itineraries, String sortBy, boolean increasing) {
 		switch (sortBy) {
 		  case "Time":
 		    ItineraryTimeComparator itinTimeComp = new ItineraryTimeComparator();
-		    itineraries.sort(itinTimeComp);
+		    if (increasing) {
+		    	itineraries.sort(itinTimeComp);
+		    } else {
+		    	itineraries.sort(itinTimeComp.reversed());
+		    }
 		    break;
 		  case "Cost":
 		    ItineraryCostComparator itinCostComp = new ItineraryCostComparator();
-        itineraries.sort(itinCostComp);
-        break;
-      default:
-        System.out.println(String.format("Was told to sort by %1$s", sortBy));
-        break;        
+		    if (increasing) {
+		        itineraries.sort(itinCostComp);
+		    } else {
+		        itineraries.sort(itinCostComp.reversed());
+		    }
+	        break;
+	      default:
+	        System.out.println(String.format("Was told to sort by %1$s", sortBy));
+	        break;        
 		}
 	}
 }
