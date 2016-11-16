@@ -8,11 +8,15 @@ import Flight.Flight;
 
 public class Itinerary {
 
-	private List<Flight> flights = new ArrayList<Flight>();
-	private double totalCost = 0; //the total cost in $
-	private long totalTime = 0; //the total time in milliseconds
+	private List<Flight> flights;
+	private double totalCost; //the total cost in $
+	private long totalTime; //the total time in milliseconds
 	
 	public Itinerary() {
+		
+		this.totalCost = 0;
+		this.totalTime = 0;
+		this.flights = new ArrayList<Flight>();
 		
 	}
 	
