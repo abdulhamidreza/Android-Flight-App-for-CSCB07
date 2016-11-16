@@ -3,9 +3,10 @@
  */
 package Users;
 
-import Itinerary.Itinerary;
 import java.util.ArrayList;
 import java.util.List;
+
+import itinerary.Itinerary;
 
 /**
  * @author jungwon5
@@ -16,7 +17,7 @@ public class Client extends User {
   private String lastName;
   private String address;
   private String creditCard;
-  private List<Itinerary> bookedItinerary = new ArrayList<Itinerary>();
+  private List<Itinerary> bookedItinerary;
   
   /**
    * @param email

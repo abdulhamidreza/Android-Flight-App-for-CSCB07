@@ -5,7 +5,7 @@ package Comparator;
 
 import java.util.Comparator;
 
-import Itinerary.Itinerary;
+import itinerary.Itinerary;
 
 /**
  * @author Stephen

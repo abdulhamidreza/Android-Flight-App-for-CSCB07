@@ -6,7 +6,7 @@ package FlightServices;
 import java.text.ParseException;
 import java.util.List;
 
-import Itinerary.Itinerary;
+import itinerary.Itinerary;
 
 /**
  * @author lucsteph

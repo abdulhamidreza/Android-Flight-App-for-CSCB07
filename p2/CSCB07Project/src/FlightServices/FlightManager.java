@@ -17,7 +17,7 @@ import java.util.Stack;
 import Comparator.ItineraryCostComparator;
 import Comparator.ItineraryTimeComparator;
 import Flight.Flight;
-import Itinerary.Itinerary;
+import itinerary.Itinerary;
 import driver.Driver;
 
 /**
