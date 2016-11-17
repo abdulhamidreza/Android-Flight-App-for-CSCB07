@@ -5,3 +5,8 @@ Outcomes:
 Stephen will do Flight, FlightManager, and FlightService
 William will do Itinerary and Database
 Won will do User, Client and Admin
+
+First status meeting 15/11/16 11:40am
+Present: William, Stephen
+William is working on Itinerary, will finish for Stephen.
+Stephen has finished FlightService, FlightManager, and Flight. FlightManager needs to be tested.
