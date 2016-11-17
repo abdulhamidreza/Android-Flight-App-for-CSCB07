@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -123,27 +125,24 @@ public class FlightManager implements FlightService {
 	 * @see FlightServices.FlightService#sortFlight(java.util.List, java.lang.String)
 	 */
 	@Override
-	public void sortFlight(List<Itinerary> itineraries, String sortBy, boolean increasing) {
+	public void sortFlight(List<Itinerary> itineraries, String sortBy, boolean increasingOrder) {
+		Comparator<Itinerary> comparator = null;
 		switch (sortBy) {
 		  case "Time":
-		    ItineraryTimeComparator itinTimeComp = new ItineraryTimeComparator();
-		    if (increasing) {
-		    	itineraries.sort(itinTimeComp);
-		    } else {
-		    	itineraries.sort(itinTimeComp.reversed());
-		    }
+		    comparator = new ItineraryTimeComparator();
 		    break;
 		  case "Cost":
-		    ItineraryCostComparator itinCostComp = new ItineraryCostComparator();
-		    if (increasing) {
-		        itineraries.sort(itinCostComp);
-		    } else {
-		        itineraries.sort(itinCostComp.reversed());
-		    }
+		    comparator = new ItineraryCostComparator();
+		    
 	        break;
 	      default:
 	        System.out.println(String.format("Was told to sort by %1$s", sortBy));
 	        break;        
 		}
+		if (increasingOrder) {
+	        Collections.sort(itineraries, comparator);
+	    } else {
+	        Collections.sort(itineraries, comparator.reversed());
+	    }
 	}
 }

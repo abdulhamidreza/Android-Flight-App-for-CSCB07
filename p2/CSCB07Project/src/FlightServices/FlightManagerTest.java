@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import org.junit.After;
 import org.junit.Before;
 
@@ -87,6 +90,7 @@ public class FlightManagerTest {
    */
   @After
   public void tearDown() throws Exception {
+	  System.out.println("\n\n");
   }
 
   /**
@@ -96,7 +100,7 @@ public class FlightManagerTest {
   @Test
   public void testFlightManager() throws ParseException {
     for (Itinerary flights: fm.getItinerary("Toronto", "New York", "2016-05-30")) {
-      //System.out.println(flights);
+      System.out.println(flights);
     }
   }
 
@@ -108,7 +112,7 @@ public class FlightManagerTest {
   @Test
   public void testSortFlight() throws ParseException {
     List<Itinerary> paths = fm.getItinerary("Toronto", "New York", "2016-05-30");
-    fm.sortFlight(paths, "Time", false);
+    fm.sortFlight(paths, "Time", true);
     for (Itinerary flights: paths) {
       System.out.println(flights);
     }
