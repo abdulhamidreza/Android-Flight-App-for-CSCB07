@@ -1,11 +1,23 @@
 [
     {
+        "merged": "/cmshome/jungwon5/team_0595/lab6/Lab6/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "/cmshome/jungwon5/team_0595/lab6/Lab6/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
         "merged": "/cmshome/lucsteph/team_0595/lab6/Lab6/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png",
         "source": "/cmshome/lucsteph/team_0595/lab6/Lab6/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
+        "merged": "/cmshome/jungwon5/team_0595/lab6/Lab6/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/cmshome/jungwon5/team_0595/lab6/Lab6/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
         "merged": "/cmshome/lucsteph/team_0595/lab6/Lab6/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_ic_menu_cut_mtrl_alpha.png",
         "source": "/cmshome/lucsteph/team_0595/lab6/Lab6/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "/cmshome/jungwon5/team_0595/lab6/Lab6/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "/cmshome/jungwon5/team_0595/lab6/Lab6/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "/cmshome/lucsteph/team_0595/lab6/Lab6/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png",
