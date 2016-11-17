@@ -43,7 +43,7 @@ public class FlightTest {
     flight2 = new Flight("Toronto", "Vancouver", "Air Canada", 
         "2016-06-30 13:05", "2016-06-30 15:35", 300, 100);
     flight3 = new Flight("China", "Germany", "PPC", 
-        "2016-05-30 23:05", "2016-06-31 05:05", 240, 400);
+        "2016-05-30 23:05", "2016-06-30 05:05", 240, 400);
     flight4 = new Flight("Toronto", "New York", "Air Canada", 
         "2016-05-31 23:05", "2016-05-31 05:05", 240, 400);
   }
@@ -91,7 +91,7 @@ public class FlightTest {
   @Test
   public void testSetArrivalDate() throws ParseException {
     Calendar date = new GregorianCalendar();
-    date.setTime(dateTime.parse("2016-06-31 05:05"));
+    date.setTime(dateTime.parse("2016-05-31 05:05"));
     try {
 		flight1.setArrivalDate("2016-06-31 05:05");
 	} catch (InvalidDateException e) {
@@ -121,13 +121,15 @@ public class FlightTest {
   @Test
   public void testSetDepartureDate() throws ParseException {
     Calendar date = new GregorianCalendar();
-    date.setTime(dateTime.parse("2016-06-31 05:05"));
+    date.setTime(dateTime.parse("2016-05-30 23:05"));
+    
     try {
-		flight1.setDepartureDate("2016-06-31 05:05");
+		flight1.setDepartureDate("2016-06-32 05:05");
 	} catch (InvalidDateException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+
     assertEquals("Flight1 departure date after change should be ", 
         date, flight1.getDepartureDate());
   }
