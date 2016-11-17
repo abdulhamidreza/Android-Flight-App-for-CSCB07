@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Flight;
+package ourTests;
 
 import static org.junit.Assert.*;
 
@@ -15,6 +15,8 @@ import java.util.GregorianCalendar;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import flight.Flight;
 
 /**
  * @author Stephen
@@ -70,7 +72,7 @@ public class FlightTest {
   }*/
 
   /**
-   * Test method for {@link Flight.Flight#getArrivalDate()}.
+   * Test method for {@link flight.Flight#getArrivalDate()}.
    * @throws ParseException 
    */
   @Test
@@ -82,7 +84,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#setArrivalDate(java.lang.String)}.
+   * Test method for {@link flight.Flight#setArrivalDate(java.lang.String)}.
    * @throws ParseException 
    */
   @Test
@@ -95,7 +97,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#getDepartureDate()}.
+   * Test method for {@link flight.Flight#getDepartureDate()}.
    * @throws ParseException 
    */
   @Test
@@ -107,7 +109,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#setDepartureDate(java.lang.String)}.
+   * Test method for {@link flight.Flight#setDepartureDate(java.lang.String)}.
    * @throws ParseException 
    */
   @Test
@@ -120,7 +122,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#getOrigin()}.
+   * Test method for {@link flight.Flight#getOrigin()}.
    */
   @Test
   public void testGetOrigin() {
@@ -129,7 +131,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#setOrigin(java.lang.String)}.
+   * Test method for {@link flight.Flight#setOrigin(java.lang.String)}.
    */
   @Test
   public void testSetOrigin() {
@@ -139,7 +141,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#getDestination()}.
+   * Test method for {@link flight.Flight#getDestination()}.
    */
   @Test
   public void testGetDestination() {
@@ -148,7 +150,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#setDestination(java.lang.String)}.
+   * Test method for {@link flight.Flight#setDestination(java.lang.String)}.
    */
   @Test
   public void testSetDestination() {
@@ -158,7 +160,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#getAirline()}.
+   * Test method for {@link flight.Flight#getAirline()}.
    */
   @Test
   public void testGetAirline() {
@@ -167,7 +169,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#setAirline(java.lang.String)}.
+   * Test method for {@link flight.Flight#setAirline(java.lang.String)}.
    */
   @Test
   public void testSetAirline() {
@@ -177,7 +179,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#getAvailableSeats()}.
+   * Test method for {@link flight.Flight#getAvailableSeats()}.
    */
   @Test
   public void testGetAvailableSeats() {
@@ -186,7 +188,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#setAvailableSeats(int)}.
+   * Test method for {@link flight.Flight#setAvailableSeats(int)}.
    */
   @Test
   public void testSetAvailableSeats() {
@@ -196,7 +198,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#getCost()}.
+   * Test method for {@link flight.Flight#getCost()}.
    */
   @Test
   public void testGetCost() {
@@ -205,7 +207,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#setCost(double)}.
+   * Test method for {@link flight.Flight#setCost(double)}.
    */
   @Test
   public void testSetCost() {
@@ -215,7 +217,7 @@ public class FlightTest {
   }
   
   /**
-   * Test method for {@link Flight.Flight#getFlightTime()}.
+   * Test method for {@link flight.Flight#getFlightTime()}.
    */
   @Test
   public void testGetDuration() {
@@ -224,7 +226,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#setFlightTime(java.time.Duration)}.
+   * Test method for {@link flight.Flight#setFlightTime(java.time.Duration)}.
    * @throws ParseException 
    */
   @Test
@@ -235,7 +237,7 @@ public class FlightTest {
   }
 
   /**
-   * Test method for {@link Flight.Flight#timeBetweenFlights(Flight.Flight)}.
+   * Test method for {@link flight.Flight#timeBetweenFlights(flight.Flight)}.
    */
   @Test
   public void testTimeBetweenFlights() {

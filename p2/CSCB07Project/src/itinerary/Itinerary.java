@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-import Flight.Flight;
+import flight.Flight;
 
 
 public class Itinerary {

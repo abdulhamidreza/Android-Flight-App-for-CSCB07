@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Users;
+package users;
 
 import java.util.ArrayList;
 import java.util.List;

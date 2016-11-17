@@ -1,14 +1,13 @@
 /**
  * 
  */
-package FlightServices;
+package flightServices;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -16,11 +15,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import Comparator.ItineraryCostComparator;
-import Comparator.ItineraryTimeComparator;
-import Flight.Flight;
 import itinerary.Itinerary;
+import util.ItineraryCostComparator;
+import util.ItineraryTimeComparator;
 import driver.Driver;
+import flight.Flight;
 
 /**
  * @author lucsteph
@@ -140,9 +139,9 @@ public class FlightManager implements FlightService {
 	        break;        
 		}
 		if (increasingOrder) {
-	        Collections.sort(itineraries, comparator);
+			itineraries.sort(comparator);
 	    } else {
-	        Collections.sort(itineraries, comparator.reversed());
+	    	itineraries.sort(comparator.reversed());
 	    }
 	}
 }

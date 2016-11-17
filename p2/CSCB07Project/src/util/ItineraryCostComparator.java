@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Comparator;
+package util;
 
 import java.util.Comparator;
 

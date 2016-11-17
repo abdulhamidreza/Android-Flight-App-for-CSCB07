@@ -1,7 +1,7 @@
 /**
  * 
  */
-package FlightServices;
+package ourTests;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -9,12 +9,12 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+import flight.Flight;
 
 import org.junit.After;
 import org.junit.Before;
 
-import Flight.Flight;
+import flightServices.FlightManager;
 import itinerary.Itinerary;
 
 /**
@@ -94,7 +94,7 @@ public class FlightManagerTest {
   }
 
   /**
-   * Test method for {@link FlightServices.FlightManager#FlightManager(java.util.List)}.
+   * Test method for {@link flightServices.FlightManager#FlightManager(java.util.List)}.
    * @throws ParseException 
    */
   @Test
@@ -106,7 +106,7 @@ public class FlightManagerTest {
 
 
   /**
-   * Test method for {@link FlightServices.FlightManager#sortFlight(java.util.List, java.lang.String)}.
+   * Test method for {@link flightServices.FlightManager#sortFlight(java.util.List, java.lang.String)}.
  * @throws ParseException 
    */
   @Test
