@@ -10,3 +10,10 @@ First status meeting 15/11/16 11:40am
 Present: William, Stephen
 William is working on Itinerary, will finish for Stephen.
 Stephen has finished FlightService, FlightManager, and Flight. FlightManager needs to be tested.
+
+Second planning meeting 14/11/16 4:50pm
+Present: William, Stephen, Won
+Outcomes: 
+Stephen has finished FlightManager and FlightService and has tested his code, and is close to finishing Flight.
+William is almost finished Itinerary, and will start working on Database.
+Won is finished User, Client, and Admin. He still needs to test.
