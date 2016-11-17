@@ -11,6 +11,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import flightServices.InvalidDateException;
+import util.ValidDate;
+
 /**
  * @author lucsteph
  *
@@ -30,7 +33,7 @@ public class Flight {
   private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	public Flight (String origin, String destonation, String airline, String departureDate,
-			String arrivalDate, int availableSeats, double cost) throws ParseException {
+			String arrivalDate, int availableSeats, double cost) throws ParseException, InvalidDateException {
 		this.origin = origin;
 		this.destination = destonation;
 		this.airline = airline;
@@ -38,6 +41,7 @@ public class Flight {
 		this.arrivalDate = new GregorianCalendar();
 		setDepartureDate(departureDate);
 		setArrivalDate(arrivalDate);
+		
 		Flight.availableSeats = availableSeats; // see if this works
 		setDuration();
 		this.cost = cost;
@@ -56,18 +60,22 @@ public class Flight {
 		return arrivalDate;
 	}
 
-	public void setArrivalDate(String arrivalDate) throws ParseException {
-		this.arrivalDate.setTime(dateTime.parse(arrivalDate));
-		this.setDuration();
+	public void setArrivalDate(String arrivalDate) throws ParseException, InvalidDateException {
+		if (ValidDate.validate(arrivalDate)){
+			this.arrivalDate.setTime(dateTime.parse(arrivalDate));
+			this.setDuration();
+		}
 	}
 
 	public Calendar getDepartureDate() {
 		return departureDate;
 	}
 
-	public void setDepartureDate(String departureDate) throws ParseException {
-		this.departureDate.setTime(dateTime.parse(departureDate));
-		this.setDuration();
+	public void setDepartureDate(String departureDate) throws ParseException, InvalidDateException {
+		if (ValidDate.validate(departureDate)){
+			this.departureDate.setTime(dateTime.parse(departureDate));
+			this.setDuration();
+		}
 	}
 
 	public String getOrigin() {

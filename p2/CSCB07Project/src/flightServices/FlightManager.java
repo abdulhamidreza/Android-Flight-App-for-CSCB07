@@ -52,7 +52,7 @@ public class FlightManager implements FlightService {
 	 * @see FlightServices.FlightService#getItinerary(java.lang.String, java.lang.String, java.util.Date)
 	 */
 	@Override
-	public List<Itinerary> getItinerary(String origin, String destination, String departureDate) throws ParseException {
+	public List<Itinerary> getItinerary(String origin, String destination, String departureDate) throws ParseException{
 		Stack<String> location = new Stack<String>();
 		Stack<Flight> connection = new Stack<Flight>();
 		List<Stack<Flight>> paths = new ArrayList<Stack<Flight>>();
@@ -62,7 +62,7 @@ public class FlightManager implements FlightService {
 		int departYear = wantedDepartDate.get(Calendar.YEAR);
 		int departMonth = wantedDepartDate.get(Calendar.MONTH);
 		int departDate = wantedDepartDate.get(Calendar.DATE);		
-		
+
 		location.push(origin);
 		
 		for (Flight flight: mapOfFlights.get(origin)) {
@@ -80,8 +80,7 @@ public class FlightManager implements FlightService {
 					connection.pop();
 				}
 			}
-		}
-		
+		}		
 		List<Itinerary> allItinerary = new ArrayList<Itinerary>();
 		
 		for (Stack<Flight> path: paths) {
@@ -90,8 +89,7 @@ public class FlightManager implements FlightService {
 				newPath.addFlight(flight);
 			}
 			allItinerary.add(newPath);
-		}
-		
+		}		
 		return allItinerary;
 	}
 	
@@ -124,8 +122,8 @@ public class FlightManager implements FlightService {
 	 * @see FlightServices.FlightService#sortFlight(java.util.List, java.lang.String)
 	 */
 	@Override
-	public void sortFlight(List<Itinerary> itineraries, String sortBy, boolean increasingOrder) {
-		Comparator<Itinerary> comparator = null;
+	public void sortFlight(List<Itinerary> itineraries, String sortBy, boolean increasingOrder) throws InvalidSortException{
+		Comparator<Itinerary> comparator;
 		switch (sortBy) {
 		  case "Time":
 		    comparator = new ItineraryTimeComparator();
@@ -135,8 +133,7 @@ public class FlightManager implements FlightService {
 		    
 	        break;
 	      default:
-	        System.out.println(String.format("Was told to sort by %1$s", sortBy));
-	        break;        
+	    	throw new InvalidSortException(String.format("Was told to sort by %s", sortBy));        
 		}
 		if (increasingOrder) {
 			itineraries.sort(comparator);

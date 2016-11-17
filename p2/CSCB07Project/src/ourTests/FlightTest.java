@@ -17,6 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import flight.Flight;
+import flightServices.InvalidDateException;
 
 /**
  * @author Stephen
@@ -91,7 +92,12 @@ public class FlightTest {
   public void testSetArrivalDate() throws ParseException {
     Calendar date = new GregorianCalendar();
     date.setTime(dateTime.parse("2016-06-31 05:05"));
-    flight1.setArrivalDate("2016-06-31 05:05");
+    try {
+		flight1.setArrivalDate("2016-06-31 05:05");
+	} catch (InvalidDateException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     assertEquals("Flight1 arrival date after change should be ", 
         date, flight1.getArrivalDate());
   }
@@ -116,7 +122,12 @@ public class FlightTest {
   public void testSetDepartureDate() throws ParseException {
     Calendar date = new GregorianCalendar();
     date.setTime(dateTime.parse("2016-06-31 05:05"));
-    flight1.setDepartureDate("2016-06-31 05:05");
+    try {
+		flight1.setDepartureDate("2016-06-31 05:05");
+	} catch (InvalidDateException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     assertEquals("Flight1 departure date after change should be ", 
         date, flight1.getDepartureDate());
   }
@@ -231,7 +242,12 @@ public class FlightTest {
    */
   @Test
   public void testSetDuration() throws ParseException {
-    flight1.setArrivalDate("2016-05-31 10:45");
+    try {
+		flight1.setArrivalDate("2016-05-31 10:45");
+	} catch (InvalidDateException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     assertEquals("Flight1 origin should be ", 
         Duration.ofMinutes(700), flight1.getDuration());
   }

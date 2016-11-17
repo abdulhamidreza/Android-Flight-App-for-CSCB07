@@ -15,6 +15,7 @@ import org.junit.After;
 import org.junit.Before;
 
 import flightServices.FlightManager;
+import flightServices.InvalidSortException;
 import itinerary.Itinerary;
 
 /**
@@ -104,18 +105,26 @@ public class FlightManagerTest {
     }
   }
 
-
-  /**
-   * Test method for {@link flightServices.FlightManager#sortFlight(java.util.List, java.lang.String)}.
- * @throws ParseException 
-   */
+ /**
+  * Test method for
+  * 
+  * {@link flightServices.FlightManager#sortFlight(java.util.List, java.lang.String)}.
+  * 
+  * @throws ParseException
+  */
   @Test
   public void testSortFlight() throws ParseException {
-    List<Itinerary> paths = fm.getItinerary("Toronto", "New York", "2016-05-30");
-    fm.sortFlight(paths, "Time", true);
-    for (Itinerary flights: paths) {
-      System.out.println(flights);
-    }
+	List<Itinerary> paths = fm.getItinerary("Toronto", "New York", "2016-05-30");
+	try {
+	  fm.sortFlight(paths, "Time", true);
+	  for (Itinerary flights : paths) {
+	    System.out.println(flights);
+	  }
+	} catch (InvalidSortException e) {
+			// TODO Auto-generated catch block
+		e.printStackTrace();
+		System.out.println("Couldn't sort itineraries.");
+	}    
     
   }
 

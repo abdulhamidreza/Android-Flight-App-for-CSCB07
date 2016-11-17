@@ -13,6 +13,6 @@ import itinerary.Itinerary;
  *
  */
 public interface FlightService {
-	public List<?> getItinerary(String origin, String deestination, String departDate) throws ParseException;
-	public void sortFlight(List<Itinerary> itinerary, String sortBy, boolean increasingOrder);
+	public List<Itinerary> getItinerary(String origin, String deestination, String departDate) throws ParseException, InvalidSortException;
+	public void sortFlight(List<Itinerary> itinerary, String sortBy, boolean increasingOrder) throws InvalidSortException;
 }
