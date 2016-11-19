@@ -10,7 +10,12 @@ import java.util.Date;
 import java.util.List;
 
 import database.Database;
+import flight.Flight;
+import flightServices.FlightManager;
+import flightServices.FlightService;
 import flightServices.InvalidDateException;
+import flightServices.InvalidSortException;
+import itinerary.Itinerary;
 import users.Client;
 
 /** A Driver used for autotesting the project backend. */
@@ -22,6 +27,7 @@ public class Driver {
   private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
   private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
   public static Database data = new Database();
+  public static FlightService fs;
 
   /**
    * Uploads client information to the application from the file at the
@@ -50,12 +56,12 @@ public class Driver {
   public static void uploadFlightInfo(String path) {
     // TODO: complete this method body
 	  
-	  try {
-		data.readFlightCsv(path);
-	} catch (NumberFormatException | IOException | ParseException | InvalidDateException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+  	  try {
+  		data.readFlightCsv(path);
+  	} catch (NumberFormatException | IOException | ParseException | InvalidDateException e) {
+  		// TODO Auto-generated catch block
+  		e.printStackTrace();
+  	}
   }
 
   /**
@@ -70,7 +76,7 @@ public class Driver {
 
     // TODO: complete/rewrite this method body
     // The code below gives you the format in which the auto-tester expects the output.  
-	Client client = data.getClient(email);
+    Client client = data.getClient(email);
 	
     String lastName = client.getLastName();
     String firstNames = client.getFirstName();
@@ -104,7 +110,19 @@ public class Driver {
     // TODO: complete/rewrite this method body
     // The code below gives you the format in which the auto-tester expects the output.
 
-    String flightNum = "AC213";
+    List<String> flights = new ArrayList<>();
+    
+    fs = new FlightManager(data.getFlights());
+    
+    for (Flight flight: data.getFlights()) {
+      if (((FlightManager) fs).sameDate(flight, date)
+          && flight.getOrigin().equals(origin)
+          && flight.getDestination().equals(destination)) {
+        flights.add(flight.toString());
+      }
+    }   
+    
+    /*String flightNum = "AC213";
     Date departure = dateTime.parse("2016-11-29 11:30");
     Date arrival = dateTime.parse("2016-11-29 15:45");
     String airline = "Air Canada";
@@ -113,8 +131,7 @@ public class Driver {
     String oneFlightFormatted = String.format("%s;%s;%s;%s;%s;%s;%.2f", 
         flightNum, dateTime.format(departure), dateTime.format(arrival),
         airline, origin, destination, price);
-    List<String> flights = new ArrayList<>();
-    flights.add(oneFlightFormatted);
+    flights.add(oneFlightFormatted);*/
     
     return flights;
   }
@@ -143,7 +160,22 @@ public class Driver {
     // as well as some ideas about the built-in Java classes to handle dates, times, etc.
     // Make sure to read the API carefully: what you need will depend on your design!
 
-    String flightNum1 = "AC213";
+    fs = new FlightManager(data.getFlights());
+    List<Itinerary> itineraryList = new ArrayList<Itinerary>();
+    try {
+      itineraryList = fs.getItinerary(origin, destination, date);
+    } catch (InvalidSortException | ParseException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    List<String> itineraries = new ArrayList<>();
+    
+    for (Itinerary itinerary: itineraryList) {
+      itineraries.add(itinerary.toString());
+    }
+    
+ /*   String flightNum1 = "AC213";
     Date departure1 = null;
     Date arrival1 = null;
     try {
@@ -178,10 +210,9 @@ public class Driver {
         flightNum2, dateTime.format(departure2), dateTime.format(arrival2),
         airline2, stopover, destination);
     String oneItineraryFormatted = String.format("%s\n%s\n%.2f\n%.2f",
-        flight1Formatted, flight2Formatted, totalPrice, totalDuration.toMinutes() / 60.0);
+        flight1Formatted, flight2Formatted, totalPrice, totalDuration.toMinutes() / 60.0);    
     
-    List<String> itineraries = new ArrayList<>();
-    itineraries.add(oneItineraryFormatted);
+    itineraries.add(oneItineraryFormatted);*/
     
     return itineraries;
   }
@@ -196,9 +227,29 @@ public class Driver {
    * @return itineraries (sorted in non-decreasing order of total itinerary cost) in the same format
    *         as in getItineraries.
    */
-  public static String getItinerariesSortedByCost(String date, String origin, String destination) {
-    // TODO: complete this method body
-    return null;
+  public static List<String> getItinerariesSortedByCost(String date, String origin, String destination) {
+    fs = new FlightManager(data.getFlights());
+    List<Itinerary> itineraryList = new ArrayList<Itinerary>();
+    try {
+      itineraryList = fs.getItinerary(origin, destination, date);
+    } catch (InvalidSortException | ParseException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    try {
+      fs.sortFlight(itineraryList, "Cost", true);
+    } catch (InvalidSortException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }    
+    
+    List<String> itineraries = new ArrayList<>();
+    
+    for (Itinerary itinerary: itineraryList) {
+      itineraries.add(itinerary.toString());
+    }
+    return itineraries;
   }
 
   /**
@@ -210,8 +261,28 @@ public class Driver {
    * @return itineraries (sorted in non-decreasing order of total travel time) in the same format
    *         as in getItineraries.
    */
-  public static String getItinerariesSortedByTime(String date, String origin, String destination) {
-    // TODO: complete this method body
-    return null;
+  public static List<String> getItinerariesSortedByTime(String date, String origin, String destination) {
+    fs = new FlightManager(data.getFlights());
+    List<Itinerary> itineraryList = new ArrayList<Itinerary>();
+    try {
+      itineraryList = fs.getItinerary(origin, destination, date);
+    } catch (InvalidSortException | ParseException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    try {
+      fs.sortFlight(itineraryList, "Time", true);
+    } catch (InvalidSortException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }    
+    
+    List<String> itineraries = new ArrayList<>();
+    
+    for (Itinerary itinerary: itineraryList) {
+      itineraries.add(itinerary.toString());
+    }
+    return itineraries;
   }
 }

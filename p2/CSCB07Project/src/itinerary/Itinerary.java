@@ -1,5 +1,7 @@
 package itinerary;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ public class Itinerary {
 	private List<Flight> flights;
 	private double totalCost; //the total cost in $
 	private Duration totalTime; //the total time in duration
+
+  private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	public Itinerary() {
 		
@@ -108,7 +112,18 @@ public class Itinerary {
 
 	@Override
 	public String toString() {
-		return "Itinerary [" + flights + "]";
+	  String itineraryFormat= "";
+	  for (Flight flight: flights) {
+	    itineraryFormat += String.format("%s;%s;%s;%s;%s;%s\n", 
+	        flight.getFlightNum(), dateTime.format(flight.getDepartureDate().getTime()), 
+	        dateTime.format(flight.getArrivalDate().getTime()), flight.getAirline(), 
+	        flight.getOrigin(), flight.getDestination());
+	  }	 
+	  
+	  itineraryFormat += String.format("%.2f\n%.2f", totalCost, 
+	     (float) totalTime.toMinutes() / 60,0);
+	  
+	  return itineraryFormat;
 	}
 	
 	

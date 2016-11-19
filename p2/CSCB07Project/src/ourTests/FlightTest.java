@@ -38,13 +38,13 @@ public class FlightTest {
   @Before
   public void setUp() throws Exception {
     
-    flight1 = new Flight("Toronto", "New York", "Air Canada", 
+    flight1 = new Flight("AC489", "Toronto", "New York", "Air Canada", 
         "2016-05-30 23:05", "2016-05-31 05:05", 240, 400);
-    flight2 = new Flight("Toronto", "Vancouver", "Air Canada", 
+    flight2 = new Flight("AC489", "Toronto", "Vancouver", "Air Canada", 
         "2016-06-30 13:05", "2016-06-30 15:35", 300, 100);
-    flight3 = new Flight("China", "Germany", "PPC", 
+    flight3 = new Flight("AC489", "China", "Germany", "PPC", 
         "2016-05-30 23:05", "2016-06-30 05:05", 240, 400);
-    flight4 = new Flight("Toronto", "New York", "Air Canada", 
+    flight4 = new Flight("AC489", "Toronto", "New York", "Air Canada", 
         "2016-05-31 23:05", "2016-05-31 05:05", 240, 400);
   }
 

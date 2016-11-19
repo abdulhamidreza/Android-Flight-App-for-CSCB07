@@ -56,20 +56,11 @@ public class FlightManager implements FlightService {
 		Stack<String> location = new Stack<String>();
 		Stack<Flight> connection = new Stack<Flight>();
 		List<Stack<Flight>> paths = new ArrayList<Stack<Flight>>();
-		
-		Calendar wantedDepartDate = new GregorianCalendar();
-		wantedDepartDate.setTime(date.parse(departureDate));
-		int departYear = wantedDepartDate.get(Calendar.YEAR);
-		int departMonth = wantedDepartDate.get(Calendar.MONTH);
-		int departDate = wantedDepartDate.get(Calendar.DATE);		
-
 		location.push(origin);
 		
 		for (Flight flight: mapOfFlights.get(origin)) {
 		  // Confirms departure dates are the same
-			if (flight.getDepartureDate().get(Calendar.YEAR) == departYear
-			    && flight.getDepartureDate().get(Calendar.MONTH) == departMonth
-			    && flight.getDepartureDate().get(Calendar.DATE) == departDate) {
+			if (sameDate(flight, departureDate)) {
 				if(flight.getDestination().equals(destination)) {
 					Stack<Flight> temp = new Stack<Flight>();
 					temp.push(flight);
@@ -95,10 +86,7 @@ public class FlightManager implements FlightService {
 	
 	private void getFlights(Flight flight, String destination, 
 			Stack<String> location, Stack<Flight> connection, List<Stack<Flight>> paths) {
-		for (Flight nextFlight: mapOfFlights.get(flight.getDestination())){
-		  /*System.out.println(flight.timeBetweenFlights(nextFlight).compareTo(Driver.MIN_LAYOVER));
-		  System.out.println(flight.timeBetweenFlights(nextFlight).compareTo(Driver.MAX_LAYOVER));
-			*/if (flight.timeBetweenFlights(nextFlight).compareTo(Driver.MIN_LAYOVER) >= 0
+		for (Flight nextFlight: mapOfFlights.get(flight.getDestination())){if (flight.timeBetweenFlights(nextFlight).compareTo(Driver.MIN_LAYOVER) >= 0
 					&& flight.timeBetweenFlights(nextFlight).compareTo(Driver.MAX_LAYOVER) <= 0) {
 				if(nextFlight.getDestination().equals(destination)) {
 					Stack<Flight> temp = new Stack<Flight>();
@@ -118,6 +106,19 @@ public class FlightManager implements FlightService {
 			}
 		}
 	}
+	
+	public boolean sameDate(Flight flight, String date) throws ParseException {
+	  Calendar wantedDepartDate = new GregorianCalendar();
+    wantedDepartDate.setTime(FlightManager.date.parse(date));
+    int departYear = wantedDepartDate.get(Calendar.YEAR);
+    int departMonth = wantedDepartDate.get(Calendar.MONTH);
+    int departDate = wantedDepartDate.get(Calendar.DATE);
+    
+	  return flight.getDepartureDate().get(Calendar.YEAR) == departYear
+	      && flight.getDepartureDate().get(Calendar.MONTH) == departMonth
+        && flight.getDepartureDate().get(Calendar.DATE) == departDate;
+	}
+	
 	/* (non-Javadoc)
 	 * @see FlightServices.FlightService#sortFlight(java.util.List, java.lang.String)
 	 */

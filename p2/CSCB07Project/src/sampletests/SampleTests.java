@@ -7,6 +7,7 @@ import driver.Driver;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashSet;
 import java.util.List;
@@ -17,7 +18,7 @@ public class SampleTests {
   public static final int TIMEOUT = 100;
   
   // NOTE: set the PATH variable to the location of the input files.
-  public static final String PATH = "/anya/b07/project/PhaseII/starter/src/sampleTests/";
+  public static final String PATH = "C://Users/Stephen/Documents/3rd Year/3A/CSCB07/team_0595/p2/CSCB07Project/src/sampletests/";
   public static final String CLIENTS = PATH + "clients.txt";
   public static final String FLIGHTS1 = PATH + "flights1.txt";
   public static final String FLIGHTS2 = PATH + "flights2.txt";
@@ -25,7 +26,12 @@ public class SampleTests {
   @Test(timeout = TIMEOUT)
   public void testGetClient() {
 
-    Driver.uploadClientInfo(CLIENTS);
+    try {
+      Driver.uploadClientInfo(CLIENTS);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
 
     String expected = "Roe;Richard;richard@email.com;21 First Lane Way;9999888877776666,2017-10-01";
     String found = Driver.getClient("richard@email.com");
@@ -40,7 +46,7 @@ public class SampleTests {
   public void testGetFlights() throws ParseException {
 
     Driver.uploadFlightInfo(FLIGHTS1);
-
+    
     String expected = "KL490;2016-09-30 22:40;2016-10-01 01:59;Go Airline;New York;Boston;532.00";
     List<String> found = Driver.getFlights("2016-09-30", "New York", "Boston");
     String msg =
@@ -75,7 +81,8 @@ public class SampleTests {
     String msg =
         "Unexpected (incorrect or incorrectly formatted) itinerary information "
         + "output was returned.";
-
+    System.out.println("Found: \n" + found);
+    System.out.println("Expected: \n" + expected);
     assertTrue(msg, found.equals(expected));
   }
 }

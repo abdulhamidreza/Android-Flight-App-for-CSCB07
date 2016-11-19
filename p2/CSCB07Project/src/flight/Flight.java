@@ -19,7 +19,7 @@ import util.ValidDate;
  *
  */
 public class Flight {
-	private int flightId;
+	private String flightNum;
 	private Calendar arrivalDate;
 	private Calendar departureDate;
 	private String origin;
@@ -32,9 +32,10 @@ public class Flight {
 
   private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
-	public Flight (String origin, String destonation, String airline, String departureDate,
+	public Flight (String flightNum, String origin, String destonation, String airline, String departureDate,
 			String arrivalDate, int availableSeats, double cost) throws ParseException, InvalidDateException {
-		this.origin = origin;
+		this.flightNum = flightNum;
+	  this.origin = origin;
 		this.destination = destonation;
 		this.airline = airline;
 		this.departureDate = new GregorianCalendar();
@@ -48,12 +49,12 @@ public class Flight {
 		
 	}
 
-	public int getFlightId() {
-		return flightId;
+	public String getFlightNum() {
+		return flightNum;
 	}
 
-	public void setFlightId(int flightId) {
-		this.flightId = flightId;
+	public void setFlightNum(String flightNum) {
+		this.flightNum = flightNum;
 	}
 
 	public Calendar getArrivalDate() {
@@ -134,8 +135,9 @@ public class Flight {
 
   @Override
   public String toString() {
-    return "Flight [ origin=" + origin
-        + ", destination=" + destination + "]";
+    return String.format("%s;%s;%s;%s;%s;%s;%.2f", 
+        flightNum, dateTime.format(departureDate.getTime()), dateTime.format(arrivalDate.getTime()),
+        airline, origin, destination, cost);
   }
 	
 

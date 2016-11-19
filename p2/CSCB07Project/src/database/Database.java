@@ -32,7 +32,7 @@ public class Database {
 		for (String line : Files.readAllLines(Paths.get(flightDir))) {
 			String[] strArr = line.split(";");
 			//String origin, String destonation, String airline, String departureDate, String arrivalDate, int availableSeats, double cost
-			flights.add(new Flight(strArr[4],strArr[5],strArr[3],strArr[1],strArr[2],420,Double.valueOf(strArr[6])));
+			flights.add(new Flight(strArr[0], strArr[4],strArr[5],strArr[3],strArr[1],strArr[2],420,Double.valueOf(strArr[6])));
 		}
 		
 	}
