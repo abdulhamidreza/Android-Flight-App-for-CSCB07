@@ -1,5 +1,6 @@
 package driver;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,6 +8,10 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import database.Database;
+import flightServices.InvalidDateException;
+import users.Client;
 
 /** A Driver used for autotesting the project backend. */
 public class Driver {
@@ -16,6 +21,7 @@ public class Driver {
 
   private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
   private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+  public static Database data = new Database();
 
   /**
    * Uploads client information to the application from the file at the
@@ -24,9 +30,12 @@ public class Driver {
    *     lines in the format: 
    *     LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
    *     The ExpiryDate is stored in the format yyyy-MM-dd.
+ * @throws IOException 
    */
-  public static void uploadClientInfo(String path) {
+  public static void uploadClientInfo(String path) throws IOException {
     // TODO: complete this method body
+	  
+	  data.readClientCsv(path);
   }
 
   /**
@@ -40,6 +49,13 @@ public class Driver {
    */
   public static void uploadFlightInfo(String path) {
     // TODO: complete this method body
+	  
+	  try {
+		data.readFlightCsv(path);
+	} catch (NumberFormatException | IOException | ParseException | InvalidDateException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
 
   /**
@@ -53,12 +69,13 @@ public class Driver {
   public static String getClient(String email) {
 
     // TODO: complete/rewrite this method body
-    // The code below gives you the format in which the auto-tester expects the output.
-
-    String lastName = "LastName";
-    String firstNames = "FirstName MiddleName";
-    String address = "Street, City, Country";
-    String ccNumber = "12341231234";
+    // The code below gives you the format in which the auto-tester expects the output.  
+	Client client = data.getClient(email);
+	
+    String lastName = client.getLastName();
+    String firstNames = client.getFirstName();
+    String address = client.getAddress();
+    String ccNumber = client.getCreditCard();
     Date expiryDate = null;
     try {
       expiryDate = date.parse("2019-03-01");
