@@ -42,7 +42,7 @@ public class Driver {
   public static void uploadClientInfo(String path) throws IOException {
     // TODO: complete this method body
 
-    data.readClientCsv(path);
+    data.readClientTxt(path);
   }
 
   /**
@@ -60,7 +60,7 @@ public class Driver {
     // TODO: complete this method body
 
     try {
-      data.readFlightCsv(path);
+      data.readFlightTxt(path);
     } catch (NumberFormatException | IOException | ParseException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

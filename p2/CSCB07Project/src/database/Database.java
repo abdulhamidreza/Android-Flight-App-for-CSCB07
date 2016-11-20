@@ -26,7 +26,13 @@ public class Database {
 		
 	}
 	
-	public void readFlightCsv(String flightDir) throws IOException, NumberFormatException, ParseException {
+	/**Reads all Flights in from a Semicolon-Seperated values text file.
+	 * @param flightDir the directory of the .txt file
+	 * @throws IOException thrown when I/O error occurs
+	 * @throws NumberFormatException thrown if Price in file is not a valid Double
+	 * @throws ParseException thrown if arrival time and/or departure time are not valid Dates
+	 */
+	public void readFlightTxt(String flightDir) throws IOException, NumberFormatException, ParseException {
 		//Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price
 		for (String line : Files.readAllLines(Paths.get(flightDir))) {
 			String[] strArr = line.split(";");
@@ -36,19 +42,33 @@ public class Database {
 		
 	}
 	
+	/**Returns a list of Clients in this Database.
+	 * @return a list of Clients in this Database.
+	 */
 	public List<Client> getClients() {
 		return clients;
 	}
 
+	/**Returns a list of Admins in this Database.
+	 * @return a list of Admins in this Database.
+	 */
 	public List<Admin> getAdmins() {
 		return admins;
 	}
 
+	/**Returns a list of Flights in this Database.
+	 * @return a list of Flights in this Database.
+	 */
 	public List<Flight> getFlights() {
 		return flights;
 	}
 
-	public void readClientCsv(String clientDir) throws IOException {
+	
+	/**Reads all Clients in from a Semicolon-Separated values text file.
+	 * @param clientDir the directory of the .txt file
+	 * @throws IOException thrown when I/O error occurs
+	 */
+	public void readClientTxt(String clientDir) throws IOException {
 		//LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
 		for (String line : Files.readAllLines(Paths.get(clientDir))) {
 		    String[] strArr = line.split(";");
@@ -59,9 +79,9 @@ public class Database {
 		
 	}
 	
-	/** returns the Client object with the email address "email".
-	 * @param email
-	 * @return a Client object
+	/** returns a Client object in this Database with a specific email.
+	 * @param email the email that corresponds to a Client
+	 * @return a Client object with email "email"
 	 */
 	public Client getClient(String email) {
 		
@@ -81,6 +101,7 @@ public class Database {
 	
 	
 	/*
+	This code is all apart of the JSON implementation of the database. Since we only need to read TXT data, this is not used.
 	public void readAll() {
 		
 		
@@ -118,7 +139,6 @@ public class Database {
 		
 	}
 	
-	//Not used for this phase
 	public boolean AddNewAdmin(Admin admin) {
 		
 		JsonArray toAdd = Json.createArrayBuilder()

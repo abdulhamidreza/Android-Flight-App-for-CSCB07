@@ -18,14 +18,22 @@ public class Itinerary {
 
   private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
+	/**Constructs an Itinerary object, and initializes the fields to starting values.
+	 * 
+	 */
 	public Itinerary() {
 		
+		//declare variables in Constructor, for good form.
 		this.totalCost = 0;
 		this.totalTime = Duration.ZERO;
 		this.flights = new ArrayList<Flight>();
 		
 	}
 	
+	/**Adds this flight to the Itinerary. 
+	 * @param flight
+	 * @return
+	 */
 	public boolean addFlight(Flight flight) {
 		
 		totalCost += flight.getCost();	
@@ -39,6 +47,10 @@ public class Itinerary {
 		
 	}
 	
+	/**Removes a flight from this Itinerary.
+	 * @param flight this flight
+	 * @return whether the flight was successfully removed.
+	 */
 	public boolean removeFlight(Flight flight) {
 		
 		totalCost -= flight.getCost();
@@ -52,26 +64,37 @@ public class Itinerary {
 		
 	}
 	
+	/**Returns the unique Itinerary ID for this Itinerary.
+	 * @return this Itinerary's unique ID
+	 */
 	public int getItineraryId(){		
 		return this.hashCode();		
 	}
 	
+	/**Returns all the flights in this Itinerary.
+	 * @return a list of all flights in this Itinerary
+	 */
 	public List<Flight> getFlights() {
 	  return flights;
 	}
  
+	/**Returns the total cost of this Itinerary.
+	 * @return a double representing the cost
+	 */
 	public double getTotalCost() {
 		return totalCost;
 	}
 
-	public void setTotalCost(double totalCost) {
-		this.totalCost = totalCost;
-	}
-
+	/**Returns the total time of this Itinerary.
+	 * @return the total time of this Itinerary
+	 */
 	public Duration getTotalTime() {
 		return totalTime;
 	}
 
+	/**Refreshes the total time of this Itinerary.s
+	 * 
+	 */
 	private void setTotalTime() {
 		long min = ChronoUnit.MINUTES.between(
 				flights.get(0).getDepartureDate().toInstant(), flights.get(flights.size() - 1).getArrivalDate().toInstant());
