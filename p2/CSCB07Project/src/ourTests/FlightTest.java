@@ -17,7 +17,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import flight.Flight;
-import flightServices.InvalidDateException;
 
 /**
  * @author Stephen
@@ -94,7 +93,7 @@ public class FlightTest {
     date.setTime(dateTime.parse("2016-05-31 05:05"));
     try {
 		flight1.setArrivalDate("2016-06-31 05:05");
-	} catch (InvalidDateException e) {
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -125,7 +124,7 @@ public class FlightTest {
     
     try {
 		flight1.setDepartureDate("2016-06-32 05:05");
-	} catch (InvalidDateException e) {
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -246,7 +245,7 @@ public class FlightTest {
   public void testSetDuration() throws ParseException {
     try {
 		flight1.setArrivalDate("2016-05-31 10:45");
-	} catch (InvalidDateException e) {
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

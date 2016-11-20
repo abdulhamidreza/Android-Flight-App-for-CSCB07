@@ -13,7 +13,6 @@ import database.Database;
 import flight.Flight;
 import flightServices.FlightManager;
 import flightServices.FlightService;
-import flightServices.InvalidDateException;
 import flightServices.InvalidSortException;
 import itinerary.Itinerary;
 import users.Client;
@@ -62,7 +61,7 @@ public class Driver {
 
     try {
       data.readFlightCsv(path);
-    } catch (NumberFormatException | IOException | ParseException | InvalidDateException e) {
+    } catch (NumberFormatException | IOException | ParseException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }

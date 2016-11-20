@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import flight.Flight;
-import flightServices.InvalidDateException;
 import users.Admin;
 import users.Client;
 
@@ -27,7 +26,7 @@ public class Database {
 		
 	}
 	
-	public void readFlightCsv(String flightDir) throws IOException, NumberFormatException, ParseException, InvalidDateException {
+	public void readFlightCsv(String flightDir) throws IOException, NumberFormatException, ParseException {
 		//Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price
 		for (String line : Files.readAllLines(Paths.get(flightDir))) {
 			String[] strArr = line.split(";");

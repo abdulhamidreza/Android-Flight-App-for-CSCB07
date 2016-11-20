@@ -52,10 +52,12 @@ public class Itinerary {
 		
 	}
 	
-	public int getItineraryId(){
-		
-		return this.hashCode();
-		
+	public int getItineraryId(){		
+		return this.hashCode();		
+	}
+	
+	public List<Flight> getFlights() {
+	  return flights;
 	}
  
 	public double getTotalCost() {

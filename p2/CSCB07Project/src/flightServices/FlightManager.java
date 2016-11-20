@@ -4,9 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Comparator;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -170,15 +168,7 @@ public class FlightManager implements FlightService {
    *           if parsing date does not work.
    */
   public boolean sameDate(Flight flight, String date) throws ParseException {
-    Calendar wantedDepartDate = new GregorianCalendar();
-    wantedDepartDate.setTime(FlightManager.date.parse(date));
-    int departYear = wantedDepartDate.get(Calendar.YEAR);
-    int departMonth = wantedDepartDate.get(Calendar.MONTH);
-    int departDate = wantedDepartDate.get(Calendar.DATE);
-
-    return flight.getDepartureDate().get(Calendar.YEAR) == departYear
-        && flight.getDepartureDate().get(Calendar.MONTH) == departMonth
-        && flight.getDepartureDate().get(Calendar.DATE) == departDate;
+    return FlightManager.date.format(flight.getDepartureDate().getTime()).equals(date);
   }
 
   /*
