@@ -67,7 +67,8 @@ public class Itinerary {
 	/**Returns the unique Itinerary ID for this Itinerary.
 	 * @return this Itinerary's unique ID
 	 */
-	public int getItineraryId(){		
+	public int getItineraryId(){	
+		//we use the Itinerary's hash as a unique identifier. 
 		return this.hashCode();		
 	}
 	
@@ -96,6 +97,7 @@ public class Itinerary {
 	 * 
 	 */
 	private void setTotalTime() {
+		//the difference in time between the departure of the first flight, and the arrival of the last flight
 		long min = ChronoUnit.MINUTES.between(
 				flights.get(0).getDepartureDate().toInstant(), flights.get(flights.size() - 1).getArrivalDate().toInstant());
 	    this.totalTime = Duration.ofMinutes(min);

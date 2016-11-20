@@ -35,9 +35,10 @@ public class Database {
 	public void readFlightTxt(String flightDir) throws IOException, NumberFormatException, ParseException {
 		//Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price
 		for (String line : Files.readAllLines(Paths.get(flightDir))) {
+			//Usually this is a terrible way to parse value seperated files. This is acceptable here, because data cannot contain semicolons
 			String[] strArr = line.split(";");
 			//String origin, String destonation, String airline, String departureDate, String arrivalDate, int availableSeats, double cost
-			flights.add(new Flight(strArr[0], strArr[4],strArr[5],strArr[3],strArr[1],strArr[2],420,Double.valueOf(strArr[6])));
+			flights.add(new Flight(strArr[0], strArr[4],strArr[5],strArr[3],strArr[1],strArr[2],999,Double.valueOf(strArr[6])));
 		}
 		
 	}
@@ -71,6 +72,7 @@ public class Database {
 	public void readClientTxt(String clientDir) throws IOException {
 		//LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
 		for (String line : Files.readAllLines(Paths.get(clientDir))) {
+			//Usually this is a terrible way to parse value separated files. This is acceptable here, because data cannot contain semicolons
 		    String[] strArr = line.split(";");
 		    //email,password,first,last,address, CC
 		    clients.add(new Client(strArr[2],"default",strArr[1],strArr[0], strArr[3], strArr[4]));
