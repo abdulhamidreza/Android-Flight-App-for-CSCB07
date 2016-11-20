@@ -121,7 +121,7 @@ public class Itinerary {
 	  }	 
 	  
 	  itineraryFormat += String.format("%.2f\n%.2f", totalCost, 
-	     (float) totalTime.toMinutes() / 60,0);
+	     Math.floor((totalTime.toMinutes() / 60.0)*100)/100);
 	  
 	  return itineraryFormat;
 	}

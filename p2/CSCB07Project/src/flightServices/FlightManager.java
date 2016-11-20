@@ -79,7 +79,7 @@ public class FlightManager implements FlightService {
 			for (Flight flight: path) {
 				newPath.addFlight(flight);
 			}
-			allItinerary.add(newPath);
+			allItinerary.add(0,newPath);
 		}		
 		return allItinerary;
 	}
