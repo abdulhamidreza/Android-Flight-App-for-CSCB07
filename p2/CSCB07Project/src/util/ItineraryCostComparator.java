@@ -1,6 +1,3 @@
-/**
- * 
- */
 package util;
 
 import java.util.Comparator;
@@ -8,13 +5,18 @@ import java.util.Comparator;
 import itinerary.Itinerary;
 
 /**
+ * A <code>Comparator</code> which compares two <code>Itinerary</code> by their
+ * total cost.
+ * 
  * @author Stephen
  *
  */
 public class ItineraryCostComparator implements Comparator<Itinerary> {
-  
+
+  /**
+   * Creates a new <code>ItineraryCostComparator</code>.
+   */
   public ItineraryCostComparator() {
-    
   }
 
   @Override
