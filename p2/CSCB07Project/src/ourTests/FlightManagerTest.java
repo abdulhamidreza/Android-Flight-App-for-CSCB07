@@ -121,7 +121,7 @@ public class FlightManagerTest {
   public void testSortFlight() throws ParseException {
     List<Itinerary> paths = fm.getItinerary("Toronto", "New York", "2016-05-30");
     try {
-      fm.sortFlight(paths, "Time", true);
+      fm.sortItineraries(paths, "Time", true);
       for (Itinerary flights : paths) {
         System.out.println(flights);
       }

@@ -114,7 +114,8 @@ public class Driver {
     fs = new FlightManager(data.getFlights());
 
     for (Flight flight : data.getFlights()) {
-      if (((FlightManager) fs).sameDate(flight, date) && flight.getOrigin().equals(origin)
+      if (Driver.date.format(flight.getDepartureDate().getTime()).equals(date)
+          && flight.getOrigin().equals(origin)
           && flight.getDestination().equals(destination)) {
         flights.add(flight.toString());
       }
@@ -221,7 +222,7 @@ public class Driver {
     }
 
     try {
-      fs.sortFlight(itineraryList, "Cost", true);
+      fs.sortItineraries(itineraryList, "Cost", true);
     } catch (InvalidSortException e1) {
       // TODO Auto-generated catch block
       e1.printStackTrace();
@@ -257,7 +258,7 @@ public class Driver {
     }
 
     try {
-      fs.sortFlight(itineraryList, "Time", true);
+      fs.sortItineraries(itineraryList, "Time", true);
     } catch (InvalidSortException e1) {
       // TODO Auto-generated catch block
       e1.printStackTrace();

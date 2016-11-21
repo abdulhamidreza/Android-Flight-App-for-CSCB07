@@ -44,6 +44,6 @@ public interface FlightService {
    * @throws InvalidSortException
    *           If sorting attribute is not a valid option.
    */
-  public void sortFlight(List<Itinerary> itinerary, String sortBy, boolean increasingOrder)
+  public void sortItineraries(List<Itinerary> itinerary, String sortBy, boolean increasingOrder)
       throws InvalidSortException;
 }

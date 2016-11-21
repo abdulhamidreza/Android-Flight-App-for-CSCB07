@@ -67,7 +67,7 @@ public class FlightManager implements FlightService {
     for (Flight flight : mapOfFlights.get(origin)) {
 
       // Checks departure dates are the same
-      if (sameDate(flight, departureDate)) {
+      if (date.format(flight.getDepartureDate().getTime()).equals(departureDate)) {
         // Checks if the <code>Flight</code> destination is wanted destination
         // This is for direct flights
         if (flight.getDestination().equals(destination)) {
@@ -144,21 +144,6 @@ public class FlightManager implements FlightService {
     }
   }
 
-  /**
-   * Checks whether a <code>Flight</code> leaves on desired date.
-   * 
-   * @param flight
-   *          <code>Flight</code> which one wnats to check.
-   * @param date
-   *          Desired date to leave.
-   * @return True if same date, otherwise false.
-   * @throws ParseException
-   *           if parsing date does not work.
-   */
-  public boolean sameDate(Flight flight, String date) throws ParseException {
-    return FlightManager.date.format(flight.getDepartureDate().getTime()).equals(date);
-  }
-
   /*
    * (non-Javadoc)
    * 
@@ -166,7 +151,7 @@ public class FlightManager implements FlightService {
    * java.lang.String)
    */
   @Override
-  public void sortFlight(List<Itinerary> itineraries, String sortBy, boolean increasingOrder)
+  public void sortItineraries(List<Itinerary> itineraries, String sortBy, boolean increasingOrder)
       throws InvalidSortException {
     Comparator<Itinerary> comparator;
     switch (sortBy) {
