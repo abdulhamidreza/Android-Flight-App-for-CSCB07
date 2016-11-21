@@ -9,7 +9,6 @@ import java.util.List;
 
 import flight.Flight;
 
-
 public class Itinerary {
 
   private List<Flight> flights;
@@ -19,7 +18,8 @@ public class Itinerary {
   private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
   /**
-   * Constructs an Itinerary object, and initializes the fields to starting values.
+   * Constructs an Itinerary object, and initializes the fields to starting
+   * values.
    * 
    */
   public Itinerary() {
@@ -34,7 +34,8 @@ public class Itinerary {
   /**
    * Adds this flight to the Itinerary.
    * 
-   * @param flight the flight to add to the Itinerary
+   * @param flight
+   *          the flight to add to the Itinerary
    * @return whether the flight was successfully added
    */
   public boolean addFlight(Flight flight) {
@@ -43,7 +44,8 @@ public class Itinerary {
 
     boolean canRemove = flights.add(flight);
 
-    // the total time is the time from the beginning of the first flight to the end of the last
+    // the total time is the time from the beginning of the first flight to the
+    // end of the last
     // flight
     setTotalTime();
 
@@ -54,7 +56,8 @@ public class Itinerary {
   /**
    * Removes a flight from this Itinerary.
    * 
-   * @param flight this flight
+   * @param flight
+   *          this flight
    * @return whether the flight was successfully removed.
    */
   public boolean removeFlight(Flight flight) {
@@ -63,7 +66,8 @@ public class Itinerary {
 
     boolean canRemove = flights.remove(flight);
 
-    // the total time is the time from the beginning of the first flight to the end of the second
+    // the total time is the time from the beginning of the first flight to the
+    // end of the second
     // last flight (after the last is removed)
     setTotalTime();
 
@@ -113,7 +117,8 @@ public class Itinerary {
    * 
    */
   private void setTotalTime() {
-    // the difference in time between the departure of the first flight, and the arrival of the last
+    // the difference in time between the departure of the first flight, and the
+    // arrival of the last
     // flight
     long min = ChronoUnit.MINUTES.between(flights.get(0).getDepartureDate().toInstant(),
         flights.get(flights.size() - 1).getArrivalDate().toInstant());
@@ -163,11 +168,9 @@ public class Itinerary {
           flight.getOrigin(), flight.getDestination());
     }
 
-    itineraryFormat += String.format("%.2f\n%.2f", totalCost,
-        Math.floor((totalTime.toMinutes() / 60.0) * 100) / 100);
+    itineraryFormat += String.format("%.2f\n%.2f", totalCost, totalTime.toMinutes() / 60.0);
 
     return itineraryFormat;
   }
-
 
 }

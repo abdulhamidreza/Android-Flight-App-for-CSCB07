@@ -39,12 +39,10 @@ public class FlightManager implements FlightService {
   public FlightManager(List<Flight> flights) {
     mapOfFlights = new HashMap<String, List<Flight>>();
     for (Flight flight : flights) {
-      if (mapOfFlights.containsKey(flight.getOrigin())) {
-        mapOfFlights.get(flight.getOrigin()).add(flight);
-      } else {
-        mapOfFlights.put(flight.getOrigin(), new ArrayList<Flight>());
-        mapOfFlights.get(flight.getOrigin()).add(flight);
+      if (!mapOfFlights.containsKey(flight.getOrigin())) {        
+        mapOfFlights.put(flight.getOrigin(), new ArrayList<Flight>());        
       }
+      mapOfFlights.get(flight.getOrigin()).add(flight);
     }
   }
 
@@ -57,51 +55,44 @@ public class FlightManager implements FlightService {
   @Override
   public List<Itinerary> getItinerary(String origin, String destination, String departureDate)
       throws ParseException {
-
     Stack<String> location = new Stack<String>(); // all visited cities
     Stack<Flight> connection = new Stack<Flight>(); // all connection
                                                     // <code>Flight</code>
-    List<Stack<Flight>> paths = new ArrayList<Stack<Flight>>(); // all valid
-                                                                // paths
+    // List of all valid <code>Itinerary</code>
+    List<Itinerary> allItineraries = new ArrayList<Itinerary>();
 
     location.push(origin);
 
     // Loop that goes through all the flights from origin city
     for (Flight flight : mapOfFlights.get(origin)) {
 
-      // Confirms departure dates are the same
+      // Checks departure dates are the same
       if (sameDate(flight, departureDate)) {
         // Checks if the <code>Flight</code> destination is wanted destination
+        // This is for direct flights
         if (flight.getDestination().equals(destination)) {
-          // Creates temp <code>Stack</code> and adds that temp to path
-          Stack<Flight> temp = new Stack<Flight>();
+          // Adds Flight as a valid path to destination
+          /*Stack<Flight> temp = new Stack<Flight>();
           temp.push(flight);
-          paths.add(temp);
+          paths.add(temp);*/
+          
+          Itinerary newPath = new Itinerary();
+          newPath.addFlight(flight);
+          allItineraries.add(newPath);
 
-          // otherwise checks to make sure the <code>Flight</code> destination
+          // Else if checks to make sure the <code>Flight</code> destination
           // has <code>Flight</code>'s leaving from that destination
+          // This is for transfer flights
         } else if (mapOfFlights.containsKey(flight.getDestination())) {
-          // Pushes <code>Flight</code> into connection
           connection.push(flight);
-          // Calls private recursive method
-          getFlights(flight, destination, location, connection, paths);
+          // Calls private recursive method to find all connection
+          // <code>Flight</code>
+          getFlights(flight, destination, location, connection, allItineraries);
           connection.pop();
         }
       }
     }
-
-    // List of all valid <code>Itinerary</code>
-    List<Itinerary> allItinerary = new ArrayList<Itinerary>();
-
-    // Loop which converts all valid paths into <code>Itinerary</code>
-    for (Stack<Flight> path : paths) {
-      Itinerary newPath = new Itinerary();
-      for (Flight flight : path) {
-        newPath.addFlight(flight);
-      }
-      allItinerary.add(newPath);
-    }
-    return allItinerary;
+    return allItineraries;
   }
 
   /**
@@ -116,11 +107,11 @@ public class FlightManager implements FlightService {
    *          All cities already visited.
    * @param connection
    *          Previous <code>Flight</code>s.
-   * @param paths
+   * @param allItineraries
    *          All valid paths so far.
    */
   private void getFlights(Flight flight, String destination, Stack<String> location,
-      Stack<Flight> connection, List<Stack<Flight>> paths) {
+      Stack<Flight> connection, List<Itinerary> allItineraries) {
     // Loops through list of all <code>Flight</code> leaving from city which
     // current <code>Flight</code> will land at
     for (Flight nextFlight : mapOfFlights.get(flight.getDestination())) {
@@ -131,24 +122,21 @@ public class FlightManager implements FlightService {
         // Checks if next <code>Flight</code> goes to desired destination
         if (nextFlight.getDestination().equals(destination)) {
           // Adds new valid path into paths
-          Stack<Flight> temp = new Stack<Flight>();
-          for (Flight flights : connection) {
-            temp.push(flights);
+          Itinerary newPath = new Itinerary();
+          for (Flight flights : connection) {            
+              newPath.addFlight(flights);
           }
-          temp.push(nextFlight);
-          paths.add(temp);
+          newPath.addFlight(nextFlight);
+          allItineraries.add(newPath);          
 
           // Makes sure the next <code>Flight</code>'s destination has not been
           // visited before and that city has <code>Flight</code> leaving it
         } else if (!location.contains(nextFlight.getOrigin())
             && mapOfFlights.containsKey(nextFlight.getDestination())) {
-          // Add current city to visited cities <code>Stack</code>
           location.push(nextFlight.getOrigin());
-          // Add next <code>Flight</code> to possible connection
-          // <code>Stack</code>
           connection.push(nextFlight);
           // Recursive call with the next <code>Flight</code>
-          getFlights(nextFlight, destination, location, connection, paths);
+          getFlights(nextFlight, destination, location, connection, allItineraries);
           location.pop();
           connection.pop();
         }
