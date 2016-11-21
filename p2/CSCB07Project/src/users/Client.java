@@ -4,6 +4,7 @@
 package users;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import itinerary.Itinerary;
@@ -13,10 +14,12 @@ import itinerary.Itinerary;
  *
  */
 public class Client extends User {
-  private String firstName;
+  
+	private String firstName;
   private String lastName;
   private String address;
   private String creditCard;
+  private Date creditExpiry;
   private List<Itinerary> bookedItinerary;
   
   /**
@@ -24,16 +27,25 @@ public class Client extends User {
    * @param password
    */
   public Client(String email, String password, String firstName, 
-                String lastName, String address, String creditCard) {
+                String lastName, String address, String creditCard, Date creditExpiry) {
     super(email, password);
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;
     this.creditCard = creditCard;
+    this.creditExpiry = creditExpiry;
     this.bookedItinerary = new ArrayList<Itinerary>();
   }
 
-  public void book(Itinerary toBook){
+  public Date getCreditExpiry() {
+	return creditExpiry;
+}
+
+public void setCreditExpiry(Date creditExpiry) {
+	this.creditExpiry = creditExpiry;
+}
+
+public void book(Itinerary toBook){
     bookedItinerary.add(toBook);
   }
 

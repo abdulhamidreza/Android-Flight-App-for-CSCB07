@@ -1,5 +1,7 @@
 package users;
 
+import java.util.Date;
+
 public class Admin extends User {
 
   public Admin(String email, String password) {
@@ -25,6 +27,12 @@ public class Admin extends User {
   public String getClientCC(Client client) {
     return client.getCreditCard();
   }
+  
+  public Date getClientExpiry(Client client) {
+	  
+	  return client.getCreditExpiry();
+	  
+  }
 
   public void setClientEmail(Client client, String setEmail) {
     client.setEmail(setEmail);
@@ -46,5 +54,11 @@ public class Admin extends User {
 
   public void setClientCC(Client client, String setCC){
     client.setCreditCard(setCC);
+  }
+  
+ public void setClientExpiry(Client client, Date expiry) {
+	  
+	  client.setCreditExpiry(expiry);
+	  
   }
 }
