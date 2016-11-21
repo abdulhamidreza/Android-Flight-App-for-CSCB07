@@ -1,0 +1,26 @@
+Project Phase 2: Database
+
+our current database system is an object containing a list of all flights, clients, and admins.
+
+Flights are immutable, so they only need to be added and deleted from the database.
+
+Clients and Admins can have all their information (except for their email address) changed. This requires us to also modify the database whenever a set method is called.
+
+Since we will need to be searching through the lists in the database, we will need to have some unique feature of each object, like a fingerprint.
+
+For Flights, their flight number is unique. It is a alphanumeric character of the form /[A-Z]{2}[0-9]{3}/ an example is "AC123".
+
+For Clients and Admins, it will be their email address. No two people are allowed to have the same email address. Since we aren't actually emailing anyone, it is of the form /.*/ an example is jon@email.com
+
+
+For the actual implementation of our database, we will use JSON files. We will use the javax.json library to read and write these files. JSON can store Variables, Objects, and Lists of Objects.   
+  
+Flights, Clients and Admins are going to store their fields as the corresponding object in the database. below is an example of how an object would be stored in the JSON.
+
+Admin.json
+...
+{
+  "email": "John.Smith@email.com",
+  "password": "password"
+}
+...
