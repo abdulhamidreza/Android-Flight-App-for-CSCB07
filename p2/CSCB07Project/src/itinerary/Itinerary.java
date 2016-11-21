@@ -42,14 +42,14 @@ public class Itinerary {
 
     totalCost += flight.getCost();
 
-    boolean canRemove = flights.add(flight);
+    boolean canAdd = flights.add(flight);
 
     // the total time is the time from the beginning of the first flight to the
     // end of the last
     // flight
     setTotalTime();
 
-    return canRemove;
+    return canAdd;
 
   }
 
