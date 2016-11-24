@@ -21,7 +21,13 @@ public class ItineraryTimeComparator implements Comparator<Itinerary> {
 
   @Override
   public int compare(Itinerary itin1, Itinerary itin2) {
-    return itin1.getTotalTime().compareTo(itin2.getTotalTime());
+    if (itin1.getTotalTime() > itin2.getTotalTime()) {
+      return 1;
+    }else if (itin1.getTotalTime() < itin2.getTotalTime()) {
+      return -1;
+    }else {
+      return 0;
+    }
   }
 
 }
