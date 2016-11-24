@@ -3,8 +3,8 @@ package cs.b07.cscb07courseproject.flight;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
+//import java.time.Duration;
+//import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -28,7 +28,7 @@ public class Flight {
   private String destination;
   private String airline;
   private static int availableSeats;
-  private Duration flightDuration;
+  private long flightDuration;
   private double cost;
 
   private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -219,7 +219,7 @@ public class Flight {
    * 
    * @return flight time.
    */
-  public Duration getDuration() {
+  public long getDuration() {
     return flightDuration;
   }
 
@@ -228,8 +228,8 @@ public class Flight {
    * time.
    */
   private void setDuration() {
-    long min = ChronoUnit.MINUTES.between(departureDate.toInstant(), arrivalDate.toInstant());
-    this.flightDuration = Duration.ofMinutes(min);
+    this.flightDuration =
+            (departureDate.getTimeInMillis() - arrivalDate.getTimeInMillis())/1000;
   }
 
   /**
@@ -259,10 +259,8 @@ public class Flight {
    *          <code>Flight</code> wanted to be compared to.
    * @return time difference between both <code>Flight</code>s.
    */
-  public Duration timeBetweenFlights(Flight flight) {
-    long min = ChronoUnit.MINUTES.between(arrivalDate.toInstant(),
-        flight.getDepartureDate().toInstant());
-    return Duration.ofMinutes(min);
+  public long timeBetweenFlights(Flight flight) {
+    return (arrivalDate.getTimeInMillis() - flight.getDepartureDate().getTimeInMillis())/1000;
   }
 
   @Override

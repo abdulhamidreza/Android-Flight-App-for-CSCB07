@@ -3,6 +3,7 @@
  */
 package cs.b07.cscb07courseproject.users;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import cs.b07.cscb07courseproject.itinerary.Itinerary;
  * @author jungwon5
  * A client.
  */
-public class Client extends User {
+public class Client extends User implements Serializable {
 
   /**
    * Initialize variables.

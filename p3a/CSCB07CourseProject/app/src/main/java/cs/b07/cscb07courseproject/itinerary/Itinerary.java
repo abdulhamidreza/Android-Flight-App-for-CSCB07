@@ -2,8 +2,8 @@ package cs.b07.cscb07courseproject.itinerary;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
+//import java.time.Duration;
+//import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class Itinerary {
 
   private List<Flight> flights;
   private double totalCost; // the total cost in $
-  private Duration totalTime; // the total time in duration
+  private long totalTime; // the total time in duration
 
   private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -26,7 +26,7 @@ public class Itinerary {
 
     // declare variables in Constructor, for good form.
     this.totalCost = 0;
-    this.totalTime = Duration.ZERO;
+    this.totalTime = 0;
     this.flights = new ArrayList<Flight>();
 
   }
@@ -108,7 +108,7 @@ public class Itinerary {
    * 
    * @return the total time of this Itinerary
    */
-  public Duration getTotalTime() {
+  public long getTotalTime() {
     return totalTime;
   }
 
@@ -120,9 +120,9 @@ public class Itinerary {
     // the difference in time between the departure of the first flight, and the
     // arrival of the last
     // flight
-    long min = ChronoUnit.MINUTES.between(flights.get(0).getDepartureDate().toInstant(),
+    /*long min = ChronoUnit.MINUTES.between(flights.get(0).getDepartureDate().toInstant(),
         flights.get(flights.size() - 1).getArrivalDate().toInstant());
-    this.totalTime = Duration.ofMinutes(min);
+    this.totalTime = Duration.ofMinutes(min);*/
   }
 
   @Override
@@ -133,7 +133,7 @@ public class Itinerary {
     long temp;
     temp = Double.doubleToLongBits(totalCost);
     result = prime * result + (int) (temp ^ (temp >>> 32));
-    result = prime * result + (int) (totalTime.getSeconds() ^ (totalTime.getSeconds() >>> 32));
+    result = prime * result + (int) (totalTime ^ (totalTime >>> 32));
     return result;
   }
 
@@ -168,7 +168,7 @@ public class Itinerary {
           flight.getOrigin(), flight.getDestination());
     }
 
-    itineraryFormat += String.format("%.2f\n%.2f", totalCost, totalTime.toMinutes() / 60.0);
+    itineraryFormat += String.format("%.2f\n%.2f", totalCost, totalTime);
 
     return itineraryFormat;
   }

@@ -5,8 +5,8 @@ import cs.b07.cscb07courseproject.users.Admin;
 import cs.b07.cscb07courseproject.users.Client;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+/*import java.nio.file.Files;
+import java.nio.file.Paths;*/
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,7 +41,7 @@ public class Database {
    * @throws NumberFormatException thrown if Price in file is not a valid Double
    * @throws ParseException thrown if arrival time and/or departure time are not valid Dates
    */
-  public void readFlightTxt(String flightDir)
+  /*public void readFlightTxt(String flightDir)
       throws IOException, NumberFormatException, ParseException {
     // Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price
     for (String line : Files.readAllLines(Paths.get(flightDir))) {
@@ -54,7 +54,7 @@ public class Database {
           Double.valueOf(strArr[6])));
     }
 
-  }
+  }*/
 
   /**
    * Returns a list of Clients in this Database.
@@ -91,7 +91,7 @@ public class Database {
    * @throws IOException thrown when I/O error occurs
    * @throws ParseException thrown if Expiry date is not in specified format
    */
-  public void readClientTxt(String clientDir) throws IOException, ParseException {
+  /*public void readClientTxt(String clientDir) throws IOException, ParseException {
     // LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
     for (String line : Files.readAllLines(Paths.get(clientDir))) {
       // Usually this is a terrible way to parse value separated files. This is acceptable here,
@@ -104,7 +104,7 @@ public class Database {
     }
 
 
-  }
+  }*/
 
   /**
    * returns a Client object in this Database with a specific email.

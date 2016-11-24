@@ -1,12 +1,13 @@
 package cs.b07.cscb07courseproject.users;
 
+import java.io.Serializable;
 import java.util.Date;
 
   /*
    * The admin class
    * @author jungwon5
    */
-public class Admin extends User {
+public class Admin extends User implements Serializable {
 
   /*
    * Initializes the admin class.

@@ -3,11 +3,14 @@
  */
 package cs.b07.cscb07courseproject.users;
 
+import java.io.Serializable;
+
 /**
  * A user.
  * @author jungwon5
  */
-public abstract class User {
+public abstract class User implements Serializable {
+
 
   private String email;
   private String password;

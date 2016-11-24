@@ -14,7 +14,6 @@ import java.util.Stack;
 import cs.b07.cscb07courseproject.itinerary.Itinerary;
 import cs.b07.cscb07courseproject.util.ItineraryCostComparator;
 import cs.b07.cscb07courseproject.util.ItineraryTimeComparator;
-import driver.Driver;
 import cs.b07.cscb07courseproject.flight.Flight;
 
 /**
@@ -30,6 +29,8 @@ public class FlightManager implements FlightService {
   // <code>Flight</code> from that origin
   private Map<String, List<Flight>> mapOfFlights;
   private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+  private static final long MIN_LAYOVER = 30 * 60; // 30 min in seconds
+  private static final long MAX_LAYOVER = 6 * 60 * 60; // 6 hours in seconds
 
   /**
    * Creates the <code>FlightManager</code>.
@@ -118,8 +119,8 @@ public class FlightManager implements FlightService {
     for (Flight nextFlight : mapOfFlights.get(flight.getDestination())) {
       // Checks to make sure the layover time between transfers is within the
       // limit
-      if (flight.timeBetweenFlights(nextFlight).compareTo(Driver.MIN_LAYOVER) >= 0
-          && flight.timeBetweenFlights(nextFlight).compareTo(Driver.MAX_LAYOVER) <= 0) {
+      if (flight.timeBetweenFlights(nextFlight) - MIN_LAYOVER >= 0
+          && flight.timeBetweenFlights(nextFlight) - MAX_LAYOVER <= 0) {
         // Checks if next <code>Flight</code> goes to desired destination
         if (nextFlight.getDestination().equals(destination)) {
           // Adds new valid path into paths
@@ -173,8 +174,8 @@ public class FlightManager implements FlightService {
       // Sort in decreasing order
     } else {
       //itineraries.sort(comparator.reversed());
-      // Look into how to reverse
-      Collections.sort(itineraries, comparator.reversed());
+      // test this
+      Collections.sort(itineraries, Collections.reverseOrder(comparator));
     }
   }
 }
