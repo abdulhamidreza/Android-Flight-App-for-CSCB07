@@ -134,4 +134,3 @@ public class Admin extends User implements Serializable {
       return "Admin [ email= " + getEmail() + " password= " + getPassword() + "]";
     }
   }
-
