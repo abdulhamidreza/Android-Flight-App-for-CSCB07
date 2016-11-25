@@ -128,4 +128,10 @@ public class Admin extends User implements Serializable {
   public void setClientExpiry(Client client, Date expiry) {
     client.setCreditExpiry(expiry);
   }
-}
+
+    @Override
+    public String toString() {
+      return "Admin [ email= " + getEmail() + " password= " + getPassword() + "]";
+    }
+  }
+
