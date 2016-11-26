@@ -19,7 +19,7 @@ public class ValidDate {
    * @return True if date is in a valid from, otherwise false.
    * 
    */
-  public static boolean validate(String date) {
+  public static boolean validDateTime(String date) {
 
     if (date == null) {
       return false;
@@ -36,6 +36,25 @@ public class ValidDate {
       return false;
     }
     
+    return true;
+  }
+  public static boolean validDate(String date) {
+
+    if (date == null) {
+      return false;
+    }
+
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    dateFormat.setLenient(false);
+
+    try {
+      // if not valid, it will throw ParseException
+      dateFormat.parse(date);
+    } catch (ParseException e) {
+      e.printStackTrace();
+      return false;
+    }
+
     return true;
   }
 }

@@ -20,6 +20,7 @@ import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.users.Admin;
 import cs.b07.cscb07courseproject.users.Client;
 import cs.b07.cscb07courseproject.users.User;
+import cs.b07.cscb07courseproject.util.ValidDate;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,11 +71,18 @@ public class Create_User_Fragment extends Fragment {
 
     public static User createUser() throws ParseException{
         if (isClient) {
-            Date expiryDate = date.parse(creditCardExpiry.getText().toString().replace("/","-"));
-            return new Client(email.getText().toString(), password.getText().toString(),
-                    firstName.getText().toString(), lastName.getText().toString(),
-                    address.getText().toString(), creditCard.getText().toString(),
-                    expiryDate);
+            String ccExpiryDate = creditCardExpiry.getText().toString().replace("/","-");
+
+            System.out.println(ccExpiryDate);
+            if (ValidDate.validDate(ccExpiryDate)) {
+                Date expiryDate = date.parse(ccExpiryDate);
+                return new Client(email.getText().toString(), password.getText().toString(),
+                        firstName.getText().toString(), lastName.getText().toString(),
+                        address.getText().toString(), creditCard.getText().toString(),
+                        expiryDate);
+            }else{
+                throw new ParseException("Unparseable date", 10);
+            }
         } else {
             return new Admin(email.getText().toString(),
                     password.getText().toString());

@@ -99,8 +99,6 @@ public class LogInActivity extends AppCompatActivity {
                     getString(R.string.msg_signup_success),
                     Toast.LENGTH_LONG).show();
         }catch (ParseException e) {
-            System.out.println(e);
-
             Toast.makeText(this,
                     getString(R.string.msg_signup_error),
                     Toast.LENGTH_LONG).show();

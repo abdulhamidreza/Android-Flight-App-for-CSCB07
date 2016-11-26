@@ -108,7 +108,7 @@ public class Flight {
    *           if new arrival date is not valid.
    */
   public void setArrivalDate(String arrivalDate) throws ParseException {
-    if (ValidDate.validate(arrivalDate)) {
+    if (ValidDate.validDateTime(arrivalDate)) {
       this.arrivalDate.setTime(dateTime.parse(arrivalDate));
       this.setDuration();
     }
@@ -132,7 +132,7 @@ public class Flight {
    *           if new departure date is not valid.
    */
   public void setDepartureDate(String departureDate) throws ParseException {
-    if (ValidDate.validate(departureDate)) {
+    if (ValidDate.validDateTime(departureDate)) {
       this.departureDate.setTime(dateTime.parse(departureDate));
       this.setDuration();
     }
