@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">CSCB07CourseProject</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="firstNameHint">First name (ie. John)</string>
+    <string name="lastNameHint">Last name (ie. Smith)</string>
+    <string name="addressHint">Address</string>
+    <string name="creditCardHint">Credit card number (ie. 1234567890)</string>
+    <string name="creditCardExpiryHint">Credit card expiry date (ie. yyyy/mm/dd)</string>
+
+    <!-- Strings related to login -->
+    <string name="log_In">Log In</string>
+    <string name="create_admin">Create Admin</string>
+    <string name="create_client">Create Client</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- Toolbar titles -->
+    <string name="location_title">Location</string>
+    <string name="main_title">SalePointer</string>
+    <string name="log_in_title">Log In</string>
+    <string name="sign_in_login_title">Log In Information</string>
+    <string name="sign_in_location_title">Location Information</string>
+    <string name="sign_in_profile_title">Profile Information</string>
+    <string name="favourite_title">Favourite</string>
+    <string name="about_title">About</string>
+    <string name="category_title">Category</string>
+    <string name="profile_title">Edit Account</string>
+
+    <!-- Log in/ sign up warnings -->
+    <string name="msg_complete_form">Please fill up the form!</string>
+    <string name="msg_signup_success">Sign up Successfully</string>
+    <string name="msg_log_in_success">Log In Successfully</string>
+    <string name="msg_signup_error">Sign up Error!</string>
+    <string name="msg_password_mismatch">Both password does not match</string>
+    <string name="msg_log_in_error">Email or password is incorrect</string>
+
+    <string name="msg_profile_update_success">Profile Updated</string>
+    <string name="msg_profile_update_unsuccessful">Could not Update Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
