@@ -25,7 +25,7 @@ import cs.b07.cscb07courseproject.util.ValidDate;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Create_User_Fragment extends Fragment {
+public class CreateUserFragment extends Fragment {
 
     private static EditText email,password,firstName,lastName,address,creditCard,creditCardExpiry;
     private static Button createUser;
@@ -35,7 +35,7 @@ public class Create_User_Fragment extends Fragment {
 
     private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 
-    public Create_User_Fragment() {
+    public CreateUserFragment() {
         // Required empty public constructor
     }
 

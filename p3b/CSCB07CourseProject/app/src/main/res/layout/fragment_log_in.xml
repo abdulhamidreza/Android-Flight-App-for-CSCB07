@@ -2,12 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cs.b07.cscb07courseproject.fragments.Log_In_Fragment">
+    tools:context="cs.b07.cscb07courseproject.fragments.LogInFragment">
 
     <EditText
         android:id = "@+id/emailET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/controller_padding"
         android:hint="@string/emailHint"
         android:inputType="textEmailAddress"/>
     <EditText
@@ -15,14 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailET"
+        android:paddingTop="@dimen/controller_padding"
         android:hint="@string/passwordHint"
         android:inputType="textPassword"/>
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
         android:layout_below="@+id/passwordET"
+        android:paddingTop="@dimen/controller_padding"
         android:text="@string/log_In"
         android:onClick="login"/>
     <LinearLayout

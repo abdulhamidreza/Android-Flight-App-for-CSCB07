@@ -14,11 +14,11 @@ import cs.b07.cscb07courseproject.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Log_In_Fragment extends Fragment {
+public class LogInFragment extends Fragment {
 
     private View rootView;
 
-    public Log_In_Fragment() {
+    public LogInFragment() {
         // Required empty public constructor
     }
 

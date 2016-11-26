@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 
-import cs.b07.cscb07courseproject.fragments.Log_In_Fragment;
-import cs.b07.cscb07courseproject.fragments.Create_User_Fragment;
+import cs.b07.cscb07courseproject.fragments.LogInFragment;
+import cs.b07.cscb07courseproject.fragments.CreateUserFragment;
 import cs.b07.cscb07courseproject.users.Admin;
 import cs.b07.cscb07courseproject.users.User;
 
@@ -27,7 +27,7 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        setFragment(new Log_In_Fragment());
+        setFragment(new LogInFragment());
     }
 
     /**
@@ -59,7 +59,7 @@ public class LogInActivity extends AppCompatActivity {
         // Use bundle to send data to Fragments just like intent for activities
         Bundle bundle = new Bundle();
         bundle.putBoolean(isClientKey, false);
-        Fragment frag = new Create_User_Fragment();
+        Fragment frag = new CreateUserFragment();
         frag.setArguments(bundle);
         setFragment(frag);
     }
@@ -72,7 +72,7 @@ public class LogInActivity extends AppCompatActivity {
         // Use bundle to send data to Fragments just like intent for activities
         Bundle bundle = new Bundle();
         bundle.putBoolean(isClientKey, true);
-        Fragment frag = new Create_User_Fragment();
+        Fragment frag = new CreateUserFragment();
         frag.setArguments(bundle);
         setFragment(frag);
     }
@@ -85,9 +85,9 @@ public class LogInActivity extends AppCompatActivity {
         try {
             // If user is successfully made then create a new user and
             // change activities to the correct user activity
-            User newUser = Create_User_Fragment.createUser();
+            User newUser = CreateUserFragment.createUser();
             Intent intent;
-            if (Create_User_Fragment.getIsClient()){
+            if (CreateUserFragment.getIsClient()){
                 intent = new Intent(this, ClientActivity.class);
             }else{
                 intent = new Intent(this, AdminActivity.class);

@@ -3,10 +3,7 @@ package cs.b07.cscb07courseproject;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
-import cs.b07.cscb07courseproject.fragments.Create_User_Fragment;
-import cs.b07.cscb07courseproject.fragments.Log_In_Fragment;
 import cs.b07.cscb07courseproject.fragments.PlaceHolderFragment;
 
 public class ClientActivity extends AppCompatActivity {
