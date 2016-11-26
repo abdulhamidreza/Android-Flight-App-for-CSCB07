@@ -2,11 +2,17 @@
     <string name="app_name">CSCB07CourseProject</string>
     <string name="emailHint">Email</string>
     <string name="passwordHint">Password</string>
+    <string name="firstNameHint">First name (ie. John)</string>
+    <string name="lastNameHint">Last name (ie. Smith)</string>
+    <string name="addressHint">Address</string>
+    <string name="creditCardHint">Credit card number (ie. 1234567890)</string>
+    <string name="creditCardExpiryHint">Credit card expiry date (ie. yyyy/mm/dd)</string>
 
     <!-- Strings related to login -->
     <string name="log_In">Log In</string>
-    <string name="sign_up_admin">Create Admin</string>
-    <string name="sign_up_client">Create Client</string>
+    <string name="create_admin">Create Admin</string>
+    <string name="create_client">Create Client</string>
+
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>

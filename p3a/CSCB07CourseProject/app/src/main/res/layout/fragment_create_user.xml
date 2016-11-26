@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cs.b07.cscb07courseproject.fragments.Create_User_Fragment">
+
+    <EditText
+        android:id = "@+id/emailET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/controller_padding"
+        android:hint="@string/emailHint"
+        android:inputType="textEmailAddress"/>
+    <EditText
+        android:id = "@+id/passwordET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/controller_padding"
+        android:layout_below="@+id/emailET"
+        android:hint="@string/passwordHint"
+        android:inputType="textVisiblePassword"/>
+    <RelativeLayout
+        android:id = "@+id/clientInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordET"
+        android:visibility="gone">
+        <EditText
+            android:id = "@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/controller_padding"
+            android:hint="@string/firstNameHint"
+            android:inputType="textPersonName"/>
+        <EditText
+            android:id = "@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/controller_padding"
+            android:layout_below="@+id/firstName"
+            android:hint="@string/lastNameHint"
+            android:inputType="textPersonName"/>
+        <EditText
+            android:id = "@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/controller_padding"
+            android:layout_below="@+id/lastName"
+            android:hint="@string/addressHint"
+            android:inputType="textPostalAddress"/>
+        <EditText
+            android:id = "@+id/creditCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/controller_padding"
+            android:layout_below="@+id/address"
+            android:hint="@string/creditCardHint"
+            android:inputType="numberDecimal"/>
+        <EditText
+            android:id = "@+id/creditCardExpiry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/controller_padding"
+            android:layout_below="@+id/creditCard"
+            android:hint="@string/creditCardExpiryHint"
+            android:inputType="date"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/createAdminBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/controller_padding"
+        android:layout_below="@+id/clientInfoContainer"
+        android:text="@string/create_admin"
+        android:onClick="createUser"/>
+
+
+</RelativeLayout>

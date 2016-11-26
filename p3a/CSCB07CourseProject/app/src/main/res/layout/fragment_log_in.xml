@@ -36,15 +36,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/sign_up_admin"
-            android:onClick="signUpAdmin"/>
+            android:text="@string/create_admin"
+            android:onClick="createAdmin"/>
         <Button
             android:id="@+id/signupClientBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/sign_up_client"
-            android:onClick="signUpClient"/>
+            android:text="@string/create_client"
+            android:onClick="createClient"/>
     </LinearLayout>
 
 </RelativeLayout>

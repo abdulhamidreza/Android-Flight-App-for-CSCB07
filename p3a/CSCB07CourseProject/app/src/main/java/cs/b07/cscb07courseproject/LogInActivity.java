@@ -9,13 +9,14 @@ import android.widget.EditText;
 
 
 import cs.b07.cscb07courseproject.fragments.Log_In_Fragment;
-import cs.b07.cscb07courseproject.fragments.Sign_Up_Admin_Fragment;
+import cs.b07.cscb07courseproject.fragments.Create_User_Fragment;
 import cs.b07.cscb07courseproject.users.Admin;
 import cs.b07.cscb07courseproject.users.User;
 
 public class LogInActivity extends AppCompatActivity {
 
     public static final String userKey = "user";
+    public static final String isClientKey = "isClient";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +37,24 @@ public class LogInActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void signUpAdmin(View view) {
-        //setFragment(new Sign_Up_Fragment());
-        setFragment(new Sign_Up_Admin_Fragment());
-    }
-
-    public void signUpClient(View view) {
-        Intent intent = new Intent(this, ClientActivity.class);
-        startActivity(intent);
-    }
-
     public void createAdmin(View view) {
-        User newAdmin = Sign_Up_Admin_Fragment.createAdmin();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(isClientKey, false);
+        Fragment frag = new Create_User_Fragment();
+        frag.setArguments(bundle);
+        setFragment(frag);
+    }
+
+    public void createClient(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(isClientKey, true);
+        Fragment frag = new Create_User_Fragment();
+        frag.setArguments(bundle);
+        setFragment(frag);
+    }
+
+    public void createUser(View view) {
+        User newAdmin = Create_User_Fragment.createAdmin();
         Intent intent = new Intent(this, AdminActivity.class);
         intent.putExtra(userKey, newAdmin);
         startActivity(intent);
