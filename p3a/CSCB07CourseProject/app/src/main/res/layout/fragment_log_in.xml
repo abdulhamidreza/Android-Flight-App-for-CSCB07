@@ -32,14 +32,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/signupAdminBtn"
+            android:id="@+id/createUserBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/create_admin"
             android:onClick="createAdmin"/>
         <Button
-            android:id="@+id/signupClientBtn"
+            android:id="@+id/createClientBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"

@@ -25,6 +25,29 @@
         completions."
     </string>
 
+    <!-- Toolbar titles -->
+    <string name="location_title">Location</string>
+    <string name="main_title">SalePointer</string>
+    <string name="log_in_title">Log In</string>
+    <string name="sign_in_login_title">Log In Information</string>
+    <string name="sign_in_location_title">Location Information</string>
+    <string name="sign_in_profile_title">Profile Information</string>
+    <string name="favourite_title">Favourite</string>
+    <string name="about_title">About</string>
+    <string name="category_title">Category</string>
+    <string name="profile_title">Edit Account</string>
+
+    <!-- Log in/ sign up warnings -->
+    <string name="msg_complete_form">Please fill up the form!</string>
+    <string name="msg_signup_success">Sign up Successfully</string>
+    <string name="msg_log_in_success">Log In Successfully</string>
+    <string name="msg_signup_error">Sign up Error!</string>
+    <string name="msg_password_mismatch">Both password does not match</string>
+    <string name="msg_log_in_error">Email or password is incorrect</string>
+
+    <string name="msg_profile_update_success">Profile Updated</string>
+    <string name="msg_profile_update_unsuccessful">Could not Update Profile</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

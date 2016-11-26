@@ -40,7 +40,7 @@ public class Flight {
    *          Unique flight number.
    * @param origin
    *          City which flight leaves from.
-   * @param destonation
+   * @param destination
    *          City which flight lands at.
    * @param airline
    *          The flight's airline.
@@ -55,12 +55,12 @@ public class Flight {
    * @throws ParseException
    *           if date is not correctly inputed.
    */
-  public Flight(String flightNum, String origin, String destonation, String airline,
+  public Flight(String flightNum, String origin, String destination, String airline,
       String departureDate, String arrivalDate, int availableSeats, double cost)
       throws ParseException {
     this.flightNum = flightNum;
     this.origin = origin;
-    this.destination = destonation;
+    this.destination = destination;
     this.airline = airline;
     this.departureDate = new GregorianCalendar();
     this.arrivalDate = new GregorianCalendar();
