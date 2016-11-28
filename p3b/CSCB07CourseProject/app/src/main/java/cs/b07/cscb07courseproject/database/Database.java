@@ -53,8 +53,20 @@ public class Database {
       String[] strArr = line.split(";");
       // String origin, String destonation, String airline, String departureDate, String
       // arrivalDate, int availableSeats, double cost
-      flights.add(new Flight(strArr[0], strArr[4], strArr[5], strArr[3], strArr[1], strArr[2], Integer.valueOf(strArr[7]),
-              Double.valueOf(strArr[6])));
+      Flight toAdd = new Flight(strArr[0], strArr[4], strArr[5], strArr[3], strArr[1], strArr[2], Integer.valueOf(strArr[7]),
+              Double.valueOf(strArr[6]));
+      //Check if this Flight is already contained in the Database
+      Flight exists = this.getFlight(toAdd.getFlightNum());
+
+      if( exists != null ) {
+
+        this.deleteFlight(exists);
+
+
+      }
+      this.addNewFlight(toAdd);
+
+
     }
 
   }
@@ -110,13 +122,10 @@ public class Database {
       if( exists != null ) {
 
         this.deleteClient(exists);
-        this.AddNewClient(toAdd);
 
-      } else {
-
-        clients.add(toAdd);
 
       }
+      this.AddNewClient(toAdd);
     }
 
 
@@ -210,40 +219,68 @@ public class Database {
 
   void deleteFlight(Flight flight) {
 
-
+    flights.remove(flight);
 
   }
 
   void deleteClient(Client client) {
 
-
+    clients.remove(client);
 
   }
 
   void deleteAdmin(Admin admin) {
 
-
+    admins.remove(admin);
 
   }
 
   public void UpdateClient(Client client) {
 
+    for( Client curr : clients ) {
 
+      if(curr.getEmail().equals(client.getEmail()) && !curr.equals(client)) {
+
+        clients.remove(curr);
+
+      }
+
+    }
+
+    clients.add(client);
 
   }
 
   public void UpdateAdmin(Admin admin) {
 
+    for( Admin curr : admins ) {
 
+      if(curr.getEmail().equals(admin.getEmail()) && !curr.equals(admin)) {
+
+        admins.remove(curr);
+
+      }
+
+    }
+
+    admins.add(admin);
 
   }
+
 
   public void UpdateFlight(Flight flight) {
 
+    for( Flight curr : flights ) {
 
+      if(curr.getFlightNum().equals(flight.getFlightNum()) && !curr.equals(flight)) {
+
+        flights.remove(curr);
+
+      }
+
+    }
+
+    flights.add(flight);
 
   }
-
-
 }
-  
