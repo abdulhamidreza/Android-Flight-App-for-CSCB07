@@ -8,7 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileInputStream;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -23,18 +25,58 @@ public class Database {
   private List<Client> clients;
   private List<Admin> admins;
   private List<Flight> flights;
+  private Path clientDir;
+  private Path adminDir;
+  private Path flightDir;
 
   /**
    * Constructs this Database object, initializing it's fields as empty Lists.
    *
+   * @throws IOException
+   *
    */
-  public Database() {
+  public Database(String inClientDir, String inAdminDir, String inFlightDir) throws IOException {
     // reads in data from files
     clients = new ArrayList<Client>();
     admins = new ArrayList<Admin>();
     flights = new ArrayList<Flight>();
+    clientDir = Paths.get(inClientDir);
+    adminDir = Paths.get(inAdminDir);
+    flightDir = Paths.get(inFlightDir);
 
+    try {
+      Files.createFile(clientDir);
+    } catch (FileAlreadyExistsException ex) {
+      // this exception is caught if the file already exists. If it does, then we read it.
+      try {
+        this.readClientTxt(clientDir);
+      } catch (ParseException e) {
+        // this means we incorrectly stored the dates in the file
+        e.printStackTrace();
+      }
+    }
+
+    try {
+      Files.createFile(adminDir);
+    } catch (FileAlreadyExistsException ex) {
+      this.readAdminTxt(adminDir);
+    }
+
+
+    try {
+      Files.createFile(flightDir);
+    } catch (FileAlreadyExistsException ex) {
+      try {
+        this.readFlightTxt(flightDir);
+      } catch (NumberFormatException | ParseException e) {
+        // an error occurs if the format is wrong
+        e.printStackTrace();
+      }
+
+    }
   }
+
+
 
   /**
    * Reads all Flights in from a Semicolon-Seperated values text file.
@@ -44,21 +86,21 @@ public class Database {
    * @throws NumberFormatException thrown if Price in file is not a valid Double
    * @throws ParseException thrown if arrival time and/or departure time are not valid Dates
    */
-  public void readFlightTxt(String flightDir)
+  public void readFlightTxt(Path flightDir)
           throws IOException, NumberFormatException, ParseException {
     // Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price;NumSeats
-    for (String line : Files.readAllLines(Paths.get(flightDir))) {
+    for (String line : Files.readAllLines(flightDir)) {
       // Usually this is a terrible way to parse value seperated files. This is acceptable here,
       // because data cannot contain semicolons
       String[] strArr = line.split(";");
       // String origin, String destonation, String airline, String departureDate, String
       // arrivalDate, int availableSeats, double cost
-      Flight toAdd = new Flight(strArr[0], strArr[4], strArr[5], strArr[3], strArr[1], strArr[2], Integer.valueOf(strArr[7]),
-              Double.valueOf(strArr[6]));
-      //Check if this Flight is already contained in the Database
+      Flight toAdd = new Flight(strArr[0], strArr[4], strArr[5], strArr[3], strArr[1], strArr[2],
+              Integer.valueOf(strArr[7]), Double.valueOf(strArr[6]));
+      // Check if this Flight is already contained in the Database
       Flight exists = this.getFlight(toAdd.getFlightNum());
 
-      if( exists != null ) {
+      if (exists != null) {
 
         this.deleteFlight(exists);
 
@@ -66,6 +108,28 @@ public class Database {
       }
       this.addNewFlight(toAdd);
 
+
+    }
+
+  }
+
+  public void readAdminTxt(Path inAdminDir) throws IOException {
+    // Email;Password
+    for (String line : Files.readAllLines(inAdminDir)) {
+      // Usually this is a terrible way to parse value separated files. This is acceptable here,
+      // because data cannot contain semicolons
+      String[] strArr = line.split(";");
+
+      Admin toAdd = new Admin(strArr[0], strArr[1]);
+
+      Admin exists = this.getAdmin(toAdd.getEmail());
+
+      if (exists != null) {
+
+        this.deleteAdmin(exists);
+
+      }
+      this.AddNewAdmin(toAdd);
 
     }
 
@@ -106,9 +170,9 @@ public class Database {
    * @throws IOException thrown when I/O error occurs
    * @throws ParseException thrown if Expiry date is not in specified format
    */
-  public void readClientTxt(String clientDir) throws IOException, ParseException {
+  public void readClientTxt(Path inClientDir) throws IOException, ParseException {
     // LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
-    for (String line : Files.readAllLines(Paths.get(clientDir))) {
+    for (String line : Files.readAllLines(inClientDir)) {
       // Usually this is a terrible way to parse value separated files. This is acceptable here,
       // because data cannot contain semicolons
       String[] strArr = line.split(";");
@@ -116,10 +180,10 @@ public class Database {
       DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
       Client toAdd = new Client(strArr[2], "default", strArr[1], strArr[0], strArr[3], strArr[4],
               date.parse(strArr[5]));
-      //Check if this Client is already contained in the Database
+      // Check if this Client is already contained in the Database
       Client exists = this.getClient(toAdd.getEmail());
 
-      if( exists != null ) {
+      if (exists != null) {
 
         this.deleteClient(exists);
 
@@ -199,21 +263,72 @@ public class Database {
 
 
 
-  public boolean AddNewClient(Client client) {
+  public void AddNewClient(Client client) {
 
-    return clients.add(client);
+    String clientEmail = client.getEmail();
+    boolean alreadyIn = false;
 
+    for (Client curr : clients) {
+
+      if (curr.getEmail().equals(clientEmail) && curr != client) {
+
+        clients.remove(curr);
+        alreadyIn = true;
+
+      }
+    }
+
+    if (!alreadyIn) {
+
+      clients.add(client);
+
+    }
   }
 
-  public boolean AddNewAdmin(Admin admin) {
 
-    return admins.add(admin);
+  public void AddNewAdmin(Admin admin) {
 
+    String adminEmail = admin.getEmail();
+    boolean alreadyIn = false;
+
+    for (Admin curr : admins) {
+
+      if (curr.getEmail().equals(adminEmail) && curr != admin) {
+
+        admins.remove(curr);
+        alreadyIn = true;
+
+      }
+    }
+
+    if (!alreadyIn) {
+
+      admins.add(admin);
+
+    }
   }
 
-  boolean addNewFlight(Flight flight) {
 
-    return flights.add(flight);
+  public void addNewFlight(Flight flight) {
+
+    String flightNum = flight.getFlightNum();
+    boolean alreadyIn = false;
+
+    for (Flight curr : flights) {
+
+      if (curr.getFlightNum().equals(flightNum) && curr != flight) {
+
+        flights.remove(curr);
+        alreadyIn = true;
+
+      }
+    }
+
+    if (!alreadyIn) {
+
+      flights.add(flight);
+
+    }
 
   }
 
@@ -235,52 +350,13 @@ public class Database {
 
   }
 
-  public void UpdateClient(Client client) {
-
-    for( Client curr : clients ) {
-
-      if(curr.getEmail().equals(client.getEmail()) && !curr.equals(client)) {
-
-        clients.remove(curr);
-
-      }
-
-    }
-
-    clients.add(client);
-
-  }
-
-  public void UpdateAdmin(Admin admin) {
-
-    for( Admin curr : admins ) {
-
-      if(curr.getEmail().equals(admin.getEmail()) && !curr.equals(admin)) {
-
-        admins.remove(curr);
-
-      }
-
-    }
-
-    admins.add(admin);
-
-  }
+  /**
+   * Updates all stored data.
+   *
+   */
+  void update() {
 
 
-  public void UpdateFlight(Flight flight) {
-
-    for( Flight curr : flights ) {
-
-      if(curr.getFlightNum().equals(flight.getFlightNum()) && !curr.equals(flight)) {
-
-        flights.remove(curr);
-
-      }
-
-    }
-
-    flights.add(flight);
 
   }
 }
