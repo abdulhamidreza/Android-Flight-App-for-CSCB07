@@ -23,8 +23,7 @@
         android:id = "@+id/clientInfoContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordET"
-        android:visibility="gone">
+        android:layout_below="@+id/passwordET">
         <EditText
             android:id = "@+id/firstName"
             android:layout_width="match_parent"
@@ -71,7 +70,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/controller_padding"
         android:layout_below="@+id/clientInfoContainer"
-        android:text="@string/create_admin"
+        android:text="@string/create_user"
         android:onClick="createUser"/>
 
 

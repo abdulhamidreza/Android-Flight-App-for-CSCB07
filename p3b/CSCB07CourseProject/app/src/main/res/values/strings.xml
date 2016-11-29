@@ -10,8 +10,10 @@
 
     <!-- Strings related to login -->
     <string name="log_In">Log In</string>
+    <string name="updateProfile">Update Profile</string>
     <string name="create_admin">Create Admin</string>
     <string name="create_client">Create Client</string>
+    <string name="create_user">Create User</string>
 
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -36,6 +38,8 @@
     <string name="about_title">About</string>
     <string name="category_title">Category</string>
     <string name="profile_title">Edit Account</string>
+    <string name="view_profile">View Profile</string>
+    <string name="edit_profile">Edit Profile</string>
 
     <!-- Log in/ sign up warnings -->
     <string name="msg_complete_form">Please fill up the form!</string>
