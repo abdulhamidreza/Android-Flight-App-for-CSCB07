@@ -2,18 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="20dp"
-    android:layout_marginRight="15dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginBottom="20dp"
     tools:context="cs.b07.cscb07courseproject.fragments.CreateUserFragment">
+
     <EditText
         android:id = "@+id/emailET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/controller_padding"
         android:hint="@string/emailHint"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"/>
     <EditText
         android:id = "@+id/passwordET"
         android:layout_width="match_parent"
@@ -74,7 +71,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/controller_padding"
         android:layout_below="@+id/clientInfoContainer"
-        android:text="@string/create_user"
+        android:text="@string/create_admin"
         android:onClick="createUser"/>
 
 

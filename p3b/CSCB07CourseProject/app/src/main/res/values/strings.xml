@@ -7,26 +7,11 @@
     <string name="addressHint">Address</string>
     <string name="creditCardHint">Credit card number (ie. 1234567890)</string>
     <string name="creditCardExpiryHint">Credit card expiry date (ie. yyyy/mm/dd)</string>
-    <string name="origin">Origin</string>
-    <string name="destination">Destination</string>
-    <string name="date">Date</string>
-    <string name="searchFlight">Search Flight</string>
-    <string name="searchItineraries">Search Itineraries</string>
-    <string name="addClient">Add Client</string>
-    <string name="viewClients">View Clients</string>
-    <string name="addFlight">Add Flight</string>
-    <string name="findFlight">Find Flight</string>
-    <string name="findItinerary">Find Itinerary</string>
-    <string name="bookItinerary">Book Itinerary</string>
-    <string name="pathToFile">Path to File</string>
-    <string name="loadFile">Load File</string>
 
     <!-- Strings related to login -->
     <string name="log_In">Log In</string>
-    <string name="updateProfile">Update Profile</string>
     <string name="create_admin">Create Admin</string>
     <string name="create_client">Create Client</string>
-    <string name="create_user">Create User</string>
 
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -51,8 +36,6 @@
     <string name="about_title">About</string>
     <string name="category_title">Category</string>
     <string name="profile_title">Edit Account</string>
-    <string name="view_profile">View Profile</string>
-    <string name="edit_profile">Edit Profile</string>
 
     <!-- Log in/ sign up warnings -->
     <string name="msg_complete_form">Please fill up the form!</string>

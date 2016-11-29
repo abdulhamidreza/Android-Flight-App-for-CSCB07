@@ -2,10 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cs.b07.cscb07courseproject.fragments.LogInFragment"
-    android:layout_marginTop="40dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp">
+    tools:context="cs.b07.cscb07courseproject.fragments.LogInFragment">
+
     <EditText
         android:id = "@+id/emailET"
         android:layout_width="match_parent"
@@ -27,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordET"
         android:paddingTop="@dimen/controller_padding"
-        android:text = "@string/log_In"
+        android:text="@string/log_In"
         android:onClick="login"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text = "@string/create_admin"
+            android:text="@string/create_admin"
             android:onClick="createAdmin"/>
         <Button
             android:id="@+id/createClientBtn"

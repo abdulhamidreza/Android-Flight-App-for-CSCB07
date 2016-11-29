@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width = "fill_parent"
-    android:layout_height = "wrap_content"
-    android:orientation = "vertical"
-    android:layout_marginTop="40dp"
-    android:layout_marginBottom="20dp"
-    android:layout_marginRight="15dp"
-    android:layout_marginLeft="15dp">
-    <EditText android:id = "@+id/first_name_field"
-        android:layout_weight = "1"
-        android:layout_width = "fill_parent"
-        android:layout_height = "wrap_content"
-        android:hint = "@string/emailHint"/>
-    <EditText android:id = "@+id/last_name_field"
-        android:layout_weight = "1"
-        android:layout_width = "fill_parent"
-        android:layout_height = "wrap_content"
-        android:hint = "@string/passwordHint"/>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text = "@string/log_In"
-        android:onClick = "registerStudent" />
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/login_activity"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="cs.b07.cscb07courseproject.LogInActivity">
+
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </RelativeLayout>
+
+</RelativeLayout>

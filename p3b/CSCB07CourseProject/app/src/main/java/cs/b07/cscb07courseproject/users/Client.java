@@ -34,7 +34,7 @@ public class Client extends User implements Serializable {
    * @param lastName the last name of the client
    * @param address the last name of the client
    * @param creditCard the credit card information of the client
-   * @param creditExpiry the credit card expiry date of the client
+   * @param creditExpriy the credit card expiry date of the client
    */
   public Client(String email, String password, String firstName, 
                 String lastName, String address, String creditCard, Date creditExpiry) {
@@ -121,7 +121,7 @@ public class Client extends User implements Serializable {
 
   /**
    * Sets the client's address.
-   * @param address the client's address being set to
+   * @param the client's address being set to
    */
   public void setAddress(String address) {
     this.address = address;
@@ -137,7 +137,7 @@ public class Client extends User implements Serializable {
 
   /**
    * Sets the client's credit card information.
-   * @param creditCard the credit card information being set to
+   * @param the credit card information being set to
    */
   public void setCreditCard(String creditCard) {
     this.creditCard = creditCard;
@@ -153,16 +153,9 @@ public class Client extends User implements Serializable {
 
   /**
    * Sets the client's booked itnerary.
-   * @param bookedItinerary the booked itinerary being set to
+   * @param the booked itinerary being set to
    */
   public void setBookedItinerary(List<Itinerary> bookedItinerary) {
     this.bookedItinerary = bookedItinerary;
-  }
-
-  public byte[] getBytes() {
-    // LastName;FirstNames;Email;Password;Address;CreditCardNumber;ExpiryDate
-
-    return String.format(getLastName(),getFirstName(),getEmail(),getPassword(),getAddress(),getCreditCard(),getCreditExpiry()).getBytes();
-
   }
 }

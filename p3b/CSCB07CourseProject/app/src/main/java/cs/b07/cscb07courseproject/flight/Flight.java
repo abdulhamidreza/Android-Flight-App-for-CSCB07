@@ -257,24 +257,17 @@ public class Flight {
    * 
    * @param flight
    *          <code>Flight</code> wanted to be compared to.
-   * @return time difference between both <code>Flight</code>s in seconds.
+   * @return time difference between both <code>Flight</code>s.
    */
   public long timeBetweenFlights(Flight flight) {
     return (arrivalDate.getTimeInMillis() - flight.getDepartureDate().getTimeInMillis())/1000;
   }
 
-  public byte[] getBytes() {
-  //Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price;NumSeats
-    return this.toString().getBytes();
-
-
-  }
-
   @Override
   public String toString() {
-    return String.format("%s;%s;%s;%s;%s;%s;%.2f;%.2f", flightNum,
+    return String.format("%s;%s;%s;%s;%s;%s;%.2f", flightNum,
         dateTime.format(departureDate.getTime()), dateTime.format(arrivalDate.getTime()), airline,
-        origin, destination, cost, availableSeats);
+        origin, destination, cost);
   }
 
 }

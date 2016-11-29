@@ -27,7 +27,7 @@ public class LogInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_log_in, container, false);
-         getActivity().setTitle(R.string.log_in_title);
+
 
         return rootView;
     }
