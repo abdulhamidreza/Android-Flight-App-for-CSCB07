@@ -52,17 +52,18 @@ public class Database {
   /**
    * Reads all Flights in from a Semicolon-Seperated values text file.
    *
-   * @param flightDir the directory of the .txt file
+   * @param inFlightDir the directory of the .txt file
    * @throws IOException thrown when I/O error occurs
    * @throws NumberFormatException thrown if Price in file is not a valid Double
    * @throws ParseException thrown if arrival time and/or departure time are not valid Dates
    */
-  public void readFlightTxt(String flightDir, Context currContext)
+  public void readFlightTxt(String inFlightDir, Context currContext)
           throws IOException, NumberFormatException, ParseException {
-    File userdata = new File(currContext.getFilesDir(), flightDir);
-      BufferedReader reader = new BufferedReader(new InputStreamReader(currContext.getAssets().open(flightDir)));
+      File FlightTxt = new File(inFlightDir, "flight.txt");
+      BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream((FlightTxt))));
     // Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price;NumSeats
-    for (String line : userdata.readAllLines(flightDir)) {
+      String line;
+    while ((line = reader.readLine()) != null ) {
       // Usually this is a terrible way to parse value seperated files. This is acceptable here,
       // because data cannot contain semicolons
       String[] strArr = line.split(";");
@@ -86,9 +87,12 @@ public class Database {
 
   }
 
-  public void readAdminTxt(Path inAdminDir) throws IOException {
+  public void readAdminTxt(String inAdminDir, Context currContext) throws IOException {
     // Email;Password
-    for (String line : Files.readAllLines(inAdminDir)) {
+      File adminTxt = new File(inAdminDir, "admin.txt");
+      BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(adminTxt)));
+    String line;
+      while ((line = reader.readLine()) != null) {
       // Usually this is a terrible way to parse value separated files. This is acceptable here,
       // because data cannot contain semicolons
       String[] strArr = line.split(";");
@@ -139,13 +143,16 @@ public class Database {
   /**
    * Reads all Clients in from a Semicolon-Separated values text file.
    *
-   * @param clientDir the directory of the .txt file
+   * @param inClientDir the directory of the .txt file
    * @throws IOException thrown when I/O error occurs
    * @throws ParseException thrown if Expiry date is not in specified format
    */
-  public void readClientTxt(Path inClientDir) throws IOException, ParseException {
+  public void readClientTxt(String inClientDir, Context currContext) throws IOException, ParseException {
     // LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
-    for (String line : Files.readAllLines(inClientDir)) {
+      File adminTxt = new File(inClientDir, "client.txt");
+      BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(adminTxt)));
+      String line;
+    while ((line = reader.readLine()) != null) {
       // Usually this is a terrible way to parse value separated files. This is acceptable here,
       // because data cannot contain semicolons
       String[] strArr = line.split(";");
@@ -327,7 +334,7 @@ public class Database {
    * Updates all stored data.
    *
    */
-  void update() {
+  void update(Context currContext) {
 
 
 
