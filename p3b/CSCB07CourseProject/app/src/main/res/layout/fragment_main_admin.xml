@@ -11,12 +11,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Add Client"
-            android:onClick="addClient"/>
+            android:text = "@string/addClient"
+            android:onClick="addClient" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "View Clients"
+            android:text = "@string/viewClients"
             android:layout_gravity=""
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
@@ -24,7 +24,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Add Flight"
+            android:text = "@string/addFlight"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:onClick="addFlight"/>
@@ -69,13 +69,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="Search Flight"
-            android:onClick="editFlight"/>
+            android:text="@string/searchFlight"
+            android:onClick="searchFlight"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="Search Itineraries"
+            android:text="@string/searchItineraries"
             android:onClick="searchItineraries"/>
     </LinearLayout>
 

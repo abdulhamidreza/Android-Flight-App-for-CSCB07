@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordET"
         android:paddingTop="@dimen/controller_padding"
-        android:text="@string/log_In"
+        android:text = "@string/log_In"
         android:onClick="login"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/create_admin"
+            android:text = "@string/create_admin"
             android:onClick="createAdmin"/>
         <Button
             android:id="@+id/createClientBtn"

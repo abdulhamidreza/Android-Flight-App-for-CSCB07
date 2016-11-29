@@ -43,6 +43,6 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/updateProfile"
+        android:text ="@string/updateProfile"
         android:onClick = "updateProfile"/>
 </LinearLayout>

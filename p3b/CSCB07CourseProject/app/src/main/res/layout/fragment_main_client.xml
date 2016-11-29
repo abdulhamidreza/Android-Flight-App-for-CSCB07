@@ -69,13 +69,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="Find Flight"
+            android:text="@string/findFlight"
             android:onClick="findFlight"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="Find Itinerary"
+            android:text="@string/findItinerary"
             android:onClick="findItinerary"/>
     </LinearLayout>
 </FrameLayout>
