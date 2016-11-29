@@ -1,22 +1,22 @@
-package database;
+package cs.b07.cscb07courseproject.database;
 
-import flight.Flight;
-import users.Admin;
-import users.Client;
+import android.content.Context;
 
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.FileInputStream;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import cs.b07.cscb07courseproject.flight.Flight;
+import cs.b07.cscb07courseproject.users.Admin;
+import cs.b07.cscb07courseproject.users.Client;
 
 
 // The class for storing information in JSON files.
@@ -25,9 +25,9 @@ public class Database {
   private List<Client> clients;
   private List<Admin> admins;
   private List<Flight> flights;
-  private Path clientDir;
-  private Path adminDir;
-  private Path flightDir;
+  private String clientDir;
+  private String adminDir;
+  private String flightDir;
 
   /**
    * Constructs this Database object, initializing it's fields as empty Lists.
@@ -37,43 +37,14 @@ public class Database {
    */
   public Database(String inClientDir, String inAdminDir, String inFlightDir) throws IOException {
     // reads in data from files
-    clients = new ArrayList<Client>();
-    admins = new ArrayList<Admin>();
-    flights = new ArrayList<Flight>();
-    clientDir = Paths.get(inClientDir);
-    adminDir = Paths.get(inAdminDir);
-    flightDir = Paths.get(inFlightDir);
+    this.clients = new ArrayList<Client>();
+    this.admins = new ArrayList<Admin>();
+    this.flights = new ArrayList<Flight>();
+    this.clientDir = inClientDir;
+    this.adminDir = inAdminDir;
+    this.flightDir = inFlightDir;
 
-    try {
-      Files.createFile(clientDir);
-    } catch (FileAlreadyExistsException ex) {
-      // this exception is caught if the file already exists. If it does, then we read it.
-      try {
-        this.readClientTxt(clientDir);
-      } catch (ParseException e) {
-        // this means we incorrectly stored the dates in the file
-        e.printStackTrace();
-      }
-    }
-
-    try {
-      Files.createFile(adminDir);
-    } catch (FileAlreadyExistsException ex) {
-      this.readAdminTxt(adminDir);
-    }
-
-
-    try {
-      Files.createFile(flightDir);
-    } catch (FileAlreadyExistsException ex) {
-      try {
-        this.readFlightTxt(flightDir);
-      } catch (NumberFormatException | ParseException e) {
-        // an error occurs if the format is wrong
-        e.printStackTrace();
-      }
-
-    }
+    //This is the part where files will be created, or read in.
   }
 
 
@@ -86,10 +57,12 @@ public class Database {
    * @throws NumberFormatException thrown if Price in file is not a valid Double
    * @throws ParseException thrown if arrival time and/or departure time are not valid Dates
    */
-  public void readFlightTxt(Path flightDir)
+  public void readFlightTxt(String flightDir, Context currContext)
           throws IOException, NumberFormatException, ParseException {
+    File userdata = new File(currContext.getFilesDir(), flightDir);
+      BufferedReader reader = new BufferedReader(new InputStreamReader(currContext.getAssets().open(flightDir)));
     // Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price;NumSeats
-    for (String line : Files.readAllLines(flightDir)) {
+    for (String line : userdata.readAllLines(flightDir)) {
       // Usually this is a terrible way to parse value seperated files. This is acceptable here,
       // because data cannot contain semicolons
       String[] strArr = line.split(";");
