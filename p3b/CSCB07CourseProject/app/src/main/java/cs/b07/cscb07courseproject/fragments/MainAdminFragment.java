@@ -14,6 +14,7 @@ import cs.b07.cscb07courseproject.R;
  */
 public class MainAdminFragment extends Fragment {
 
+    private static View rootView;
 
     public MainAdminFragment() {
         // Required empty public constructor
@@ -24,7 +25,11 @@ public class MainAdminFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_admin, container, false);
+        rootView = inflater.inflate(R.layout.fragment_main_admin, container, false);
+
+        getActivity().setTitle(R.string.main_title);
+
+        return rootView;
     }
 
 }

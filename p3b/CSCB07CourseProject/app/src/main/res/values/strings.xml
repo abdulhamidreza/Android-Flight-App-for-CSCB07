@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">CSCB07CourseProject</string>
+
+    <!-- String for hints and button texts -->
     <string name="emailHint">Email</string>
     <string name="passwordHint">Password</string>
     <string name="firstNameHint">First name (ie. John)</string>
@@ -42,17 +44,17 @@
 
     <!-- Toolbar titles -->
     <string name="location_title">Location</string>
-    <string name="main_title">SalePointer</string>
+    <string name="main_title">Main Page</string>
     <string name="log_in_title">Log In</string>
-    <string name="sign_in_login_title">Log In Information</string>
-    <string name="sign_in_location_title">Location Information</string>
-    <string name="sign_in_profile_title">Profile Information</string>
-    <string name="favourite_title">Favourite</string>
-    <string name="about_title">About</string>
-    <string name="category_title">Category</string>
-    <string name="profile_title">Edit Account</string>
+    <string name="create_admin_title">Create Admin</string>
+    <string name="create_client_title">Create Client</string>
     <string name="view_profile">View Profile</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="itineraries_list_title">Itineraries</string>
+    <string name="book_itinerary_title">Itinerary Details</string>
+    <string name="client_list_title">Clients</string>
+    <string name="add_file_title">Add Through File</string>
+
 
     <!-- Log in/ sign up warnings -->
     <string name="msg_complete_form">Please fill up the form!</string>

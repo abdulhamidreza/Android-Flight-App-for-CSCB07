@@ -7,9 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
-import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.R;
 
 /**
@@ -28,6 +25,9 @@ public class ItineraryListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_itinerary_list, container, false);
+
+        getActivity().setTitle(R.string.itineraries_list_title);
+
         return rootView;
     }
 

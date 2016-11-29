@@ -46,6 +46,8 @@ public class CreateUserFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_create_user, container, false);
 
+        getActivity().setTitle(R.string.create_admin_title);
+
         email = (EditText) rootView.findViewById(R.id.emailET);
         password = (EditText) rootView.findViewById(R.id.passwordET);
         firstName = (EditText) rootView.findViewById(R.id.firstName);
@@ -59,6 +61,7 @@ public class CreateUserFragment extends Fragment {
         isClient = getArguments().getBoolean(LogInActivity.isClientKey);
 
         if(isClient) {
+            getActivity().setTitle(R.string.create_client_title);
             setClientView();
         }
 

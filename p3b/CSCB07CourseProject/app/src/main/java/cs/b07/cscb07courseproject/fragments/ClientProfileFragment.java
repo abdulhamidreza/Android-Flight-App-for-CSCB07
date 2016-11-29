@@ -14,6 +14,7 @@ import cs.b07.cscb07courseproject.R;
  */
 public class ClientProfileFragment extends Fragment {
 
+    private static View rootView;
 
     public ClientProfileFragment() {
         // Required empty public constructor
@@ -24,7 +25,11 @@ public class ClientProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_client_profile, container, false);
+        rootView = inflater.inflate(R.layout.fragment_client_profile, container, false);
+
+        getActivity().setTitle(R.string.view_profile);
+
+        return rootView;
     }
 
 }
