@@ -330,13 +330,47 @@ public class Database {
 
   }
 
+    void updateClient() {
+
+    FileOutputStream outStream;
+
+        try {
+            File db = new File("client.txt");
+            db.delete();
+            db.createNewFile();
+            outStream = new FileOutputStream("client.txt");
+            for( Client curr : clients) {
+                outStream.write(curr.toString().getBytes());
+            }
+            outStream.close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    void updateAdmin() {
+
+
+
+    }
+
+    void updateFlight() {
+
+
+
+    }
+
   /**
    * Updates all stored data.
    *
    */
-  void update(Context currContext) {
+  void update() {
 
-
+      updateAdmin();
+      updateClient();
+      updateFlight();
 
   }
 }

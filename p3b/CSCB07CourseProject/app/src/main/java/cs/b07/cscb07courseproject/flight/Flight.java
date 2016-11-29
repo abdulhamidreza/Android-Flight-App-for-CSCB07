@@ -263,11 +263,18 @@ public class Flight {
     return (arrivalDate.getTimeInMillis() - flight.getDepartureDate().getTimeInMillis())/1000;
   }
 
+  public byte[] getBytes() {
+  //Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price;NumSeats
+    return this.toString().getBytes();
+
+
+  }
+
   @Override
   public String toString() {
-    return String.format("%s;%s;%s;%s;%s;%s;%.2f", flightNum,
+    return String.format("%s;%s;%s;%s;%s;%s;%.2f;%.2f", flightNum,
         dateTime.format(departureDate.getTime()), dateTime.format(arrivalDate.getTime()), airline,
-        origin, destination, cost);
+        origin, destination, cost, availableSeats);
   }
 
 }
