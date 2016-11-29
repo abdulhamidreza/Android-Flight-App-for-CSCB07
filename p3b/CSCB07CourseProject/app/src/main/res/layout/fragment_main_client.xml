@@ -36,14 +36,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Origin"
+            android:hint = "@string/origin"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:inputType="text"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Destination"
+            android:hint = "@string/destination"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
@@ -51,7 +51,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Date"
+            android:hint="@string/date"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:inputType="date"/>
