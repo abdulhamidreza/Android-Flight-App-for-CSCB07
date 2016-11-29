@@ -257,7 +257,7 @@ public class Flight {
    * 
    * @param flight
    *          <code>Flight</code> wanted to be compared to.
-   * @return time difference between both <code>Flight</code>s.
+   * @return time difference between both <code>Flight</code>s in seconds.
    */
   public long timeBetweenFlights(Flight flight) {
     return (arrivalDate.getTimeInMillis() - flight.getDepartureDate().getTimeInMillis())/1000;

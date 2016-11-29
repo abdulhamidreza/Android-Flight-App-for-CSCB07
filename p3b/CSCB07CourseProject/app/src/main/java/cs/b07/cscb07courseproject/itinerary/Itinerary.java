@@ -118,11 +118,20 @@ public class Itinerary {
    */
   private void setTotalTime() {
     // the difference in time between the departure of the first flight, and the
-    // arrival of the last
-    // flight
-    /*long min = ChronoUnit.MINUTES.between(flights.get(0).getDepartureDate().toInstant(),
-        flights.get(flights.size() - 1).getArrivalDate().toInstant());
-    this.totalTime = Duration.ofMinutes(min);*/
+    // arrival of the last flight
+    if (flights.size() == 0) {
+
+      totalTime = 0;
+
+    } else if (flights.size() == 1) {
+
+      totalTime = flights.get(0).getDuration();
+
+    } else {
+
+      totalTime = flights.get(0).timeBetweenFlights(flights.get(flights.size() - 1));
+
+    }
   }
 
   @Override
