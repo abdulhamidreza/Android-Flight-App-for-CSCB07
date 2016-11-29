@@ -46,6 +46,8 @@ public class AdminActivity extends AppCompatActivity {
     }
 
 
+
+
     private void setFragment (Fragment fragment){
         // changes the fragment
         android.support.v4.app.FragmentTransaction ft =

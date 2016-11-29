@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Date;
+
 import cs.b07.cscb07courseproject.fragments.MainClientFragment;
 import cs.b07.cscb07courseproject.fragments.PlaceHolderFragment;
 import cs.b07.cscb07courseproject.users.Client;
@@ -42,6 +44,15 @@ public class ClientActivity extends AppCompatActivity {
     public void findItinerary(View view) {
 
     }
+
+    public void updateProfile(View view) {
+
+    }
+
+    public void bookItinerary(View view) {
+
+    }
+
 
 
     private void setFragment (Fragment fragment){
