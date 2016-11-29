@@ -1,15 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="50dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
     tools:context="cs.b07.cscb07courseproject.fragments.MainAdminFragment">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,35 +22,41 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Add Client"
+            android:text = "Add Flight"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
-        <Button
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Add Client"
+            android:layout_centerInParent="true"
+            android:text = "Origin"
+            android:gravity="center_horizontal"
+            android:ellipsize="start"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
-        <Button
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Add Client"
+            android:text = "Destination"
+            android:gravity="center_horizontal"
+            android:ellipsize="start"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
-        <Button
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Add Client"
+            android:text = "Date"
+            android:gravity="center_horizontal"
+            android:ellipsize="start"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginBottom="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:orientation="horizontal"
         >
         <Button
@@ -67,4 +71,4 @@
             android:text="Search Itineraries"/>
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
