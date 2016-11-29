@@ -13,29 +13,36 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/passwordHint"/>
+        android:hint = "@string/passwordHint"
+        android:inputType="textPassword"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/firstNameHint"/>
+        android:hint = "@string/firstNameHint"
+        android:inputType="textPersonName"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/lastNameHint"/>
+        android:hint = "@string/lastNameHint"
+        android:inputType="textPersonName"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/addressHint"/>
+        android:hint = "@string/addressHint"
+        android:inputType="textPostalAddress"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/creditCardHint"/>
+        android:hint = "@string/creditCardHint"
+        android:inputType="number"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/creditCardExpiryHint"/>
+        android:hint = "@string/creditCardExpiryHint"
+        android:inputType="date"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "@string/updateProfile"/>
+        android:hint = "@string/updateProfile"
+        android:onClick = "updateProfile"/>
 </LinearLayout>

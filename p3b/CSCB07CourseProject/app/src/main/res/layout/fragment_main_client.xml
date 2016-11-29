@@ -18,13 +18,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/view_profile"
-            android:onClick="createAdmin"/>
+            android:onClick="viewProfile"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/edit_profile"
-            android:onClick="createClient"/>
+            android:onClick="editProfile"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,20 +38,23 @@
             android:layout_height="wrap_content"
             android:text = "Origin"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:inputType="text"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text = "Destination"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:inputType="text"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text = "Date"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:inputType="date"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,12 +70,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="Find Flight"
-            android:onClick="createAdmin"/>
+            android:onClick="findFlight"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="Find Itinerary"
-            android:onClick="createClient"/>
+            android:onClick="findItinerary"/>
     </LinearLayout>
 </FrameLayout>

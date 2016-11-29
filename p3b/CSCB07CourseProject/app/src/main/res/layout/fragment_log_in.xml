@@ -2,8 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cs.b07.cscb07courseproject.fragments.LogInFragment">
-
+    tools:context="cs.b07.cscb07courseproject.fragments.LogInFragment"
+    android:layout_marginTop="40dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
     <EditText
         android:id = "@+id/emailET"
         android:layout_width="match_parent"
