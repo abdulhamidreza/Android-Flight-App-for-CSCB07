@@ -57,7 +57,7 @@ public class Database {
      * @throws NumberFormatException thrown if Price in file is not a valid Double
      * @throws ParseException thrown if arrival time and/or departure time are not valid Dates
      */
-    public void readFlightTxt(String inFlightDir, Context currContext)
+    public void readFlightTxt(String inFlightDir)
             throws IOException, NumberFormatException, ParseException {
         File FlightTxt = new File(inFlightDir, "flight.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream((FlightTxt))));
@@ -89,7 +89,7 @@ public class Database {
 
     }
 
-    public void readAdminTxt(String inAdminDir, Context currContext) throws IOException {
+    public void readAdminTxt(String inAdminDir) throws IOException {
         // Email;Password
         File adminTxt = new File(inAdminDir, "admin.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(adminTxt)));
@@ -151,7 +151,7 @@ public class Database {
      * @throws IOException thrown when I/O error occurs
      * @throws ParseException thrown if Expiry date is not in specified format
      */
-    public void readClientTxt(String inClientDir, Context currContext) throws IOException, ParseException {
+    public void readClientTxt(String inClientDir) throws IOException, ParseException {
         // LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
         File adminTxt = new File(inClientDir, "client.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(adminTxt)));
