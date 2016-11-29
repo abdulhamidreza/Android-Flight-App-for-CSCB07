@@ -16,11 +16,14 @@ import cs.b07.cscb07courseproject.fragments.CreateUserFragment;
 import cs.b07.cscb07courseproject.users.Admin;
 import cs.b07.cscb07courseproject.users.User;
 
+//import static android.content.Intent.EXTRA_USER;
+
 public class LogInActivity extends AppCompatActivity {
 
     // Keys for transferring data to other activities or fragments
     public static final String userKey = "user";
     public static final String isClientKey = "isClient";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

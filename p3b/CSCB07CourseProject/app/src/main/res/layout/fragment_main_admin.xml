@@ -1,13 +1,82 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="50dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
     tools:context="cs.b07.cscb07courseproject.fragments.MainAdminFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text = "@string/addClient"
+        android:onClick="addClient" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "@string/viewClients"
+        android:layout_gravity=""
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:onClick="viewClients"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "@string/addFlight"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:onClick="addFlight"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint = "@string/origin"
+        android:gravity="center_horizontal"
+        android:ellipsize="start"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "@string/destination"
+        android:gravity="center_horizontal"
+        android:ellipsize="start"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "@string/date"
+        android:gravity="center_horizontal"
+        android:ellipsize="start"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:inputType="date"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/searchFlight"
+            android:onClick="searchFlight"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/searchItineraries"
+            android:onClick="searchItineraries"/>
+    </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
