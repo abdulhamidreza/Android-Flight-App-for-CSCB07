@@ -85,6 +85,8 @@ public class Database {
 
         }
 
+        updateFlight();
+
     }
 
     public void readAdminTxt(String inAdminDir, Context currContext) throws IOException {
@@ -109,6 +111,8 @@ public class Database {
             this.AddNewAdmin(toAdd);
 
         }
+
+        updateAdmin();
 
     }
 
@@ -171,6 +175,8 @@ public class Database {
             }
             this.AddNewClient(toAdd);
         }
+
+        updateClient();
 
 
     }
@@ -263,6 +269,8 @@ public class Database {
             clients.add(client);
 
         }
+
+        updateClient();
     }
 
 
@@ -286,6 +294,8 @@ public class Database {
             admins.add(admin);
 
         }
+
+        updateAdmin();
     }
 
 
@@ -310,11 +320,15 @@ public class Database {
 
         }
 
+        updateFlight();
+
     }
 
     void deleteFlight(Flight flight) {
 
         flights.remove(flight);
+
+        updateFlight();
 
     }
 
@@ -322,11 +336,15 @@ public class Database {
 
         clients.remove(client);
 
+        updateClient();
+
     }
 
     void deleteAdmin(Admin admin) {
 
         admins.remove(admin);
+
+        updateAdmin();
 
     }
 
@@ -352,13 +370,41 @@ public class Database {
 
     void updateAdmin() {
 
+        FileOutputStream outStream;
 
+        try {
+            File db = new File("admin.txt");
+            db.delete();
+            db.createNewFile();
+            outStream = new FileOutputStream("admin.txt");
+            for( Admin curr : admins) {
+                outStream.write(curr.toString().getBytes());
+            }
+            outStream.close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 
     void updateFlight() {
 
+        FileOutputStream outStream;
 
+        try {
+            File db = new File("flight.txt");
+            db.delete();
+            db.createNewFile();
+            outStream = new FileOutputStream("flight.txt");
+            for( Flight curr : flights) {
+                outStream.write(curr.toString().getBytes());
+            }
+            outStream.close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 
