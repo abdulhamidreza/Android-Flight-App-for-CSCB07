@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.R;
+import cs.b07.cscb07courseproject.util.ValidDate;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +46,7 @@ public class MainClientFragment extends Fragment {
         String origin = originET.getText().toString();
         String destination = destinationET.getText().toString();
         String date = dateET.getText().toString();
-        if (!origin.equals("") && !destination.equals("") && !date.equals("")){
+        if (!origin.equals("") && !destination.equals("") && !date.equals("") && ValidDate.validDate(date)){
             bundle.putString(ClientActivity.originKey, origin);
             bundle.putString(ClientActivity.destinationKey, destination);
             bundle.putString(ClientActivity.dateKey, date);
