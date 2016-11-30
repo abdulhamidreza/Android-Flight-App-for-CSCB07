@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import cs.b07.cscb07courseproject.fragments.AddThroughFileFragment;
+import cs.b07.cscb07courseproject.fragments.ClientListFragment;
+import cs.b07.cscb07courseproject.fragments.ItineraryListFragment;
 import cs.b07.cscb07courseproject.fragments.MainAdminFragment;
 import cs.b07.cscb07courseproject.fragments.PlaceHolderFragment;
 import cs.b07.cscb07courseproject.users.Admin;
@@ -30,22 +33,35 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     public void addClient(View view) {
-
+        Bundle bundle = new Bundle();
+        Fragment frag = new AddThroughFileFragment();
+        frag.setArguments(bundle);
+        setFragment(frag);
     }
     public void viewClients(View view) {
-
+        Bundle bundle = new Bundle();
+        Fragment frag = new ClientListFragment();
+        frag.setArguments(bundle);
+        setFragment(frag);
     }
     public void addFlight(View view) {
-
+        Bundle bundle = new Bundle();
+        Fragment frag = new AddThroughFileFragment();
+        frag.setArguments(bundle);
+        setFragment(frag);
     }
     public void searchFlight(View view) {
-
+        /*Bundle bundle = new Bundle();
+        Fragment frag = new FlightListFragment();
+        frag.setArguments(bundle);
+        setFragment(frag);*/
     }
     public void searchItineraries(View view) {
-
+        Bundle bundle = new Bundle();
+        Fragment frag = new ItineraryListFragment();
+        frag.setArguments(bundle);
+        setFragment(frag);
     }
-
-
 
 
     private void setFragment (Fragment fragment){
