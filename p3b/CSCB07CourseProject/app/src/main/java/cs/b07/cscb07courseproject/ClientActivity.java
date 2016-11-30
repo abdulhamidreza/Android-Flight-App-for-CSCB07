@@ -19,12 +19,13 @@ import cs.b07.cscb07courseproject.users.Client;
 public class ClientActivity extends AppCompatActivity {
 
     public static Client client;
-    private static EditText originET, destinationET, dateET;
+    private static EditText originET, destinationET, dateET, clientPassword, clientFirst, clientLast, clientAddress, clientCreditCard, clientCreditExpiry;
 
     public static final String originKey = "originKey";
     public static final String destinationKey = "destinationKey";
     public static final String dateKey = "dateKey";
     public static final String isDirectKey = "isDirectKey";
+    public static final String clientKey = "clientKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,8 @@ public class ClientActivity extends AppCompatActivity {
 
     public void editProfile(View view) {
         Bundle bundle = new Bundle();
+        bundle.putSerializable(clientKey, client);
+
         Fragment frag = new EditClientFragment();
         frag.setArguments(bundle);
         setFragment(frag);
