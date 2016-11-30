@@ -85,6 +85,10 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     public void updateProfile(View view) {
+        if (EditClientFragment.updateProfile()){
+            Fragment frag = new MainClientFragment();
+            setFragment(frag);
+        }
     }
 
     public void bookItinerary(View view) {

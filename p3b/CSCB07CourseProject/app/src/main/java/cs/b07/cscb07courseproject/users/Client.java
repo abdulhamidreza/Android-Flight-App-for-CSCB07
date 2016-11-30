@@ -4,11 +4,15 @@
 package cs.b07.cscb07courseproject.users;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import cs.b07.cscb07courseproject.itinerary.Itinerary;
+import cs.b07.cscb07courseproject.util.ValidDate;
 
 /**
  * @author jungwon5
@@ -25,6 +29,8 @@ public class Client extends User implements Serializable {
   private String creditCard;
   private Date creditExpiry;
   private List<Itinerary> bookedItinerary;
+
+  private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
   
   /**
    * Initializes the client class.
@@ -34,16 +40,16 @@ public class Client extends User implements Serializable {
    * @param lastName the last name of the client
    * @param address the last name of the client
    * @param creditCard the credit card information of the client
-   * @param creditExpriy the credit card expiry date of the client
+   * @param creditExpiry the credit card expiry date of the client
    */
   public Client(String email, String password, String firstName, 
-                String lastName, String address, String creditCard, Date creditExpiry) {
+                String lastName, String address, String creditCard, String creditExpiry) throws ParseException{
     super(email, password);
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;
     this.creditCard = creditCard;
-    this.creditExpiry = creditExpiry;
+    setCreditExpiry(creditExpiry);
     this.bookedItinerary = new ArrayList<Itinerary>();
   }
 
@@ -59,8 +65,10 @@ public class Client extends User implements Serializable {
    * Sets the client's credit card expiry date.
    * @param creditExpiry the client's credit card expiry date being set to
    */
-  public void setCreditExpiry(Date creditExpiry) {
-    this.creditExpiry = creditExpiry;
+  public void setCreditExpiry(String creditExpiry) throws ParseException {
+    if (ValidDate.validDateTime(creditExpiry)) {
+      this.creditExpiry = dateTime.parse(creditExpiry);
+    }
   }
 
   /**
@@ -121,7 +129,7 @@ public class Client extends User implements Serializable {
 
   /**
    * Sets the client's address.
-   * @param the client's address being set to
+   * @param address the client's address being set to
    */
   public void setAddress(String address) {
     this.address = address;
@@ -137,7 +145,7 @@ public class Client extends User implements Serializable {
 
   /**
    * Sets the client's credit card information.
-   * @param the credit card information being set to
+   * @param creditCard the credit card information being set to
    */
   public void setCreditCard(String creditCard) {
     this.creditCard = creditCard;
@@ -153,7 +161,7 @@ public class Client extends User implements Serializable {
 
   /**
    * Sets the client's booked itnerary.
-   * @param the booked itinerary being set to
+   * @param bookedItinerary the booked itinerary being set to
    */
   public void setBookedItinerary(List<Itinerary> bookedItinerary) {
     this.bookedItinerary = bookedItinerary;

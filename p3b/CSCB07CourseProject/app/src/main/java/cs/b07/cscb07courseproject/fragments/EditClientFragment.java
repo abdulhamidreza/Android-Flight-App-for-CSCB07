@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import java.text.ParseException;
+
 import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.users.Client;
@@ -50,12 +52,17 @@ public class EditClientFragment extends Fragment {
     }
 
     public static boolean updateProfile(){
-        password.getText().toString();
-        firstName.getText().toString();
-        lastName.getText().toString();
-        address.getText().toString();
-        creditCard.getText().toString();
-        creditCardExpiry.getText().toString();
-        return true;
+        try {
+            client.setPassword(password.getText().toString());
+            client.setFirstName(firstName.getText().toString());
+            client.setLastName(lastName.getText().toString());
+            client.setAddress(address.getText().toString());
+            client.setCreditCard(creditCard.getText().toString());
+            client.setCreditExpiry(creditCardExpiry.getText().toString());
+            // add update client profile to database
+            return true;
+        }catch(ParseException ex){
+            return false;
+        }
     }
 }
