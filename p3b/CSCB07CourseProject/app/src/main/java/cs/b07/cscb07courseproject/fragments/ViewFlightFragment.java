@@ -14,6 +14,7 @@ import cs.b07.cscb07courseproject.R;
  */
 public class ViewFlightFragment extends Fragment {
 
+    private static View rootView;
 
     public ViewFlightFragment() {
         // Required empty public constructor
@@ -24,7 +25,11 @@ public class ViewFlightFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_flight, container, false);
+        rootView = inflater.inflate(R.layout.fragment_view_flight, container, false);
+
+        getActivity().setTitle(R.string.flight_detail_title);
+
+        return rootView;
     }
 
 }

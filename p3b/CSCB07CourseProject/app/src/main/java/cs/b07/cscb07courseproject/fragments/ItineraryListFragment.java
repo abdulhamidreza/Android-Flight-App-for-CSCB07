@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cs.b07.cscb07courseproject.ClientActivity;
+import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.flightServices.FlightManager;
 import cs.b07.cscb07courseproject.flightServices.FlightService;
@@ -30,9 +31,11 @@ public class ItineraryListFragment extends Fragment {
     private static ListView itineraryListView;
     private static ArrayAdapter<String> adapter;
     private static String origin, destination, date;
-    private static boolean isDirect;
+    private static boolean isDirect, isClient;
     private static List<Itinerary> itineraries;
     private static List<String> stringItineraries;
+
+    public static final String itineraryKey = "itineraryKey";
 
     public ItineraryListFragment() {
         // Required empty public constructor
@@ -51,6 +54,7 @@ public class ItineraryListFragment extends Fragment {
         destination = getArguments().getString(ClientActivity.destinationKey);
         date = getArguments().getString(ClientActivity.dateKey);
         isDirect = getArguments().getBoolean(ClientActivity.isDirectKey);
+        isClient = getArguments().getBoolean(LogInActivity.isClientKey);
 
         FlightService flightService
                 = new FlightManager(null);
@@ -76,10 +80,30 @@ public class ItineraryListFragment extends Fragment {
                                     int position, long id) {
                 Toast.makeText(getActivity(), itineraries.get(position).toString(),
                         Toast.LENGTH_SHORT).show();
+
+                // Switch to detail view of Itinerary
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(itineraryKey, itineraries.get(position));
+                if (isClient) {
+                    bundle.putBoolean(LogInActivity.isClientKey, true);
+                } else {
+                    bundle.putBoolean(LogInActivity.isClientKey, false);
+                }
+                Fragment frag = new ItineraryBookFragment();
+                frag.setArguments(bundle);
+                setFragment(frag);
             }
         });
 
         return rootView;
     }
 
+    private void setFragment (Fragment fragment){
+        // changes the fragment
+        android.support.v4.app.FragmentTransaction ft =
+                getFragmentManager().beginTransaction();
+        ft.addToBackStack(null);
+        ft.replace(R.id.fragment_container, fragment);
+        ft.commit();
+    }
 }

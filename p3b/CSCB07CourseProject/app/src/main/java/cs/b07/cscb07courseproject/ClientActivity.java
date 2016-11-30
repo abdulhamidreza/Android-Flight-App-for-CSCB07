@@ -77,6 +77,7 @@ public class ClientActivity extends AppCompatActivity {
         bundle.putString(destinationKey,destinationET.getText().toString());
         bundle.putString(dateKey, dateET.getText().toString());
         bundle.putBoolean(isDirectKey, false);
+        bundle.putBoolean(LogInActivity.isClientKey, true);
 
         Fragment frag = new ItineraryListFragment();
         frag.setArguments(bundle);
@@ -90,8 +91,7 @@ public class ClientActivity extends AppCompatActivity {
     }
 
 
-
-    public void setFragment (Fragment fragment){
+    private void setFragment (Fragment fragment){
         // changes the fragment
         android.support.v4.app.FragmentTransaction ft =
                 getSupportFragmentManager().beginTransaction();

@@ -3,11 +3,16 @@ package cs.b07.cscb07courseproject.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.TextViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
+import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
+import cs.b07.cscb07courseproject.itinerary.Itinerary;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +20,8 @@ import cs.b07.cscb07courseproject.R;
 public class ItineraryBookFragment extends Fragment {
 
     private static View rootView;
+    private static boolean isClient;
+    private static Itinerary itinerary;
 
     public ItineraryBookFragment() {
         // Required empty public constructor
@@ -28,6 +35,18 @@ public class ItineraryBookFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_itinerary_book, container, false);
 
         getActivity().setTitle(R.string.book_itinerary_title);
+
+        itinerary = (Itinerary) getArguments().getSerializable(ItineraryListFragment.itineraryKey);
+        isClient = getArguments().getBoolean(LogInActivity.isClientKey);
+
+        Button btn = (Button) rootView.findViewById(R.id.itineraryBookBtn);
+        TextView tv = (TextView) rootView.findViewById(R.id.itineraryDetail);
+
+        if (!isClient) {
+            btn.setVisibility(View.GONE);
+        }
+
+        tv.setText(itinerary.toString());
 
         return rootView;
     }

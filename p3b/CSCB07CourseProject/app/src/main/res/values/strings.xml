@@ -59,6 +59,8 @@
     <string name="itineraries_list_title">Itineraries</string>
     <string name="book_itinerary_title">Itinerary Details</string>
     <string name="client_list_title">Clients</string>
+    <string name="flight_list_title">Flights</string>
+    <string name="flight_detail_title">Flight Detail</string>
     <string name="add_file_title">Add Through File</string>
 
 

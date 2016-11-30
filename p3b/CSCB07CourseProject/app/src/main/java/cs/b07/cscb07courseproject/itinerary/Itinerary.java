@@ -1,5 +1,6 @@
 package cs.b07.cscb07courseproject.itinerary;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 //import java.time.Duration;
@@ -9,7 +10,7 @@ import java.util.List;
 
 import cs.b07.cscb07courseproject.flight.Flight;
 
-public class Itinerary {
+public class Itinerary implements Serializable {
 
   private List<Flight> flights;
   private double totalCost; // the total cost in $
