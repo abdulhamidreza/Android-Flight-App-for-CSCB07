@@ -27,6 +27,7 @@
         android:layout_marginBottom="5dp"
         android:onClick="addFlight"/>
     <EditText
+        android:id = "@+id/adminOrigin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -37,6 +38,7 @@
         android:layout_marginBottom="5dp"
         android:inputType="text"/>
     <EditText
+        android:id = "@+id/adminDestination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/destination"
@@ -46,6 +48,7 @@
         android:layout_marginBottom="5dp"
         android:inputType="text"/>
     <EditText
+        android:id = "@+id/adminDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/date"

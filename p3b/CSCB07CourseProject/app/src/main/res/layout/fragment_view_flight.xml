@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="40dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_gravity="center"
+    tools:context="cs.b07.cscb07courseproject.fragments.ViewFlightFragment">
+
+    <EditText
+        android:id = "@+id/viewFlightNumber"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/flightNumber"
+        android:editable="false"
+        android:clickable="false"/>
+    <EditText
+        android:id = "@+id/viewAirline"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/airline"
+        android:editable="false"
+        android:clickable="false"/>
+    <EditText
+        android:id = "@+id/viewDepartureDate"
+        android:inputType="datetime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/departureDate"
+        android:editable="false"
+        android:clickable="false"/>
+    <EditText
+        android:id = "@+id/viewArrivalDate"
+        android:inputType="datetime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/arrivalDate"
+        android:editable="false"
+        android:clickable="false"/>
+    <EditText
+        android:id = "@+id/viewOrigin"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/origin"
+        android:editable="false"
+        android:clickable="false"/>
+    <EditText
+        android:id = "@+id/viewDestination"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/destination"
+        android:editable = "false"
+        android:clickable = "false"/>
+    <EditText
+        android:id = "@+id/viewAvailableSeats"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/availableSeats"
+        android:editable = "false"
+        android:clickable = "false"/>
+    <EditText
+        android:id = "@+id/viewCost"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/cost"
+        android:editable="false"
+        android:clickable="false"/>
+</LinearLayout>

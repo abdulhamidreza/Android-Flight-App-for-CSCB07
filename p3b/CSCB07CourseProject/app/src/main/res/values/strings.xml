@@ -22,6 +22,12 @@
     <string name="bookItinerary">Book Itinerary</string>
     <string name="pathToFile">Path to File</string>
     <string name="loadFile">Load File</string>
+    <string name="flightNumber">Flight Number</string>
+    <string name="airline">Airline</string>
+    <string name="departureDate">Departure Date</string>
+    <string name="arrivalDate">Arrival Date</string>
+    <string name="availableSeats">Available Seats</string>
+    <string name="cost">Cost</string>
 
     <!-- Strings related to login -->
     <string name="log_In">Log In</string>

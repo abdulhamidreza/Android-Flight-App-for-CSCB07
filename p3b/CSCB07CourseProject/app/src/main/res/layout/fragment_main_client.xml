@@ -34,6 +34,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
         <EditText
+            android:id = "@+id/clientOrigin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint = "@string/origin"
@@ -41,6 +42,7 @@
             android:layout_marginTop="16dp"
             android:inputType="text"/>
         <EditText
+            android:id = "@+id/clientDestination"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint = "@string/destination"
@@ -49,6 +51,7 @@
             android:layout_marginTop="16dp"
             android:inputType="text"/>
         <EditText
+            android:id = "@+id/clientDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/date"
