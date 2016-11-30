@@ -28,6 +28,7 @@
     <string name="arrivalDate">Arrival Date</string>
     <string name="availableSeats">Available Seats</string>
     <string name="cost">Cost</string>
+    <string name="updateFlight">Update Flight</string>
 
     <!-- Strings related to login -->
     <string name="log_In">Log In</string>

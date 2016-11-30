@@ -11,6 +11,7 @@ import java.util.Date;
 
 import cs.b07.cscb07courseproject.fragments.ClientProfileFragment;
 import cs.b07.cscb07courseproject.fragments.EditClientFragment;
+import cs.b07.cscb07courseproject.fragments.FlightListFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryBookFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryListFragment;
 import cs.b07.cscb07courseproject.fragments.MainClientFragment;
@@ -57,7 +58,7 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     public void findFlight(View view) {
-        /*Bundle bundle = new Bundle();
+        Bundle bundle = new Bundle();
         bundle.putString(originKey, MainClientFragment.getClientOrigin());
         bundle.putString(destinationKey, MainClientFragment.getClientDate());
         bundle.putString(dateKey, MainClientFragment.getClientDate());
@@ -66,7 +67,7 @@ public class ClientActivity extends AppCompatActivity {
 
         Fragment frag = new FlightListFragment();
         frag.setArguments(bundle);
-        setFragment(frag);*/
+        setFragment(frag);
     }
 
     public void findItinerary(View view) {

@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/flightNumber"
-        android:editable="false"
         android:clickable="false"/>
     <EditText
         android:id = "@+id/viewAirline"
@@ -23,7 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/airline"
-        android:editable="false"
         android:clickable="false"/>
     <EditText
         android:id = "@+id/viewDepartureDate"
@@ -31,7 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/departureDate"
-        android:editable="false"
         android:clickable="false"/>
     <EditText
         android:id = "@+id/viewArrivalDate"
@@ -39,7 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/arrivalDate"
-        android:editable="false"
         android:clickable="false"/>
     <EditText
         android:id = "@+id/viewOrigin"
@@ -47,7 +43,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/origin"
-        android:editable="false"
         android:clickable="false"/>
     <EditText
         android:id = "@+id/viewDestination"
@@ -55,7 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/destination"
-        android:editable = "false"
         android:clickable = "false"/>
     <EditText
         android:id = "@+id/viewAvailableSeats"
@@ -63,7 +57,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/availableSeats"
-        android:editable = "false"
         android:clickable = "false"/>
     <EditText
         android:id = "@+id/viewCost"
@@ -71,6 +64,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/cost"
-        android:editable="false"
         android:clickable="false"/>
+    <Button
+        android:id="@+id/updateFlightBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/updateFlight"
+        android:visibility="gone"
+        android:onClick="updateFlight"/>
 </LinearLayout>

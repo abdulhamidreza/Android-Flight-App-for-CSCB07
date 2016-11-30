@@ -1,5 +1,6 @@
 package cs.b07.cscb07courseproject.flight;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +20,7 @@ import cs.b07.cscb07courseproject.util.ValidDate;
  * @author lucsteph
  *
  */
-public class Flight {
+public class Flight implements Serializable {
   // Attributes
   private String flightNum;
   private Calendar arrivalDate;
