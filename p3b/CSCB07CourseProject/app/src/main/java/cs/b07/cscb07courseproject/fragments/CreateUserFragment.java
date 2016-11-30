@@ -75,14 +75,12 @@ public class CreateUserFragment extends Fragment {
     public static User createUser() throws ParseException{
         if (isClient) {
             String ccExpiryDate = creditCardExpiry.getText().toString().replace("/","-");
-
-            System.out.println(ccExpiryDate);
+;
             if (ValidDate.validDate(ccExpiryDate)) {
-                Date expiryDate = date.parse(ccExpiryDate);
                 return new Client(email.getText().toString(), password.getText().toString(),
                         firstName.getText().toString(), lastName.getText().toString(),
                         address.getText().toString(), creditCard.getText().toString(),
-                        expiryDate);
+                        ccExpiryDate);
             }else{
                 throw new ParseException("Unparseable date", 10);
             }

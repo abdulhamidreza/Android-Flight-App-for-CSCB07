@@ -30,7 +30,7 @@ public class Client extends User implements Serializable {
   private Date creditExpiry;
   private List<Itinerary> bookedItinerary;
 
-  private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+  private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
   
   /**
    * Initializes the client class.
@@ -66,8 +66,8 @@ public class Client extends User implements Serializable {
    * @param creditExpiry the client's credit card expiry date being set to
    */
   public void setCreditExpiry(String creditExpiry) throws ParseException {
-    if (ValidDate.validDateTime(creditExpiry)) {
-      this.creditExpiry = dateTime.parse(creditExpiry);
+    if (ValidDate.validDate(creditExpiry)) {
+      this.creditExpiry = date.parse(creditExpiry);
     }
   }
 
@@ -171,5 +171,14 @@ public class Client extends User implements Serializable {
    */
   public void setBookedItinerary(List<Itinerary> bookedItinerary) {
     this.bookedItinerary = bookedItinerary;
+  }
+
+
+  public String toString() {
+    return String.format("Email: %s\nFirst Name: %s\nLast Name: %s" +
+            "\nAddress: %s\nCredit Card Number: %s\nCredit Card Expiry Date: %s" +
+            "\nBooked Itinerary:\n%s",
+            getEmail(), getFirstName(), getLastName(), getAddress(), getCreditCard(),
+            date.format(getCreditExpiry()), getBookedItinerary());
   }
 }

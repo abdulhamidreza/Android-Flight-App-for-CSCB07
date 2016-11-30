@@ -7,8 +7,14 @@
     android:layout_marginTop="20dp"
     android:layout_marginBottom="20dp"
     tools:context="cs.b07.cscb07courseproject.fragments.ClientProfileFragment">
-    <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
         android:id = "@+id/clientProfile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"/>
+    </ScrollView>
+
 </LinearLayout>

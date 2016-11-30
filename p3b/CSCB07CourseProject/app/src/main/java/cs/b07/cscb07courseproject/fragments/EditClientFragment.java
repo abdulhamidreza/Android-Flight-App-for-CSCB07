@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.R;
@@ -22,6 +24,8 @@ public class EditClientFragment extends Fragment {
     private static EditText password,firstName,lastName,address,creditCard,creditCardExpiry;
     private static View rootView;
     private static Client client;
+
+    private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 
     public EditClientFragment() {
         // Required empty public constructor
@@ -47,7 +51,7 @@ public class EditClientFragment extends Fragment {
         lastName.setText(client.getLastName());
         address.setText(client.getAddress());
         creditCard.setText(client.getCreditCard());
-        creditCardExpiry.setText(client.getCreditExpiry().toString());
+        creditCardExpiry.setText(date.format(client.getCreditExpiry()));
         return rootView;
     }
 

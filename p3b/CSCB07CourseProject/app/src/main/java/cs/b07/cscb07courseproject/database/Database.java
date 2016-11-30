@@ -163,7 +163,7 @@ public class Database {
             // email,password,first,last,address, CC
             DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
             Client toAdd = new Client(strArr[2], "default", strArr[1], strArr[0], strArr[3], strArr[4],
-                    date.parse(strArr[5]));
+                    strArr[5]);
             // Check if this Client is already contained in the Database
             Client exists = this.getClient(toAdd.getEmail());
 
