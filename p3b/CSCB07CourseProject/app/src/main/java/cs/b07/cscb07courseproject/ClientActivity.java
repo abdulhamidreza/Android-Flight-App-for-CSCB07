@@ -88,7 +88,7 @@ public class ClientActivity extends AppCompatActivity {
 
 
 
-    private void setFragment (Fragment fragment){
+    public void setFragment (Fragment fragment){
         // changes the fragment
         android.support.v4.app.FragmentTransaction ft =
                 getSupportFragmentManager().beginTransaction();

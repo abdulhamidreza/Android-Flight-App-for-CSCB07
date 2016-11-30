@@ -112,6 +112,10 @@ public class Itinerary {
     return totalTime;
   }
 
+  public String getTotalTimeString(){
+    return String.format("%dH %dmin", Math.floor(totalTime / 360), Math.floor((totalTime%360)/60));
+  }
+
   /**
    * Refreshes the total time of this Itinerary.s
    * 
