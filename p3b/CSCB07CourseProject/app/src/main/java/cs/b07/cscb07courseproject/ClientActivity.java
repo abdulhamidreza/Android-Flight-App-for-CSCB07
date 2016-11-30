@@ -14,7 +14,6 @@ import cs.b07.cscb07courseproject.fragments.EditClientFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryBookFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryListFragment;
 import cs.b07.cscb07courseproject.fragments.MainClientFragment;
-import cs.b07.cscb07courseproject.fragments.PlaceHolderFragment;
 import cs.b07.cscb07courseproject.users.Client;
 
 public class ClientActivity extends AppCompatActivity {

@@ -10,7 +10,6 @@ import cs.b07.cscb07courseproject.fragments.AddThroughFileFragment;
 import cs.b07.cscb07courseproject.fragments.ClientListFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryListFragment;
 import cs.b07.cscb07courseproject.fragments.MainAdminFragment;
-import cs.b07.cscb07courseproject.fragments.PlaceHolderFragment;
 import cs.b07.cscb07courseproject.users.Admin;
 
 public class AdminActivity extends AppCompatActivity {
