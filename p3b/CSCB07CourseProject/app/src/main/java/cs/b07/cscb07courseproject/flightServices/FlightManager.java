@@ -55,7 +55,7 @@ public class FlightManager implements FlightService {
    * java.lang.String, java.util.Date)
    */
   @Override
-  public List<Itinerary> getItinerary(String origin, String destination, String departureDate)
+  public List<Itinerary> getItinerary(String origin, String destination, String departureDate, boolean isDirect)
       throws ParseException {
     Stack<String> location = new Stack<String>(); // all visited cities
     Stack<Flight> connection = new Stack<Flight>(); // all connection
@@ -85,7 +85,7 @@ public class FlightManager implements FlightService {
           // Else if checks to make sure the <code>Flight</code> destination
           // has <code>Flight</code>'s leaving from that destination
           // This is for transfer flights
-        } else if (mapOfFlights.containsKey(flight.getDestination())) {
+        } else if (mapOfFlights.containsKey(flight.getDestination()) && !isDirect) {
           connection.push(flight);
           // Calls private recursive method to find all connection
           // <code>Flight</code>

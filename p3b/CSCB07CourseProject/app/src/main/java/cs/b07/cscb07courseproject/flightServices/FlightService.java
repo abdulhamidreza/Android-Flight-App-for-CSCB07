@@ -28,7 +28,7 @@ public interface FlightService {
    * @throws ParseException
    *           if cannot parse date properly.
    */
-  public List<Itinerary> getItinerary(String origin, String deestination, String departDate)
+  public List<Itinerary> getItinerary(String origin, String deestination, String departDate, boolean isDirect)
       throws ParseException;
 
   /**
