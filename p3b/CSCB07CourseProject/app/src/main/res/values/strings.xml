@@ -11,7 +11,7 @@
     <string name="creditCardExpiryHint">Expiry date (ie. yyyy/mm/dd)</string>
     <string name="origin">Origin</string>
     <string name="destination">Destination</string>
-    <string name="date">Date</string>
+    <string name="departDate">Departure Date (ie. yyyy/mm/dd)</string>
     <string name="searchFlight">Search Flight</string>
     <string name="searchItineraries">Search Itineraries</string>
     <string name="addClient">Add Client</string>
@@ -76,6 +76,8 @@
     <string name="msg_profile_update_success">Profile Updated</string>
     <string name="msg_profile_update_unsuccessful">Could not Update Profile</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Warnings and acceptance -->
+    <string name="book_error">Error booking itinerary</string>
+    <string name="book_success">Booked itinerary</string>
+    <string name="fill_out_details">Fill in origin, destination and departure date</string>
 </resources>

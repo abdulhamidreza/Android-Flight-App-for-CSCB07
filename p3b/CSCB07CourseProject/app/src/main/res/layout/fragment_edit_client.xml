@@ -21,19 +21,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/firstNameHint"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName|textCapWords"/>
     <EditText
         android:id = "@+id/clientLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/lastNameHint"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName|textCapWords"/>
     <EditText
         android:id = "@+id/clientAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/addressHint"
-        android:inputType="textPostalAddress"/>
+        android:inputType="textPostalAddress|textCapWords"/>
     <EditText
         android:id = "@+id/clientCreditCard"
         android:layout_width="match_parent"

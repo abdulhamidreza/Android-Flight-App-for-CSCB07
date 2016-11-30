@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/controller_padding"
             android:hint="@string/firstNameHint"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName|textCapWords"/>
         <EditText
             android:id = "@+id/lastName"
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:paddingTop="@dimen/controller_padding"
             android:layout_below="@+id/firstName"
             android:hint="@string/lastNameHint"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName|textCapWords"/>
         <EditText
             android:id = "@+id/address"
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             android:paddingTop="@dimen/controller_padding"
             android:layout_below="@+id/lastName"
             android:hint="@string/addressHint"
-            android:inputType="textPostalAddress"/>
+            android:inputType="textPostalAddress|textCapWords"/>
         <EditText
             android:id = "@+id/creditCard"
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
             android:paddingTop="@dimen/controller_padding"
             android:layout_below="@+id/address"
             android:hint="@string/creditCardHint"
-            android:inputType="numberDecimal"/>
+            android:inputType="number"/>
         <EditText
             android:id = "@+id/creditCardExpiry"
             android:layout_width="match_parent"

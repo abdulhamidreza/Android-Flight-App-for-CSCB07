@@ -1,13 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="cs.b07.cscb07courseproject.fragments.MainClientFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginBtn"
         android:orientation="horizontal"
         android:layout_gravity="top"
         android:layout_marginLeft="20dp"
@@ -40,29 +40,30 @@
             android:hint = "@string/origin"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:inputType="text"/>
+            android:gravity="center"
+            android:inputType="textCapWords"/>
         <EditText
             android:id = "@+id/clientDestination"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint = "@string/destination"
-            android:layout_gravity="center"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:inputType="text"/>
+            android:gravity="center"
+            android:inputType="textCapWords"/>
         <EditText
             android:id = "@+id/clientDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/date"
+            android:hint="@string/departDate"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
+            android:gravity="center"
             android:inputType="date"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginBtn"
         android:orientation="horizontal"
         android:layout_gravity="bottom"
         android:layout_marginLeft="20dp"
@@ -81,5 +82,5 @@
             android:text="@string/findItinerary"
             android:onClick="findItinerary"/>
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>
 

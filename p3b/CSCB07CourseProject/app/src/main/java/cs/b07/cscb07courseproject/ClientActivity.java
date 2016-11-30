@@ -60,35 +60,44 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     public void findFlight(View view) {
-        Bundle bundle = new Bundle();
-        bundle.putString(originKey, MainClientFragment.getClientOrigin());
-        bundle.putString(destinationKey, MainClientFragment.getClientDate());
-        bundle.putString(dateKey, MainClientFragment.getClientDate());
-        bundle.putBoolean(isDirectKey, true);
-        bundle.putBoolean(LogInActivity.isClientKey, true);
+        Bundle bundle = MainClientFragment.bundleFlightDetail();
+        if (!bundle.isEmpty()) {
+            bundle.putBoolean(isDirectKey, true);
+            bundle.putBoolean(LogInActivity.isClientKey, true);
 
-        Fragment frag = new FlightListFragment();
-        frag.setArguments(bundle);
-        setFragment(frag);
+            Fragment frag = new FlightListFragment();
+            frag.setArguments(bundle);
+            setFragment(frag);
+        }else{
+            Toast.makeText(this,
+                    getString(R.string.fill_out_details),
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void findItinerary(View view) {
-        Bundle bundle = new Bundle();
-        bundle.putString(originKey, MainClientFragment.getClientOrigin());
-        bundle.putString(destinationKey, MainClientFragment.getClientDestination());
-        bundle.putString(dateKey, MainClientFragment.getClientDate());
-        bundle.putBoolean(isDirectKey, false);
-        bundle.putBoolean(LogInActivity.isClientKey, true);
+        Bundle bundle = MainClientFragment.bundleFlightDetail();
+        if (!bundle.isEmpty()) {
+            bundle.putBoolean(isDirectKey, false);
+            bundle.putBoolean(LogInActivity.isClientKey, true);
 
-        Fragment frag = new ItineraryListFragment();
-        frag.setArguments(bundle);
-        setFragment(frag);
+            Fragment frag = new ItineraryListFragment();
+            frag.setArguments(bundle);
+            setFragment(frag);
+        }else{
+            Toast.makeText(this,
+                    getString(R.string.fill_out_details),
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void updateProfile(View view) {
         if (EditClientFragment.updateProfile()){
             Fragment frag = new MainClientFragment();
             setFragment(frag);
+            Toast.makeText(this,
+                    getString(R.string.msg_profile_update_success),
+                    Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this,
                     getString(R.string.msg_profile_update_unsuccessful),
@@ -100,9 +109,12 @@ public class ClientActivity extends AppCompatActivity {
         if(ItineraryBookFragment.bookItinerary()) {
             Fragment frag = new MainClientFragment();
             setFragment(frag);
+            Toast.makeText(this,
+                    getString(R.string.book_success),
+                    Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this,
-                    getString(R.string.msg_signup_success),
+                    getString(R.string.book_error),
                     Toast.LENGTH_LONG).show();
         }
     }

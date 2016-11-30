@@ -101,11 +101,11 @@ public class LogInActivity extends AppCompatActivity {
 
             Toast.makeText(this,
                     getString(R.string.msg_signup_success),
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
         }catch (ParseException e) {
             Toast.makeText(this,
                     getString(R.string.msg_signup_error),
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
 
         }
     }

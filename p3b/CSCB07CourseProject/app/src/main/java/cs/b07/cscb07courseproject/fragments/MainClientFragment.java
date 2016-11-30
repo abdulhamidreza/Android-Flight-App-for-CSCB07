@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.R;
 
 /**
@@ -39,16 +40,16 @@ public class MainClientFragment extends Fragment {
         return rootView;
     }
 
-    public static String getClientOrigin(){
-        return originET.getText().toString();
+    public static Bundle bundleFlightDetail(){
+        Bundle bundle = new Bundle();
+        String origin = originET.getText().toString();
+        String destination = destinationET.getText().toString();
+        String date = dateET.getText().toString();
+        if (!origin.equals("") && !destination.equals("") && !date.equals("")){
+            bundle.putString(ClientActivity.originKey, origin);
+            bundle.putString(ClientActivity.destinationKey, destination);
+            bundle.putString(ClientActivity.dateKey, date);
+        }
+        return bundle;
     }
-
-    public static String getClientDestination() {
-        return  destinationET.getText().toString();
-    }
-
-    public static String getClientDate(){
-        return dateET.getText().toString();
-    }
-
 }

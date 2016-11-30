@@ -11,14 +11,14 @@
 
     <EditText
         android:id = "@+id/viewFlightNumber"
-        android:inputType="number"
+        android:inputType="textCapCharacters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/flightNumber"
         android:clickable="false"/>
     <EditText
         android:id = "@+id/viewAirline"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/airline"
@@ -39,14 +39,14 @@
         android:clickable="false"/>
     <EditText
         android:id = "@+id/viewOrigin"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/origin"
         android:clickable="false"/>
     <EditText
         android:id = "@+id/viewDestination"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/destination"
