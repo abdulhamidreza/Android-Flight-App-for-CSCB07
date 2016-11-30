@@ -49,12 +49,13 @@ public class EditClientFragment extends Fragment {
         return rootView;
     }
 
-    public static void updateProfile(){
+    public static boolean updateProfile(){
         password.getText().toString();
         firstName.getText().toString();
         lastName.getText().toString();
         address.getText().toString();
         creditCard.getText().toString();
         creditCardExpiry.getText().toString();
+        return true;
     }
 }

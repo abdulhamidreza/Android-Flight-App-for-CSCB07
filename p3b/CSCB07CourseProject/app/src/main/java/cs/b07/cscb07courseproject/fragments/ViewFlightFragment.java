@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -90,6 +91,23 @@ public class ViewFlightFragment extends Fragment {
         viewAirline.setText(dateTime.format(flight.getArrivalDate().getTime()));
         viewSeats.setText(flight.getAvailableSeats());
         viewCost.setText(String.format("$%f",flight.getCost()));
+    }
+
+    public static boolean updateFlightInfo(){
+        try {
+            flight.setFlightNum(viewFlightNum.getText().toString());
+            flight.setOrigin(viewOrigin.getText().toString());
+            flight.setDestination(viewDestination.getText().toString());
+            flight.setAirline(viewAirline.getText().toString());
+            flight.setDepartureDate(viewDepDate.getText().toString());
+            flight.setArrivalDate(viewArrivalDate.getText().toString());
+            flight.setAvailableSeats(Integer.parseInt(viewSeats.getText().toString()));
+            flight.setCost(Double.parseDouble(viewCost.getText().toString().substring(1)));
+            // update flight info with database
+            return true;
+        }catch(ParseException ex){
+            return false;
+        }
     }
 
 }

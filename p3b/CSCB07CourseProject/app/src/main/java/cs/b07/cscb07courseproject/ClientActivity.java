@@ -15,6 +15,7 @@ import cs.b07.cscb07courseproject.fragments.FlightListFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryBookFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryListFragment;
 import cs.b07.cscb07courseproject.fragments.MainClientFragment;
+import cs.b07.cscb07courseproject.fragments.ViewFlightFragment;
 import cs.b07.cscb07courseproject.users.Client;
 
 public class ClientActivity extends AppCompatActivity {
@@ -91,7 +92,6 @@ public class ClientActivity extends AppCompatActivity {
         Fragment frag = new MainClientFragment();
         setFragment(frag);
     }
-
 
     private void setFragment (Fragment fragment){
         // changes the fragment

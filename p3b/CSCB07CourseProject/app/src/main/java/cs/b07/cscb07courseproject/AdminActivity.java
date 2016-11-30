@@ -10,6 +10,7 @@ import cs.b07.cscb07courseproject.fragments.AddThroughFileFragment;
 import cs.b07.cscb07courseproject.fragments.ClientListFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryListFragment;
 import cs.b07.cscb07courseproject.fragments.MainAdminFragment;
+import cs.b07.cscb07courseproject.fragments.ViewFlightFragment;
 import cs.b07.cscb07courseproject.users.Admin;
 
 public class AdminActivity extends AppCompatActivity {
@@ -62,6 +63,12 @@ public class AdminActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
+    public void updateFlight(){
+        if(ViewFlightFragment.updateFlightInfo()){
+            Fragment frag = new MainAdminFragment();
+            setFragment(frag);
+        }
+    }
 
     private void setFragment (Fragment fragment){
         // changes the fragment
