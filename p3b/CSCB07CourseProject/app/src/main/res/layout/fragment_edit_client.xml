@@ -11,31 +11,37 @@
     tools:context="cs.b07.cscb07courseproject.fragments.EditClientFragment">
 
     <EditText
+        android:id = "@+id/clientPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/passwordHint"
         android:inputType="textPassword"/>
     <EditText
+        android:id = "@+id/clientFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/firstNameHint"
         android:inputType="textPersonName"/>
     <EditText
+        android:id = "@+id/clientLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/lastNameHint"
         android:inputType="textPersonName"/>
     <EditText
+        android:id = "@+id/clientAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/addressHint"
         android:inputType="textPostalAddress"/>
     <EditText
+        android:id = "@+id/clientCreditCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/creditCardHint"
         android:inputType="number"/>
     <EditText
+        android:id = "@+id/clientCreditExpiry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "@string/creditCardExpiryHint"
