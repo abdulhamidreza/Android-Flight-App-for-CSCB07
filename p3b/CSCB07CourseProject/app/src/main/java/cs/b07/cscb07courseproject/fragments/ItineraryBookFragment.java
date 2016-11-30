@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.itinerary.Itinerary;
@@ -49,6 +50,10 @@ public class ItineraryBookFragment extends Fragment {
         tv.setText(itinerary.toString());
 
         return rootView;
+    }
+
+    public static void bookItinerary() {
+        ClientActivity.client.book(itinerary);
     }
 
 }

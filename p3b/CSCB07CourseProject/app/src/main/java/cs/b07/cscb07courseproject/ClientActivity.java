@@ -19,7 +19,6 @@ import cs.b07.cscb07courseproject.users.Client;
 public class ClientActivity extends AppCompatActivity {
 
     public static Client client;
-    private static EditText originET, destinationET, dateET, clientPassword, clientFirst, clientLast, clientAddress, clientCreditCard, clientCreditExpiry;
 
     public static final String originKey = "originKey";
     public static final String destinationKey = "destinationKey";
@@ -35,10 +34,6 @@ public class ClientActivity extends AppCompatActivity {
 
         client = (Client) intent.getSerializableExtra(LogInActivity.userKey);
 
-        /*originET = (EditText) findViewById(R.id.);
-        destinationET = (EditText) findViewById(R.id.);
-        dateET = (EditText) findViewById(R.id.); */
-
         Fragment frag = new MainClientFragment();
         setFragment(frag);
     }
@@ -53,6 +48,7 @@ public class ClientActivity extends AppCompatActivity {
 
     public void editProfile(View view) {
         Bundle bundle = new Bundle();
+        // maybe erase this and just call client variable from this class in editClientFragment
         bundle.putSerializable(clientKey, client);
 
         Fragment frag = new EditClientFragment();
@@ -62,10 +58,12 @@ public class ClientActivity extends AppCompatActivity {
 
     public void findFlight(View view) {
         /*Bundle bundle = new Bundle();
-        bundle.putString(originKey, originET.getText().toString());
-        bundle.putString(destinationKey,destinationET.getText().toString());
-        bundle.putString(dateKey, dateET.getText().toString());
+        bundle.putString(originKey, MainClientFragment.getClientOrigin());
+        bundle.putString(destinationKey, MainClientFragment.getClientDate());
+        bundle.putString(dateKey, MainClientFragment.getClientDate());
         bundle.putBoolean(isDirectKey, true);
+        bundle.putBoolean(LogInActivity.isClientKey, true);
+
         Fragment frag = new FlightListFragment();
         frag.setArguments(bundle);
         setFragment(frag);*/
@@ -73,9 +71,9 @@ public class ClientActivity extends AppCompatActivity {
 
     public void findItinerary(View view) {
         Bundle bundle = new Bundle();
-        bundle.putString(originKey, originET.getText().toString());
-        bundle.putString(destinationKey,destinationET.getText().toString());
-        bundle.putString(dateKey, dateET.getText().toString());
+        bundle.putString(originKey, MainClientFragment.getClientOrigin());
+        bundle.putString(destinationKey, MainClientFragment.getClientDestination());
+        bundle.putString(dateKey, MainClientFragment.getClientDate());
         bundle.putBoolean(isDirectKey, false);
         bundle.putBoolean(LogInActivity.isClientKey, true);
 
@@ -88,6 +86,9 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     public void bookItinerary(View view) {
+        ItineraryBookFragment.bookItinerary();
+        Fragment frag = new MainClientFragment();
+        setFragment(frag);
     }
 
 
