@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.R;
 
 /**
@@ -28,6 +30,9 @@ public class ClientProfileFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_client_profile, container, false);
 
         getActivity().setTitle(R.string.view_profile);
+
+        TextView clientProfile = (TextView) rootView.findViewById(R.id.clientProfile);
+        clientProfile.setText(ClientActivity.client.toString());
 
         return rootView;
     }

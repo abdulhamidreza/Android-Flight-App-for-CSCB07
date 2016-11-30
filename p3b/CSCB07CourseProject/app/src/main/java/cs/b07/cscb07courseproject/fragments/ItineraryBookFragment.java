@@ -52,8 +52,12 @@ public class ItineraryBookFragment extends Fragment {
         return rootView;
     }
 
-    public static void bookItinerary() {
-        ClientActivity.client.book(itinerary);
+    public static boolean bookItinerary() {
+        if (ClientActivity.client.book(itinerary)) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

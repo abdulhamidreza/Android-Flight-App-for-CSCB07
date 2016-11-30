@@ -75,8 +75,14 @@ public class Client extends User implements Serializable {
    * Books an itinerary to the client.
    * @param toBook the itinerary being booked
    */
-  public void book(Itinerary toBook) {
-    bookedItinerary.add(toBook);
+  public boolean book(Itinerary toBook) {
+    Date today = new Date();
+    if (creditExpiry.after(today)) {
+      bookedItinerary.add(toBook);
+      return true;
+    }else{
+      return false;
+    }
   }
 
   /**

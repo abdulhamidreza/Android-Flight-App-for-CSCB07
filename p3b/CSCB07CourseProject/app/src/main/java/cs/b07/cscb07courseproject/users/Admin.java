@@ -1,6 +1,7 @@
 package cs.b07.cscb07courseproject.users;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.Date;
 
   /*
@@ -125,7 +126,7 @@ public class Admin extends User implements Serializable {
    * @param client the target client
    * @param setAddress the credit card expiry of the client being set to
    */
-  public void setClientExpiry(Client client, Date expiry) {
+  public void setClientExpiry(Client client, String expiry) throws ParseException {
     client.setCreditExpiry(expiry);
   }
 

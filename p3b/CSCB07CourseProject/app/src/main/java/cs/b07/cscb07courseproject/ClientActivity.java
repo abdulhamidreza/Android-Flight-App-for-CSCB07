@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -88,13 +89,22 @@ public class ClientActivity extends AppCompatActivity {
         if (EditClientFragment.updateProfile()){
             Fragment frag = new MainClientFragment();
             setFragment(frag);
+        }else{
+            Toast.makeText(this,
+                    getString(R.string.msg_profile_update_unsuccessful),
+                    Toast.LENGTH_LONG).show();
         }
     }
 
     public void bookItinerary(View view) {
-        ItineraryBookFragment.bookItinerary();
-        Fragment frag = new MainClientFragment();
-        setFragment(frag);
+        if(ItineraryBookFragment.bookItinerary()) {
+            Fragment frag = new MainClientFragment();
+            setFragment(frag);
+        }else{
+            Toast.makeText(this,
+                    getString(R.string.msg_signup_success),
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     private void setFragment (Fragment fragment){

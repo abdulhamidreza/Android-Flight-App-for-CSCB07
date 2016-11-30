@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import cs.b07.cscb07courseproject.fragments.AddThroughFileFragment;
 import cs.b07.cscb07courseproject.fragments.ClientListFragment;
@@ -67,6 +68,10 @@ public class AdminActivity extends AppCompatActivity {
         if(ViewFlightFragment.updateFlightInfo()){
             Fragment frag = new MainAdminFragment();
             setFragment(frag);
+        }else{
+            Toast.makeText(this,
+                    getString(R.string.msg_signup_success),
+                    Toast.LENGTH_LONG).show();
         }
     }
 
