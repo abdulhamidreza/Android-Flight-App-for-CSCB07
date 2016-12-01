@@ -1,5 +1,6 @@
 package driver;
 
+    import java.io.IOException;
     import java.text.DateFormat;
     import java.text.ParseException;
     import java.text.SimpleDateFormat;
@@ -8,6 +9,9 @@ package driver;
     import java.util.Date;
     import java.util.List;
     import java.util.concurrent.TimeUnit;
+
+    import cs.b07.cscb07courseproject.database.Database;
+    import cs.b07.cscb07courseproject.users.Client;
 
 /** A Driver used for autotesting the project backend. */
 public class Driver {
@@ -19,6 +23,7 @@ public class Driver {
     private static final DateFormat date = new SimpleDateFormat("yyyy-MM-dd", locale);
     private static final DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", locale);
     private static final DateFormat time = new SimpleDateFormat("HH:mm", locale);
+    public static Database db = new Database("/client.txt", "/admin.txt", "/flight.txt");
 
     /**
      * Uploads client information to the application from the file at the
@@ -29,7 +34,18 @@ public class Driver {
      *     The ExpiryDate is stored in the format yyyy-MM-dd.
      */
     public static void uploadClientInfo(String path) {
-        // TODO: complete this method body
+        int i = path.length() - 1;
+        while(path.charAt(i) != '/') {
+            i--;
+        }
+        String dirName = path.substring(0, i);
+        String fileName = path.substring(i);
+        try {
+            db.readInClientTxt(dirName, fileName);
+        } catch(IOException|ParseException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     /**
@@ -42,7 +58,17 @@ public class Driver {
      *     decimal places. NumSeats must be a non-negative integer.
      */
     public static void uploadFlightInfo(String path) {
-        // TODO: complete this method body
+        int i = path.length() - 1;
+        while(path.charAt(i) != '/') {
+            i--;
+        }
+        String dirName = path.substring(0, i);
+        String fileName = path.substring(i);
+        try {
+            db.readFlightTxt(dirName, fileName);
+        } catch(IOException|ParseException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -57,16 +83,13 @@ public class Driver {
 
         // TODO: complete/rewrite this method body
         // The code below gives you the format in which the auto-tester expects the output.
-        String lastName = "Roe";
-        String firstNames = "Richard";
-        String address = "21 First Lane Way";
-        String ccNumber = "9999888877776666";
-        Date expiryDate = null;
-        try {
-            expiryDate = date.parse("2017-10-01");
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
+        Client test = db.getClient(email);
+        String lastName = test.getLastName();
+        String firstNames = test.getFirstName();
+        String address = test.getAddress();
+        String ccNumber = test.getCreditCard();
+        Date expiryDate = test.getCreditExpiry();
+
         return String.format("%s;%s;%s;%s;%s;%s",
                 lastName, firstNames, email, address, ccNumber, date.format(expiryDate));
     }

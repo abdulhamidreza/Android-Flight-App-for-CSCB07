@@ -17,7 +17,8 @@ public class SampleTests {
     public static final int TIMEOUT = 200;
 
     // NOTE: set the PATH variable to the location of the input files.
-    public static final String PATH = "/anya/b07/project/PhaseIII/starter/src/sampletests/";
+    //public static final String PATH = "/anya/b07/project/PhaseIII/starter/src/sampletests/";
+    public static final String PATH = "/home/william/school/cscb07/team_0595/p3b/CSCB07CourseProject/app/src/test/java/cs/b07/cscb07courseproject/";
     public static final String CLIENTS = PATH + "clients.txt";
     public static final String FLIGHTS1 = PATH + "flights1.txt";
     public static final String FLIGHTS2 = PATH + "flights2.txt";
@@ -41,7 +42,7 @@ public class SampleTests {
 
         Driver.uploadFlightInfo(FLIGHTS1);
 
-        String expected = "KL490;2016-09-30 22:40;2016-10-01 01:59;Go Airline;New York;Boston;532.00;03:19";
+        String expected = "KL490;2016-09-30 22:40;2016-10-01 01:59;Go Airline;New York;Boston;532.00;03.19";
         List<String> found = Driver.getFlights("2016-09-30", "New York", "Boston");
         String msg =
                 "Unexpected (incorrect or incorrectly formatted) flight information "

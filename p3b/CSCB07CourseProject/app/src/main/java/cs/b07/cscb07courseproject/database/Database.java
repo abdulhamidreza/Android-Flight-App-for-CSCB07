@@ -35,7 +35,7 @@ public class Database {
      * @throws IOException
      *
      */
-    public Database(String inClientDir, String inAdminDir, String inFlightDir) throws IOException {
+    public Database(String inClientDir, String inAdminDir, String inFlightDir) {
         // reads in data from files
         this.clients = new ArrayList<Client>();
         this.admins = new ArrayList<Admin>();
@@ -57,9 +57,9 @@ public class Database {
      * @throws NumberFormatException thrown if Price in file is not a valid Double
      * @throws ParseException thrown if arrival time and/or departure time are not valid Dates
      */
-    public void readFlightTxt(String inFlightDir)
+    public void readFlightTxt(String inFlightDir, String inFlightName)
             throws IOException, NumberFormatException, ParseException {
-        File FlightTxt = new File(inFlightDir, "flight.txt");
+        File FlightTxt = new File(inFlightDir, inFlightName);
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream((FlightTxt))));
         // Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price;NumSeats
         String line;
@@ -67,10 +67,8 @@ public class Database {
             // Usually this is a terrible way to parse value seperated files. This is acceptable here,
             // because data cannot contain semicolons
             String[] strArr = line.split(";");
-            // String origin, String destonation, String airline, String departureDate, String
-            // arrivalDate, int availableSeats, double cost
-            Flight toAdd = new Flight(strArr[0], strArr[4], strArr[5], strArr[3], strArr[1], strArr[2],
-                    Integer.valueOf(strArr[7]), Double.valueOf(strArr[6]));
+            // String number, String origin, String destonation, String airline, String departureDate, String arrivalDate, int availableSeats, double cost
+            Flight toAdd = new Flight(strArr[0],strArr[4],strArr[5],strArr[3],strArr[1],strArr[2],Integer.valueOf(strArr[7]),Double.valueOf(strArr[6]));
             // Check if this Flight is already contained in the Database
             Flight exists = this.getFlight(toAdd.getFlightNum());
 
@@ -152,9 +150,9 @@ public class Database {
      * @throws ParseException thrown if Expiry date is not in specified format
      */
     public void readClientTxt(String inClientDir) throws IOException, ParseException {
-        // LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
-        File adminTxt = new File(inClientDir, "client.txt");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(adminTxt)));
+        // LastName;FirstNames;Email;Password;Address;CreditCardNumber;ExpiryDate
+        File clientTxt = new File(inClientDir, "client.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(clientTxt)));
         String line;
         while ((line = reader.readLine()) != null) {
             // Usually this is a terrible way to parse value separated files. This is acceptable here,
@@ -162,8 +160,8 @@ public class Database {
             String[] strArr = line.split(";");
             // email,password,first,last,address, CC
             DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-            Client toAdd = new Client(strArr[2], "default", strArr[1], strArr[0], strArr[3], strArr[4],
-                    strArr[5]);
+            Client toAdd = new Client(strArr[2], strArr[3], strArr[1], strArr[0], strArr[4], strArr[5],
+                    date.parse(strArr[6]));
             // Check if this Client is already contained in the Database
             Client exists = this.getClient(toAdd.getEmail());
 
@@ -180,6 +178,45 @@ public class Database {
 
 
     }
+
+    /**
+     * Used for reading in data, in same form as Phase 2.
+     *
+     * @param inClientDir the directory of the .txt file
+     * @throws IOException thrown when I/O error occurs
+     * @throws ParseException thrown if Expiry date is not in specified format
+     */
+    public void readInClientTxt(String inClientDir, String fileName) throws IOException, ParseException {
+        // LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
+        File clientTxt = new File(inClientDir, fileName);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(clientTxt)));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            // Usually this is a terrible way to parse value separated files. This is acceptable here,
+            // because data cannot contain semicolons
+            String[] strArr = line.split(";");
+            // email,password,first,last,address, CC
+            DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+            Client toAdd = new Client(strArr[2], "default", strArr[1], strArr[0], strArr[3], strArr[4],
+                    strArr[5]);
+
+            Client exists = this.getClient(toAdd.getEmail());
+
+            if (exists != null) {
+
+                this.deleteClient(exists);
+
+
+            }
+            this.AddNewClient(toAdd);
+        }
+
+        updateClient();
+
+
+    }
+
+
 
     /**
      * returns a Client object in this Database with a specific email.

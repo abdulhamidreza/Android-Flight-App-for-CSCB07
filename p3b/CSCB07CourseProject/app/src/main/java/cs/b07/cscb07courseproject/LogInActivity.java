@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import java.io.IOException;
 import java.text.ParseException;
 
 import cs.b07.cscb07courseproject.fragments.LogInFragment;
 import cs.b07.cscb07courseproject.fragments.CreateUserFragment;
 import cs.b07.cscb07courseproject.users.Admin;
 import cs.b07.cscb07courseproject.users.User;
+import cs.b07.cscb07courseproject.database.Database;
 
 //import static android.content.Intent.EXTRA_USER;
 
@@ -29,6 +31,10 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        Database db = new Database("./client.txt", "./admin.txt", "./flight.txt");
+
 
         setFragment(new LogInFragment());
 
