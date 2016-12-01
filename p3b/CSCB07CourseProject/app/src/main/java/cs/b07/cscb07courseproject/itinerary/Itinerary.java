@@ -179,6 +179,19 @@ public class Itinerary implements Serializable {
 
     return itineraryFormat.getBytes();
   }
+
+  public String oneLine() {
+    String itineraryFormat = "";
+    for (Flight flight : flights) {
+      itineraryFormat += String.format("%s;%s;%s;%s;%s;%s", flight.getFlightNum(),
+              dateTime.format(flight.getDepartureDate().getTime()),
+              dateTime.format(flight.getArrivalDate().getTime()), flight.getAirline(),
+              flight.getOrigin(), flight.getDestination());
+    }
+
+    return itineraryFormat;
+
+  }
   @Override
   public String toString() {
     String itineraryFormat = "";

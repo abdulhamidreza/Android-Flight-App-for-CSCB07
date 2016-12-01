@@ -175,9 +175,20 @@ public class Client extends User implements Serializable {
 
   public byte[] getBytes() {
     // LastName;FirstNames;Email;Password;Address;CreditCardNumber;ExpiryDate;bookedItinerary
-    return String.format("%s;%s;%s;%s;%s;%s;%s;%s", getLastName(), getFirstName(), getEmail(), getPassword(), getAddress(), getCreditCard(), getCreditExpiry().toString(),bookedItinerary.toString()).getBytes();
+    return String.format("%s;%s;%s;%s;%s;%s;%s;%s", getLastName(), getFirstName(), getEmail(), getPassword(), getAddress(), getCreditCard(), date.format(getCreditExpiry()),oneLineFlightItinerary()).getBytes();
   }
 
+  public String oneLineFlightItinerary() {
+    String toReturn = "[";
+    for(int i = 0; i< bookedItinerary.size() ; i++) {
+      toReturn += bookedItinerary.get(i).oneLine();
+      if(i != bookedItinerary.size() - 1) {
+        toReturn += ",";
+      }
+    }
+    toReturn += "]";
+    return toReturn;
+  }
 
   public String toString() {
     return String.format("Email: %s\nFirst Name: %s\nLast Name: %s" +

@@ -298,8 +298,7 @@ public class Database implements Serializable {
             // Usually this is a terrible way to parse value separated files. This is acceptable here,
             // because data cannot contain semicolons
             String[] strArr = line.split(";");
-            // email,password,first,last,address, CC
-            DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+            // email,password,first,last,address, CC, CCexpiry
             Client toAdd = new Client(strArr[2], "default", strArr[1], strArr[0], strArr[3], strArr[4],
                     strArr[5]);
 

@@ -1,2 +1,2 @@
-Doe;Jane;jane@email.com;default;123 Main Street;1111222233334444;Fri Aug 24 00:00:00 EDT 2018;[]
-Roe;Richard;richard@email.com;default;21 First Lane Way;9999888877776666;Sun Oct 01 00:00:00 EDT 2017;[]
+Doe;Jane;jane@email.com;default;123 Main Street;1111222233334444;2018-08-24;[]
+Roe;Richard;richard@email.com;default;21 First Lane Way;9999888877776666;2017-10-01;[]
