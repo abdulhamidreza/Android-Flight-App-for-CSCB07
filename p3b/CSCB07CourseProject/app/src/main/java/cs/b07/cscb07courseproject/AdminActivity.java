@@ -36,7 +36,7 @@ public class AdminActivity extends AppCompatActivity {
         setFragment(frag);
     }
     /*
-     * Changes the current fragment to the AddThroughFileFragment fragment.
+     * Changes the current view to the AddThroughFileFragment fragment.
      * @param view the current view
      */
     public void addClient(View view) {
@@ -46,7 +46,7 @@ public class AdminActivity extends AppCompatActivity {
         setFragment(frag);
     }
     /*
-     * Changes the current fragment to the ClientListFragment fragment.
+     * Changes the current view to the ClientListFragment fragment.
      * @param view the current view
      */
     public void viewClients(View view) {
@@ -56,7 +56,7 @@ public class AdminActivity extends AppCompatActivity {
         setFragment(frag);
     }
     /*
-     * Changes the current fragment to the AddThroughFileFragment fragment.
+     * Changes the current view to the AddThroughFileFragment fragment.
      * @param view the current view
      */
     public void addFlight(View view) {
@@ -66,7 +66,7 @@ public class AdminActivity extends AppCompatActivity {
         setFragment(frag);
     }
     /*
-     * Changes the current fragment to the """""""""""""""" fragment.
+     * Changes the current view to the """""""""""""""" fragment.
      * @param view the current view
      */
     public void searchFlight(View view) {
@@ -76,7 +76,7 @@ public class AdminActivity extends AppCompatActivity {
         setFragment(frag);*/
     }
     /*
-     * Changes the current fragment to the ItineraryListFragment fragment.
+     * Changes the current view to the ItineraryListFragment fragment.
      * @param view the current view
      */
     public void searchItineraries(View view) {

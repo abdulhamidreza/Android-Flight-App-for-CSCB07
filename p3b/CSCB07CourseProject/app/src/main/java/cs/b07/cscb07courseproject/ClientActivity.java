@@ -19,6 +19,9 @@ import cs.b07.cscb07courseproject.fragments.MainClientFragment;
 import cs.b07.cscb07courseproject.fragments.ViewFlightFragment;
 import cs.b07.cscb07courseproject.users.Client;
 
+/*
+ * A client activity.
+ */
 public class ClientActivity extends AppCompatActivity {
 
     public static Client client;
@@ -29,6 +32,9 @@ public class ClientActivity extends AppCompatActivity {
     public static final String isDirectKey = "isDirectKey";
     public static final String clientKey = "clientKey";
 
+    /*
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +47,10 @@ public class ClientActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
-
+    /*
+     * Changes the current view to the ClientProfileFragment fragment.
+     * @param view the current view
+     */
     public void viewProfile(View view) {
         Bundle bundle = new Bundle();
         Fragment frag = new ClientProfileFragment();
@@ -49,6 +58,10 @@ public class ClientActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
+    /*
+     * Changes the current view to the EditClientFragment fragment.
+     * @param view the current view
+     */
     public void editProfile(View view) {
         Bundle bundle = new Bundle();
         // maybe erase this and just call client variable from this class in editClientFragment
@@ -59,6 +72,11 @@ public class ClientActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
+    /*
+     * Attempts to find flights that correspond with given details and changes the current view
+     * to the FlightListFragment fragment if flights were successfully found.
+     * @param view the current view
+     */
     public void findFlight(View view) {
         Bundle bundle = MainClientFragment.bundleFlightDetail();
         if (!bundle.isEmpty()) {
@@ -75,6 +93,11 @@ public class ClientActivity extends AppCompatActivity {
         }
     }
 
+    /*
+     * Attempts to find Itineraries that correspond with given details and changes the current view
+     * to the ItineraryListFragment fragment if Itineraries were successfully found.
+     * @param view the current view
+     */
     public void findItinerary(View view) {
         Bundle bundle = MainClientFragment.bundleFlightDetail();
         if (!bundle.isEmpty()) {
@@ -91,6 +114,10 @@ public class ClientActivity extends AppCompatActivity {
         }
     }
 
+    /*
+     * """""""""""""""""""""""""""""""""""".
+     * @param view the current view
+     */
     public void updateProfile(View view) {
         if (EditClientFragment.updateProfile()){
             Fragment frag = new MainClientFragment();
@@ -105,6 +132,10 @@ public class ClientActivity extends AppCompatActivity {
         }
     }
 
+    /*
+     * """""""""""""""""""""""""""""""""""".
+     * @param view the current view
+     */
     public void bookItinerary(View view) {
         if(ItineraryBookFragment.bookItinerary()) {
             Fragment frag = new MainClientFragment();
@@ -119,6 +150,10 @@ public class ClientActivity extends AppCompatActivity {
         }
     }
 
+    /*
+     * Changes the current fragment to target fragment.
+     * @param fragment the fragment being changed to
+     */
     private void setFragment (Fragment fragment){
         // changes the fragment
         android.support.v4.app.FragmentTransaction ft =
