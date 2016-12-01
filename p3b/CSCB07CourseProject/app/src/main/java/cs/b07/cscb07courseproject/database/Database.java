@@ -211,6 +211,11 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Changes String into a list of Itineraries.
+     * @param toParse the string being changed
+     * @return the changed string in the form of a list of itineraries
+     */
     public static List<Itinerary> parseItinerarys(String toParse) throws ParseException {
 
         if (toParse.equals("[]")) {
@@ -245,6 +250,11 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Changes String into an Itinerary.
+     * @param toParse the string being changed
+     * @return the changed string in the form of an itinerary
+     */
     public static Itinerary parseItinerary(String toParse) throws ParseException {
 
         if(toParse.equals("[]")) {
@@ -282,6 +292,11 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Changes String into an Flight.
+     * @param toParse the string being changed
+     * @return the changed string in the form of a flight
+     */
     public static Flight parseFlight(String toParse) throws ParseException {
 
         String strArr[] = toParse.split(";");
@@ -397,7 +412,10 @@ public class Database implements Serializable {
     }
 
 
-
+    /**
+     * Adds a new client into the database.
+     * @param client the client being added
+     */
     public void AddNewClient(Client client) {
 
         String clientEmail = client.getEmail();
@@ -422,7 +440,10 @@ public class Database implements Serializable {
         updateClient();
     }
 
-
+    /**
+     * Adds a new admin to the database.
+     * @param admin the admin being added
+     */
     public void AddNewAdmin(Admin admin) {
 
         String adminEmail = admin.getEmail();
@@ -447,7 +468,10 @@ public class Database implements Serializable {
         updateAdmin();
     }
 
-
+    /**
+     * Adds a new flight to the database.
+     * @param flight the flight being added
+     */
     public void addNewFlight(Flight flight) {
 
         String flightNum = flight.getFlightNum();
@@ -473,6 +497,10 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Deletes a flight from the database.
+     * @param flight the flight being removed
+     */
     void deleteFlight(Flight flight) {
 
         flights.remove(flight);
@@ -481,6 +509,10 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Deletes a client from the database.
+     * @param client the client being removed
+     */
     void deleteClient(Client client) {
 
         clients.remove(client);
@@ -489,6 +521,10 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Deletes an admin from the database.
+     * @param admin the client being removed
+     */
     void deleteAdmin(Admin admin) {
 
         admins.remove(admin);
@@ -497,6 +533,9 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Updates client information in the database.
+     */
     public void updateClient() {
 
         FileOutputStream outStream;
@@ -516,6 +555,9 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Updates admin information in the database.
+     */
     public void updateAdmin() {
 
         FileOutputStream outStream;
@@ -535,6 +577,9 @@ public class Database implements Serializable {
 
     }
 
+    /**
+     * Updates flight information in the database.
+     */
     public void updateFlight() {
 
         FileOutputStream outStream;
@@ -556,7 +601,6 @@ public class Database implements Serializable {
 
     /**
      * Updates all stored data.
-     *
      */
     public void update() {
 

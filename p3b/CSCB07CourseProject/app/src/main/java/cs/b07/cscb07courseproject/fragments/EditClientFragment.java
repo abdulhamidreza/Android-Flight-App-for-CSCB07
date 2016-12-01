@@ -47,6 +47,7 @@ public class EditClientFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_edit_client, container, false);
 
         getActivity().setTitle(R.string.edit_profile);
+        //Fills the editText fields with appropriate data from the database
         password = (EditText) rootView.findViewById(R.id.clientPassword);
         firstName = (EditText) rootView.findViewById(R.id.clientFirstName);
         lastName = (EditText) rootView.findViewById(R.id.clientLastName);
@@ -68,12 +69,14 @@ public class EditClientFragment extends Fragment {
      */
     public static boolean updateProfile(){
         try {
+            //Receives profile information from text-fields
             String pass = password.getText().toString();
             String fName = firstName.getText().toString();
             String lName = lastName.getText().toString();
             String addrs = address.getText().toString();
             String cCard = creditCard.getText().toString();
             String cCardExpiry = creditCardExpiry.getText().toString();
+            //Checks if received information contains a null field, and if not, update the profile
             if (!(pass.equals("") || fName.equals("") || lName.equals("") || addrs.equals("")
                     || cCard.equals("") || cCardExpiry.equals(""))) {
                 db.getClient(client).setPassword(pass);

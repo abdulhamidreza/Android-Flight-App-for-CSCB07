@@ -88,6 +88,7 @@ public class CreateUserFragment extends Fragment {
         if (isClient) {
             String ccExpiryDate = creditCardExpiry.getText().toString();
             if (ValidDate.validDate(ccExpiryDate)){
+                //Checks all fields are filled out and create a new client if so
                 if (!email.getText().toString().equals("")
                     && !password.getText().toString().equals("") && !firstName.getText().toString().equals("")
                     && !lastName.getText().toString().equals("") && !address.getText().toString().equals("")

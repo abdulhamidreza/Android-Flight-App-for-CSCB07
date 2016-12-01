@@ -60,7 +60,7 @@ public class FlightListFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_flight_list, container, false);
 
         getActivity().setTitle(R.string.flight_list_title);
-
+        
         origin = getArguments().getString(ClientActivity.originKey);
         destination = getArguments().getString(ClientActivity.destinationKey);
         date = getArguments().getString(ClientActivity.dateKey);
