@@ -14,6 +14,9 @@ import cs.b07.cscb07courseproject.fragments.MainAdminFragment;
 import cs.b07.cscb07courseproject.fragments.ViewFlightFragment;
 import cs.b07.cscb07courseproject.users.Admin;
 
+/*
+ * Controls the admin's activity.
+ */
 public class AdminActivity extends AppCompatActivity {
 
     public static Admin admin;
@@ -32,38 +35,59 @@ public class AdminActivity extends AppCompatActivity {
         frag.setArguments(bundle);
         setFragment(frag);
     }
-
+    /*
+     * Changes the current fragment to the AddThroughFileFragment fragment.
+     * @param view the current view
+     */
     public void addClient(View view) {
         Bundle bundle = new Bundle();
         Fragment frag = new AddThroughFileFragment();
         frag.setArguments(bundle);
         setFragment(frag);
     }
+    /*
+     * Changes the current fragment to the ClientListFragment fragment.
+     * @param view the current view
+     */
     public void viewClients(View view) {
         Bundle bundle = new Bundle();
         Fragment frag = new ClientListFragment();
         frag.setArguments(bundle);
         setFragment(frag);
     }
+    /*
+     * Changes the current fragment to the AddThroughFileFragment fragment.
+     * @param view the current view
+     */
     public void addFlight(View view) {
         Bundle bundle = new Bundle();
         Fragment frag = new AddThroughFileFragment();
         frag.setArguments(bundle);
         setFragment(frag);
     }
+    /*
+     * Changes the current fragment to the """""""""""""""" fragment.
+     * @param view the current view
+     */
     public void searchFlight(View view) {
         /*Bundle bundle = new Bundle();
         Fragment frag = new FlightListFragment();
         frag.setArguments(bundle);
         setFragment(frag);*/
     }
+    /*
+     * Changes the current fragment to the ItineraryListFragment fragment.
+     * @param view the current view
+     */
     public void searchItineraries(View view) {
         Bundle bundle = new Bundle();
         Fragment frag = new ItineraryListFragment();
         frag.setArguments(bundle);
         setFragment(frag);
     }
-
+    /*
+     * Updates a flight information.
+     */
     public void updateFlight(){
         if(ViewFlightFragment.updateFlightInfo()){
             Fragment frag = new MainAdminFragment();
@@ -75,6 +99,10 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
+    /*
+     * Changes the current fragment to target fragment.
+     * @param fragment the fragment being changed to
+     */
     private void setFragment (Fragment fragment){
         // changes the fragment
         android.support.v4.app.FragmentTransaction ft =
