@@ -52,7 +52,7 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     protected  void onDestroy() {
-
+        super.onDestroy();
         db.update();
 
     }

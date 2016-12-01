@@ -55,7 +55,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     protected  void onDestroy() {
-
+        super.onDestroy();
         db.update();
 
     }
