@@ -46,7 +46,6 @@ public class LogInActivity extends AppCompatActivity {
 
         File thisContext = this.getApplicationContext().getFilesDir();
         String appPath = Environment.getExternalStorageDirectory().toString();
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println(appPath);
         db = new Database(appPath + "/client.txt", appPath + "/admin.txt", appPath + "/flight.txt");
 

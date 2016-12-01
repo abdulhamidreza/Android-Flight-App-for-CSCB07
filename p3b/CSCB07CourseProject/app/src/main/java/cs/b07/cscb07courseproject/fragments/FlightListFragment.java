@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs.b07.cscb07courseproject.AdminActivity;
 import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
@@ -34,6 +35,7 @@ public class FlightListFragment extends Fragment {
     private static boolean isDirect, isClient;
     private static List<Itinerary> itineraries;
     private static List<String> stringItineraries;
+    private static FlightService flightService;
 
     public static final String flightKey = "flightKey";
 
@@ -65,8 +67,12 @@ public class FlightListFragment extends Fragment {
         isDirect = getArguments().getBoolean(ClientActivity.isDirectKey);
         isClient = getArguments().getBoolean(LogInActivity.isClientKey);
 
-        FlightService flightService
-                = new FlightManager(ClientActivity.db.getFlights());
+        if (isClient){
+            flightService = new FlightManager(ClientActivity.db.getFlights());
+        }else{
+            flightService = new FlightManager(AdminActivity.db.getFlights());
+        }
+
         try {
             itineraries = flightService.getItinerary(origin, destination, date, isDirect);
         }catch (ParseException ex) {

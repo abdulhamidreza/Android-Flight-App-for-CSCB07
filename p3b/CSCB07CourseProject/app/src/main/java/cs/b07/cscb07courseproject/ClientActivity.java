@@ -130,6 +130,7 @@ public class ClientActivity extends AppCompatActivity {
         if (EditClientFragment.updateProfile()){
             Fragment frag = new MainClientFragment();
             setFragment(frag);
+            db.updateClient();
             Toast.makeText(this,
                     getString(R.string.msg_profile_update_success),
                     Toast.LENGTH_LONG).show();
@@ -148,6 +149,7 @@ public class ClientActivity extends AppCompatActivity {
         if(ItineraryBookFragment.bookItinerary()) {
             Fragment frag = new MainClientFragment();
             setFragment(frag);
+            db.updateClient();
             Toast.makeText(this,
                     getString(R.string.book_success),
                     Toast.LENGTH_LONG).show();

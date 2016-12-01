@@ -130,9 +130,13 @@ public class AdminActivity extends AppCompatActivity {
         if(ViewFlightFragment.updateFlightInfo()){
             Fragment frag = new MainAdminFragment();
             setFragment(frag);
+            db.updateFlight();
+            Toast.makeText(this,
+                    getString(R.string.msg_update_flight_success),
+                    Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this,
-                    getString(R.string.msg_signup_success),
+                    getString(R.string.msg_update_flight_unsuccessful),
                     Toast.LENGTH_LONG).show();
         }
     }

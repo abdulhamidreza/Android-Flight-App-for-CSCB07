@@ -78,7 +78,10 @@
     <string name="msg_log_in_error">Email or password is incorrect</string>
 
     <string name="msg_profile_update_success">Profile Updated</string>
-    <string name="msg_profile_update_unsuccessful">Could not Update Profile</string>
+    <string name="msg_profile_update_unsuccessful">Could Not Update Profile</string>
+
+    <string name="msg_update_flight_success">Updated Flight</string>
+    <string name="msg_update_flight_unsuccessful">Error Updating Flight</string>
 
     <!-- Warnings and acceptance -->
     <string name="book_error">Error booking itinerary</string>

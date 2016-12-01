@@ -121,7 +121,6 @@ public class ViewFlightFragment extends Fragment {
             flight.setArrivalDate(viewArrivalDate.getText().toString());
             flight.setAvailableSeats(Integer.parseInt(viewSeats.getText().toString()));
             flight.setCost(Double.parseDouble(viewCost.getText().toString().substring(1)));
-            // update flight info with database
             return true;
         }catch(ParseException ex){
             return false;
