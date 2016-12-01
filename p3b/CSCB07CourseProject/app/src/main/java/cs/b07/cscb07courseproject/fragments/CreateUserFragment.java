@@ -72,21 +72,31 @@ public class CreateUserFragment extends Fragment {
         return isClient;
     }
 
-    public static User createUser() throws ParseException{
+    public static User createUser() throws ParseException, NullPointerException{
         if (isClient) {
             String ccExpiryDate = creditCardExpiry.getText().toString().replace("/","-");
-;
-            if (ValidDate.validDate(ccExpiryDate)) {
-                return new Client(email.getText().toString(), password.getText().toString(),
-                        firstName.getText().toString(), lastName.getText().toString(),
-                        address.getText().toString(), creditCard.getText().toString(),
-                        ccExpiryDate);
+            if (ValidDate.validDate(ccExpiryDate)){
+                if (!email.getText().toString().equals("")
+                    && !password.getText().toString().equals("") && !firstName.getText().toString().equals("")
+                    && !lastName.getText().toString().equals("") && !address.getText().toString().equals("")
+                    && !creditCard.getText().toString().equals("")) {
+                    return new Client(email.getText().toString(), password.getText().toString(),
+                            firstName.getText().toString(), lastName.getText().toString(),
+                            address.getText().toString(), creditCard.getText().toString(),
+                            ccExpiryDate);
+                }else{
+                    throw new NullPointerException();
+                }
             }else{
                 throw new ParseException("Unparseable date", 10);
             }
         } else {
-            return new Admin(email.getText().toString(),
-                    password.getText().toString());
+            if (!email.getText().toString().equals("") && !password.getText().toString().equals("")) {
+                return new Admin(email.getText().toString(),
+                        password.getText().toString());
+            }else {
+                throw new NullPointerException();
+            }
         }
     }
 

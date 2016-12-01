@@ -106,7 +106,10 @@ public class LogInActivity extends AppCompatActivity {
             Toast.makeText(this,
                     getString(R.string.msg_signup_error),
                     Toast.LENGTH_SHORT).show();
-
+        }catch (NullPointerException ex){
+            Toast.makeText(this,
+                    getString(R.string.error_field_required),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

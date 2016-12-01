@@ -19,7 +19,7 @@ public class MainClientFragment extends Fragment {
 
     private static View rootView;
 
-    private static EditText originET, destinationET, dateET, clientPassword, clientFirst, clientLast, clientAddress, clientCreditCard, clientCreditExpiry;
+    private static EditText originET, destinationET, dateET;
 
     public MainClientFragment() {
         // Required empty public constructor

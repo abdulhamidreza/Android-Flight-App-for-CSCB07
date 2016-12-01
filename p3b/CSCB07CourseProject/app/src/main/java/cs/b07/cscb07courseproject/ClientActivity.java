@@ -100,7 +100,7 @@ public class ClientActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this,
-                    getString(R.string.msg_profile_update_unsuccessful),
+                    getString(R.string.error_field_required),
                     Toast.LENGTH_LONG).show();
         }
     }

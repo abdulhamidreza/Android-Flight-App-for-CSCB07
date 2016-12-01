@@ -57,12 +57,23 @@ public class EditClientFragment extends Fragment {
 
     public static boolean updateProfile(){
         try {
-            client.setPassword(password.getText().toString());
-            client.setFirstName(firstName.getText().toString());
-            client.setLastName(lastName.getText().toString());
-            client.setAddress(address.getText().toString());
-            client.setCreditCard(creditCard.getText().toString());
-            client.setCreditExpiry(creditCardExpiry.getText().toString());
+            String pass = password.getText().toString();
+            String fName = firstName.getText().toString();
+            String lName = lastName.getText().toString();
+            String addrs = address.getText().toString();
+            String cCard = creditCard.getText().toString();
+            String cCardExpiry = creditCardExpiry.getText().toString();
+            if (!(pass.equals("") || fName.equals("") || lName.equals("") || addrs.equals("")
+                    || cCard.equals("") || cCardExpiry.equals(""))) {
+                client.setPassword(pass);
+                client.setFirstName(fName);
+                client.setLastName(lName);
+                client.setAddress(addrs);
+                client.setCreditCard(cCard);
+                client.setCreditExpiry(cCardExpiry);
+            } else {
+                return false;
+            }
             // add update client profile to database
             return true;
         }catch(ParseException ex){
