@@ -8,10 +8,10 @@
     <string name="lastNameHint">Last name (ie. Smith)</string>
     <string name="addressHint">Address</string>
     <string name="creditCardHint">Credit card number (ie. 1234567890)</string>
-    <string name="creditCardExpiryHint">Expiry date (ie. yyyy/mm/dd)</string>
+    <string name="creditCardExpiryHint">Expiry date (ie. yyyy-mm-dd)</string>
     <string name="origin">Origin</string>
     <string name="destination">Destination</string>
-    <string name="departDate">Departure Date (ie. yyyy/mm/dd)</string>
+    <string name="departDate">Departure Date (ie. yyyy-mm-dd)</string>
     <string name="searchFlight">Search Flight</string>
     <string name="searchItineraries">Search Itineraries</string>
     <string name="addClient">Add Client</string>

@@ -74,7 +74,7 @@ public class CreateUserFragment extends Fragment {
 
     public static User createUser() throws ParseException, NullPointerException{
         if (isClient) {
-            String ccExpiryDate = creditCardExpiry.getText().toString().replace("/","-");
+            String ccExpiryDate = creditCardExpiry.getText().toString();
             if (ValidDate.validDate(ccExpiryDate)){
                 if (!email.getText().toString().equals("")
                     && !password.getText().toString().equals("") && !firstName.getText().toString().equals("")
