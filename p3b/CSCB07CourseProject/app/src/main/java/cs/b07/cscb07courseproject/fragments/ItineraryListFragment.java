@@ -8,11 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import cs.b07.cscb07courseproject.ClientActivity;
@@ -20,6 +22,7 @@ import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.flightServices.FlightManager;
 import cs.b07.cscb07courseproject.flightServices.FlightService;
+import cs.b07.cscb07courseproject.flightServices.InvalidSortException;
 import cs.b07.cscb07courseproject.itinerary.Itinerary;
 
 /**
@@ -31,9 +34,10 @@ public class ItineraryListFragment extends Fragment {
     private static ListView itineraryListView;
     private static ArrayAdapter<String> adapter;
     private static String origin, destination, date;
-    private static boolean isDirect, isClient;
+    private static boolean isDirect, isClient, isIncreasing;
     private static List<Itinerary> itineraries;
     private static List<String> stringItineraries;
+    private static FlightService flightService;
 
     public static final String itineraryKey = "itineraryKey";
 
@@ -56,8 +60,9 @@ public class ItineraryListFragment extends Fragment {
         isDirect = getArguments().getBoolean(ClientActivity.isDirectKey);
         isClient = getArguments().getBoolean(LogInActivity.isClientKey);
 
-        FlightService flightService
-                = new FlightManager(null);
+        flightService = new FlightManager(null);
+        isIncreasing = true;
+
         try {
             itineraries = flightService.getItinerary(origin, destination, date, isDirect);
         }catch (ParseException ex) {
@@ -70,8 +75,8 @@ public class ItineraryListFragment extends Fragment {
                     itinerary.getItineraryId(), origin, destination,
                     itinerary.getTotalCost(), itinerary.getTotalTimeString()));
         }
-        itineraryListView = (ListView) rootView.findViewById(R.id.itineraryListView);
 
+        itineraryListView = (ListView) rootView.findViewById(R.id.itineraryListView);
         adapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, stringItineraries);
         itineraryListView.setAdapter(adapter);
 
@@ -95,6 +100,28 @@ public class ItineraryListFragment extends Fragment {
             }
         });
 
+        Button sortTime = (Button) rootView.findViewById(R.id.sortByTimeBtn);
+        Button sortCost = (Button) rootView.findViewById(R.id.sortByCostBtn);
+        Button sortOrder = (Button) rootView.findViewById(R.id.sortIncreaseBtn);
+        sortTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sortByTime();
+            }
+        });
+        sortCost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sortByCost();
+            }
+        });
+        sortOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeSortOrder();
+            }
+        });
+
         return rootView;
     }
 
@@ -106,4 +133,49 @@ public class ItineraryListFragment extends Fragment {
         ft.replace(R.id.fragment_container, fragment);
         ft.commit();
     }
+
+    private void sortByTime() {
+        try {
+            flightService.sortItineraries(itineraries, "Time", isIncreasing);
+            stringItineraries = new ArrayList<>();
+            for (Itinerary itinerary: itineraries) {
+                stringItineraries.add(String.format("%d\n%s --> %s\n$ %f\n%s",
+                        itinerary.getItineraryId(), origin, destination,
+                        itinerary.getTotalCost(), itinerary.getTotalTimeString()));
+            }
+            adapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, stringItineraries);
+            itineraryListView.setAdapter(adapter);
+        }catch(InvalidSortException ex) {
+            ex.printStackTrace();
+        }
+    }
+    private void sortByCost() {
+        try {
+            flightService.sortItineraries(itineraries, "Cost", isIncreasing);
+            stringItineraries = new ArrayList<>();
+            for (Itinerary itinerary: itineraries) {
+                stringItineraries.add(String.format("%d\n%s --> %s\n$ %f\n%s",
+                        itinerary.getItineraryId(), origin, destination,
+                        itinerary.getTotalCost(), itinerary.getTotalTimeString()));
+            }
+            adapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, stringItineraries);
+            itineraryListView.setAdapter(adapter);
+        }catch(InvalidSortException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void changeSortOrder(){
+        if (isIncreasing){
+            isIncreasing = false;
+        }else{
+            isIncreasing = true;
+        }
+        Collections.reverse(itineraries);
+        Collections.reverse(stringItineraries);
+        adapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, stringItineraries);
+        itineraryListView.setAdapter(adapter);
+
+    }
+
 }

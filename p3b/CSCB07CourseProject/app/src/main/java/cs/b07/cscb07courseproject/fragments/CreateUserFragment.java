@@ -33,8 +33,6 @@ public class CreateUserFragment extends Fragment {
     private RelativeLayout clientInfoContainer;
     private View  rootView;
 
-    private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-
     public CreateUserFragment() {
         // Required empty public constructor
     }
