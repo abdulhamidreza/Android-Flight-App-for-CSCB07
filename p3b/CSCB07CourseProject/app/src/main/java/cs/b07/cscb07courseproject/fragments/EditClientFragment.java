@@ -12,9 +12,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.R;
-import cs.b07.cscb07courseproject.users.Client;
+import static cs.b07.cscb07courseproject.ClientActivity.db;
+import static cs.b07.cscb07courseproject.ClientActivity.client;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +23,6 @@ public class EditClientFragment extends Fragment {
 
     private static EditText password,firstName,lastName,address,creditCard,creditCardExpiry;
     private static View rootView;
-    private static Client client;
 
     private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -45,13 +44,12 @@ public class EditClientFragment extends Fragment {
         address = (EditText) rootView.findViewById(R.id.clientAddress);
         creditCard = (EditText) rootView.findViewById(R.id.clientCreditCard);
         creditCardExpiry = (EditText) rootView.findViewById(R.id.clientCreditExpiry);
-        client = (Client)getArguments().getSerializable(ClientActivity.clientKey);
-        password.setText(client.getPassword());
-        firstName.setText(client.getFirstName());
-        lastName.setText(client.getLastName());
-        address.setText(client.getAddress());
-        creditCard.setText(client.getCreditCard());
-        creditCardExpiry.setText(date.format(client.getCreditExpiry()));
+        password.setText(db.getClient(client).getPassword());
+        firstName.setText(db.getClient(client).getFirstName());
+        lastName.setText(db.getClient(client).getLastName());
+        address.setText(db.getClient(client).getAddress());
+        creditCard.setText(db.getClient(client).getCreditCard());
+        creditCardExpiry.setText(date.format(db.getClient(client).getCreditExpiry()));
         return rootView;
     }
 
@@ -65,12 +63,12 @@ public class EditClientFragment extends Fragment {
             String cCardExpiry = creditCardExpiry.getText().toString();
             if (!(pass.equals("") || fName.equals("") || lName.equals("") || addrs.equals("")
                     || cCard.equals("") || cCardExpiry.equals(""))) {
-                client.setPassword(pass);
-                client.setFirstName(fName);
-                client.setLastName(lName);
-                client.setAddress(addrs);
-                client.setCreditCard(cCard);
-                client.setCreditExpiry(cCardExpiry);
+                db.getClient(client).setPassword(pass);
+                db.getClient(client).setFirstName(fName);
+                db.getClient(client).setLastName(lName);
+                db.getClient(client).setAddress(addrs);
+                db.getClient(client).setCreditCard(cCard);
+                db.getClient(client).setCreditExpiry(cCardExpiry);
             } else {
                 return false;
             }

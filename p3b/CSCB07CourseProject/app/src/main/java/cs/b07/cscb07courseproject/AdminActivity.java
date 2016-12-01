@@ -21,7 +21,7 @@ import cs.b07.cscb07courseproject.users.Admin;
  */
 public class AdminActivity extends AppCompatActivity {
 
-    public static Admin admin;
+    public static String admin;
     public static Database db;
 
     public static final String originKey = "originKey";
@@ -37,7 +37,7 @@ public class AdminActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        admin = (Admin) intent.getSerializableExtra(LogInActivity.userKey);
+        admin = intent.getStringExtra(LogInActivity.userKey);
         db = (Database) intent.getSerializableExtra(LogInActivity.dataKey);
 
         Bundle bundle = new Bundle();

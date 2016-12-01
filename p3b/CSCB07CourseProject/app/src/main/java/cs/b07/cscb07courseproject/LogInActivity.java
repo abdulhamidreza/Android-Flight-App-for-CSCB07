@@ -82,7 +82,7 @@ public class LogInActivity extends AppCompatActivity {
             intent = new Intent(this, AdminActivity.class);
         }
         if (user != null) {
-            intent.putExtra(userKey, user);
+            intent.putExtra(userKey, user.getEmail());
             intent.putExtra(dataKey, db);
             startActivity(intent);
 
@@ -135,10 +135,12 @@ public class LogInActivity extends AppCompatActivity {
             Intent intent;
             if (CreateUserFragment.getIsClient()){
                 intent = new Intent(this, ClientActivity.class);
+                db.AddNewClient((Client) newUser);
             }else{
                 intent = new Intent(this, AdminActivity.class);
+                db.AddNewAdmin((Admin) newUser);
             }
-            intent.putExtra(userKey, newUser);
+            intent.putExtra(userKey, newUser.getEmail());
             startActivity(intent);
 
             Toast.makeText(this,

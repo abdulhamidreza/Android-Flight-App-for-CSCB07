@@ -25,7 +25,7 @@ import cs.b07.cscb07courseproject.users.Client;
  */
 public class ClientActivity extends AppCompatActivity {
 
-    public static Client client;
+    public static String client;
     public static Database db;
 
     public static final String originKey = "originKey";
@@ -43,7 +43,7 @@ public class ClientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_client);
         Intent intent = getIntent();
 
-        client = (Client) intent.getSerializableExtra(LogInActivity.userKey);
+        client = intent.getStringExtra(LogInActivity.userKey);
         db = (Database) intent.getSerializableExtra(LogInActivity.dataKey);
 
         Fragment frag = new MainClientFragment();
@@ -67,8 +67,6 @@ public class ClientActivity extends AppCompatActivity {
      */
     public void editProfile(View view) {
         Bundle bundle = new Bundle();
-        // maybe erase this and just call client variable from this class in editClientFragment
-        bundle.putSerializable(clientKey, client);
 
         Fragment frag = new EditClientFragment();
         frag.setArguments(bundle);

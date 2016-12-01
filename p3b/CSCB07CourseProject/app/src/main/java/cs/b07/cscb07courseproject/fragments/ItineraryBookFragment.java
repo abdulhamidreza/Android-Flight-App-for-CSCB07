@@ -3,17 +3,17 @@ package cs.b07.cscb07courseproject.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.TextViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.itinerary.Itinerary;
+import static cs.b07.cscb07courseproject.ClientActivity.db;
+import static cs.b07.cscb07courseproject.ClientActivity.client;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,7 +53,7 @@ public class ItineraryBookFragment extends Fragment {
     }
 
     public static boolean bookItinerary() {
-        if (ClientActivity.client.book(itinerary)) {
+        if (db.getClient(client).book(itinerary)) {
             return true;
         }else{
             return false;

@@ -11,6 +11,9 @@ import android.widget.TextView;
 import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.R;
 
+import static cs.b07.cscb07courseproject.ClientActivity.db;
+import static cs.b07.cscb07courseproject.ClientActivity.client;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -32,7 +35,7 @@ public class ClientProfileFragment extends Fragment {
         getActivity().setTitle(R.string.view_profile);
 
         TextView clientProfile = (TextView) rootView.findViewById(R.id.clientProfile);
-        clientProfile.setText(ClientActivity.client.toString());
+        clientProfile.setText(db.getClient(client).toString());
 
         return rootView;
     }
