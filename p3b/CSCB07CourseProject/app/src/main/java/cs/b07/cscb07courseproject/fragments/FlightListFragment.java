@@ -57,7 +57,7 @@ public class FlightListFragment extends Fragment {
         isClient = getArguments().getBoolean(LogInActivity.isClientKey);
 
         FlightService flightService
-                = new FlightManager(null);
+                = new FlightManager(ClientActivity.db.getFlights());
         try {
             itineraries = flightService.getItinerary(origin, destination, date, isDirect);
         }catch (ParseException ex) {

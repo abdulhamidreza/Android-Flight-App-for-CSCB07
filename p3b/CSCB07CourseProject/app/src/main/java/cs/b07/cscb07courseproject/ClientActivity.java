@@ -34,8 +34,9 @@ public class ClientActivity extends AppCompatActivity {
     public static final String isDirectKey = "isDirectKey";
     public static final String clientKey = "clientKey";
 
-    /*
-     *
+    /**
+     * Initializes the client activity.
+     * @param savedInstanceState the saved instance of the client
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class ClientActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
-    /*
+    /**
      * Changes the current view to the ClientProfileFragment fragment.
      * @param view the current view
      */
@@ -61,7 +62,7 @@ public class ClientActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
-    /*
+    /**
      * Changes the current view to the EditClientFragment fragment.
      * @param view the current view
      */
@@ -73,7 +74,7 @@ public class ClientActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
-    /*
+    /**
      * Attempts to find flights that correspond with given details and changes the current view
      * to the FlightListFragment fragment if flights were successfully found.
      * @param view the current view
@@ -94,7 +95,7 @@ public class ClientActivity extends AppCompatActivity {
         }
     }
 
-    /*
+    /**
      * Attempts to find Itineraries that correspond with given details and changes the current view
      * to the ItineraryListFragment fragment if Itineraries were successfully found.
      * @param view the current view
@@ -115,8 +116,8 @@ public class ClientActivity extends AppCompatActivity {
         }
     }
 
-    /*
-     * """""""""""""""""""""""""""""""""""".
+    /**
+     * Updates the client's profile.
      * @param view the current view
      */
     public void updateProfile(View view) {
@@ -133,8 +134,8 @@ public class ClientActivity extends AppCompatActivity {
         }
     }
 
-    /*
-     * """""""""""""""""""""""""""""""""""".
+    /**
+     * Books an Itinerary.
      * @param view the current view
      */
     public void bookItinerary(View view) {
@@ -151,7 +152,7 @@ public class ClientActivity extends AppCompatActivity {
         }
     }
 
-    /*
+    /**
      * Changes the current fragment to target fragment.
      * @param fragment the fragment being changed to
      */

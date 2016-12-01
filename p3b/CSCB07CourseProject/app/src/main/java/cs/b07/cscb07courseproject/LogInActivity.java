@@ -22,6 +22,9 @@ import cs.b07.cscb07courseproject.database.Database;
 
 //import static android.content.Intent.EXTRA_USER;
 
+/*
+ * The client activity.
+ */
 public class LogInActivity extends AppCompatActivity {
 
     // Keys for transferring data to other activities or fragments
@@ -31,7 +34,10 @@ public class LogInActivity extends AppCompatActivity {
 
     private static Database db;
 
-
+    /*
+     * Initializes the log-in activity.
+     * @param savedInstanceState the saved instance of the login
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +45,9 @@ public class LogInActivity extends AppCompatActivity {
 
         File thisContext = this.getApplicationContext().getFilesDir();
         String appPath = thisContext.getAbsolutePath();
-        db = new Database(appPath + "/client.txt", appPath + "./admin.txt", appPath + "./flight.txt");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println(appPath);
+        db = new Database(appPath + "/client.txt", appPath + "/admin.txt", appPath + "/flight.txt");
 
 
         setFragment(new LogInFragment());
@@ -48,7 +56,7 @@ public class LogInActivity extends AppCompatActivity {
 
     /**
      * Method called when @R.id.loginBtn is clicked.
-     * @param view current view.
+     * @param view the current view.
      */
     public void login(View view) {
         // will need to edit this when back end is done to actually login in people
@@ -99,7 +107,7 @@ public class LogInActivity extends AppCompatActivity {
 
     /**
      * Method called when @R.id.createAdminBtn is clicked.
-     * @param view current view.
+     * @param view the current view.
      */
     public void createAdmin(View view) {
         // Use bundle to send data to Fragments just like intent for activities
@@ -112,7 +120,7 @@ public class LogInActivity extends AppCompatActivity {
 
     /**
      * Method called when @R.id.createClientAdminBtn is clicked.
-     * @param view current view.
+     * @param view the current view.
      */
     public void createClient(View view) {
         // Use bundle to send data to Fragments just like intent for activities
@@ -125,7 +133,7 @@ public class LogInActivity extends AppCompatActivity {
 
     /**
      * Method called when @R.id.createUserBtn is clicked.
-     * @param view current view.
+     * @param view the current view.
      */
     public void createUser(View view) {
         try {
@@ -141,6 +149,7 @@ public class LogInActivity extends AppCompatActivity {
                 db.AddNewAdmin((Admin) newUser);
             }
             intent.putExtra(userKey, newUser.getEmail());
+            intent.putExtra(dataKey, db);
             startActivity(intent);
 
             Toast.makeText(this,
@@ -159,7 +168,7 @@ public class LogInActivity extends AppCompatActivity {
 
     /**
      * Changes the fragment.
-     * @param fragment new fragment to change to.
+     * @param fragment the new fragment to change to.
      */
     private void setFragment (Fragment fragment){
         // changes the fragment

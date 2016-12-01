@@ -30,6 +30,10 @@ public class AdminActivity extends AppCompatActivity {
     public static final String isDirectKey = "isDirectKey";
     public static final String clientKey = "clientKey";
 
+    /**
+     * Initializes the admin activity.
+     * @param savedInstanceState the saved instance state of client
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +80,7 @@ public class AdminActivity extends AppCompatActivity {
         setFragment(frag);
     }
     /**
-     * Changes the current view to the """""""""""""""" fragment.
+     * Searches for a flight with given information.
      * @param view the current view
      */
     public void searchFlight(View view) {

@@ -24,9 +24,9 @@ import cs.b07.cscb07courseproject.users.Client;
 // The class for storing information in JSON files.
 public class Database implements Serializable {
 
-    private List<Client> clients;
-    private List<Admin> admins;
-    private List<Flight> flights;
+    private static List<Client> clients;
+    private static List<Admin> admins;
+    private static List<Flight> flights;
     private String clientDir;
     private String adminDir;
     private String flightDir;
@@ -42,10 +42,10 @@ public class Database implements Serializable {
         this.clients = new ArrayList<Client>();
         this.admins = new ArrayList<Admin>();
         this.flights = new ArrayList<Flight>();
-        update();
         this.clientDir = inClientDir;
         this.adminDir = inAdminDir;
         this.flightDir = inFlightDir;
+        update();
 
         //This is the part where files will be created, or read in.
     }
