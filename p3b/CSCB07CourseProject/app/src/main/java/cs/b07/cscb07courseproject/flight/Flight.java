@@ -235,6 +235,10 @@ public class Flight implements Serializable {
             abs(departureDate.getTimeInMillis() - arrivalDate.getTimeInMillis())/1000;
   }
 
+  public String getTotalTimeString(){
+    return String.format("%02d:%02d", Math.floor(flightDuration / 360), Math.floor((flightDuration%360)/60));
+  }
+
   /**
    * Returns cost.
    * 
@@ -278,7 +282,8 @@ public class Flight implements Serializable {
   public String toString() {
     return String.format("%s;%s;%s;%s;%s;%s;%.2f;%s", flightNum,
         dateTime.format(departureDate.getTime()), dateTime.format(arrivalDate.getTime()), airline,
-        origin, destination, cost, flightDuration);
+        origin, destination, cost, getTotalTimeString());
   }
+
 
 }

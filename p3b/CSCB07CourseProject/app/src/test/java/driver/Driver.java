@@ -11,6 +11,11 @@ package driver;
     import java.util.concurrent.TimeUnit;
 
     import cs.b07.cscb07courseproject.database.Database;
+    import cs.b07.cscb07courseproject.flight.Flight;
+    import cs.b07.cscb07courseproject.flightServices.FlightManager;
+    import cs.b07.cscb07courseproject.flightServices.FlightService;
+    import cs.b07.cscb07courseproject.flightServices.InvalidSortException;
+    import cs.b07.cscb07courseproject.itinerary.Itinerary;
     import cs.b07.cscb07courseproject.users.Client;
 
 /** A Driver used for autotesting the project backend. */
@@ -24,6 +29,7 @@ public class Driver {
     private static final DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", locale);
     private static final DateFormat time = new SimpleDateFormat("HH:mm", locale);
     public static Database db = new Database("/client.txt", "/admin.txt", "/flight.txt");
+    public static FlightService fs;
 
     /**
      * Uploads client information to the application from the file at the
@@ -113,7 +119,14 @@ public class Driver {
         // TODO: complete/rewrite this method body
         // The code below gives you the format in which the auto-tester expects the output.
 
-        String flightNum = "KL490";
+        fs = new FlightManager(db.getFlights());
+        List<Itinerary> itineraries = fs.getItinerary(origin, destination, date, true);
+        List<String> flights = new ArrayList<>();
+        for (Itinerary itinerary: itineraries){
+            flights.add(itinerary.getFlights().get(0).toString());
+        }
+
+        /*String flightNum = "KL490";
         Date departure = dateTime.parse("2016-09-30 22:40");
         Date arrival = dateTime.parse("2016-10-01 01:59");
         String airline = "Go Airline";
@@ -127,7 +140,7 @@ public class Driver {
                 flightNum, dateTime.format(departure), dateTime.format(arrival),
                 airline, origin, destination, price, String.format("%02d:%02d", hours, mins));
         List<String> flights = new ArrayList<>();
-        flights.add(oneFlightFormatted);
+        flights.add(oneFlightFormatted);*/
 
         return flights;
     }
@@ -156,7 +169,19 @@ public class Driver {
         // as well as some ideas about the built-in Java classes to handle dates, times, etc.
         // Make sure to read the API carefully: what you need will depend on your design!
 
-        String flightNum0 = "UA490";
+        fs = new FlightManager(db.getFlights());
+        List<Itinerary> flights = null;
+        try {
+            flights = fs.getItinerary(origin, destination, date, false);
+        }catch(ParseException ex){
+            ex.printStackTrace();
+        }
+        List<String> itineraries = new ArrayList<>();
+        for (Itinerary itinerary: flights){
+            itineraries.add(itinerary.toString());
+        }
+
+        /*String flightNum0 = "UA490";
         Date departure0 = null;
         Date arrival0 = null;
         try {
@@ -220,7 +245,7 @@ public class Driver {
 
         List<String> itineraries = new ArrayList<>();
         itineraries.add(itinerary0Formatted);
-        itineraries.add(itinerary1Formatted);
+        itineraries.add(itinerary1Formatted);*/
 
         return itineraries;
     }
@@ -236,8 +261,28 @@ public class Driver {
      *         as in getItineraries.
      */
     public static List<String> getItinerariesSortedByCost(String date, String origin, String destination) {
-        // TODO: complete this method body
-        return null;
+        fs = new FlightManager(db.getFlights());
+        List<Itinerary> itineraryList = new ArrayList<Itinerary>();
+        try {
+            itineraryList = fs.getItinerary(origin, destination, date, false);
+        } catch (ParseException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+
+        try {
+            fs.sortItineraries(itineraryList, "Cost", true);
+        } catch (InvalidSortException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+
+        List<String> itineraries = new ArrayList<>();
+
+        for (Itinerary itinerary : itineraryList) {
+            itineraries.add(itinerary.toString());
+        }
+        return itineraries;
     }
 
     /**
@@ -250,7 +295,28 @@ public class Driver {
      *         as in getItineraries.
      */
     public static List<String> getItinerariesSortedByTime(String date, String origin, String destination) {
-        // TODO: complete this method body
-        return null;
+        fs = new FlightManager(db.getFlights());
+        List<Itinerary> itineraryList = new ArrayList<Itinerary>();
+        try {
+            itineraryList = fs.getItinerary(origin, destination, date, false);
+        } catch (ParseException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+
+        try {
+            fs.sortItineraries(itineraryList, "Time", true);
+        } catch (InvalidSortException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+
+        List<String> itineraries = new ArrayList<>();
+
+        for (Itinerary itinerary : itineraryList) {
+            itineraries.add(itinerary.toString());
+        }
+        return itineraries;
     }
+
 }

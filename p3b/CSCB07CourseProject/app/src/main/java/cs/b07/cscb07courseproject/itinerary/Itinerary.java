@@ -114,7 +114,7 @@ public class Itinerary implements Serializable {
   }
 
   public String getTotalTimeString(){
-    return String.format("%dH %dmin", Math.floor(totalTime / 360), Math.floor((totalTime%360)/60));
+    return String.format("%02d:%02d", Math.floor(totalTime / 360), Math.floor((totalTime%360)/60));
   }
 
   /**
@@ -206,7 +206,7 @@ public class Itinerary implements Serializable {
           flight.getOrigin(), flight.getDestination());
     }
 
-    itineraryFormat += String.format("%.2f%n%s", totalCost, totalTime);
+    itineraryFormat += String.format("%.2f%n%s", totalCost, getTotalTimeString());
 
     return itineraryFormat;
   }
