@@ -54,6 +54,12 @@ public class LogInActivity extends AppCompatActivity {
 
     }
 
+    protected  void onDestroy() {
+
+        db.update();
+
+    }
+
     /**
      * Method called when @R.id.loginBtn is clicked.
      * @param view the current view.

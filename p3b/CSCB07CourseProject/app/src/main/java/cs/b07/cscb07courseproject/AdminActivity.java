@@ -49,6 +49,12 @@ public class AdminActivity extends AppCompatActivity {
         frag.setArguments(bundle);
         setFragment(frag);
     }
+
+    protected  void onDestroy() {
+
+        db.update();
+
+    }
     /**
      * Changes the current view to the AddThroughFileFragment fragment.
      * @param view the current view

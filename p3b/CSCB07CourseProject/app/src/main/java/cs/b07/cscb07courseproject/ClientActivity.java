@@ -51,6 +51,12 @@ public class ClientActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
+    protected  void onDestroy() {
+
+        db.update();
+
+    }
+
     /**
      * Changes the current view to the ClientProfileFragment fragment.
      * @param view the current view
