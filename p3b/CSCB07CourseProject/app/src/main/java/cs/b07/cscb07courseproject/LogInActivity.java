@@ -16,6 +16,7 @@ import java.text.ParseException;
 import cs.b07.cscb07courseproject.fragments.LogInFragment;
 import cs.b07.cscb07courseproject.fragments.CreateUserFragment;
 import cs.b07.cscb07courseproject.users.Admin;
+import cs.b07.cscb07courseproject.users.Client;
 import cs.b07.cscb07courseproject.users.User;
 import cs.b07.cscb07courseproject.database.Database;
 
@@ -25,7 +26,10 @@ public class LogInActivity extends AppCompatActivity {
 
     // Keys for transferring data to other activities or fragments
     public static final String userKey = "user";
+    public static final String dataKey = "dataKey";
     public static final String isClientKey = "isClient";
+
+    private static Database db;
 
 
     @Override
@@ -35,7 +39,7 @@ public class LogInActivity extends AppCompatActivity {
 
         File thisContext = this.getApplicationContext().getFilesDir();
         String appPath = thisContext.getAbsolutePath();
-        Database db = new Database(appPath + "/client.txt", appPath + "./admin.txt", appPath + "./flight.txt");
+        db = new Database(appPath + "/client.txt", appPath + "./admin.txt", appPath + "./flight.txt");
 
 
         setFragment(new LogInFragment());
@@ -52,15 +56,45 @@ public class LogInActivity extends AppCompatActivity {
         String userEmail = emailET.getText().toString();
         EditText passwordET = (EditText) findViewById(R.id.passwordET);
         String userPassword = passwordET.getText().toString();
-        User user = new Admin(userEmail, userPassword);
-        Intent intent = new Intent(this, AdminActivity.class);
-        intent.putExtra(userKey, user);
-        startActivity(intent);
+        User user = null;
+        boolean clientFound = false;
+        boolean adminFound = false;
+        for (Client client: db.getClients()){
+            if (client.login(userEmail, userPassword)){
+                user = client;
+                clientFound = true;
+                break;
+            }
+        }
+        for (Admin admin: db.getAdmins()){
+            if (admin.login(userEmail, userPassword)){
+                user = admin;
+                adminFound = true;
+                break;
+            }
+        }
 
-        // Creates a pop up message in app
-        Toast.makeText(this,
-                getString(R.string.msg_log_in_success),
-                Toast.LENGTH_LONG).show();
+        Intent intent = null;
+
+        if (clientFound) {
+            intent = new Intent(this, ClientActivity.class);
+        } else if (adminFound){
+            intent = new Intent(this, AdminActivity.class);
+        }
+        if (user != null) {
+            intent.putExtra(userKey, user);
+            intent.putExtra(dataKey, db);
+            startActivity(intent);
+
+            // Creates a pop up message in app
+            Toast.makeText(this,
+                    getString(R.string.msg_log_in_success),
+                    Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this,
+                    getString(R.string.msg_log_in_error),
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     /**

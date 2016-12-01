@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import cs.b07.cscb07courseproject.AdminActivity;
 import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
@@ -60,7 +61,11 @@ public class ItineraryListFragment extends Fragment {
         isDirect = getArguments().getBoolean(ClientActivity.isDirectKey);
         isClient = getArguments().getBoolean(LogInActivity.isClientKey);
 
-        flightService = new FlightManager(null);
+        if (isClient){
+            flightService = new FlightManager(ClientActivity.db.getFlights());
+        }else{
+            flightService = new FlightManager(AdminActivity.db.getFlights());
+        }
         isIncreasing = true;
 
         try {
@@ -175,7 +180,6 @@ public class ItineraryListFragment extends Fragment {
         Collections.reverse(stringItineraries);
         adapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, stringItineraries);
         itineraryListView.setAdapter(adapter);
-
     }
 
 }

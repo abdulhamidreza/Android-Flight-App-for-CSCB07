@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.util.Date;
 
+import cs.b07.cscb07courseproject.database.Database;
 import cs.b07.cscb07courseproject.fragments.ClientProfileFragment;
 import cs.b07.cscb07courseproject.fragments.EditClientFragment;
 import cs.b07.cscb07courseproject.fragments.FlightListFragment;
@@ -25,6 +26,7 @@ import cs.b07.cscb07courseproject.users.Client;
 public class ClientActivity extends AppCompatActivity {
 
     public static Client client;
+    public static Database db;
 
     public static final String originKey = "originKey";
     public static final String destinationKey = "destinationKey";
@@ -42,6 +44,7 @@ public class ClientActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         client = (Client) intent.getSerializableExtra(LogInActivity.userKey);
+        db = (Database) intent.getSerializableExtra(LogInActivity.dataKey);
 
         Fragment frag = new MainClientFragment();
         setFragment(frag);

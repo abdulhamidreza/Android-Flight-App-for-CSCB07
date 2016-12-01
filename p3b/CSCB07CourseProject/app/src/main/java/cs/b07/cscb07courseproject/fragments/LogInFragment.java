@@ -33,15 +33,5 @@ public class LogInFragment extends Fragment {
         return rootView;
     }
 
-    public static void logIn (View view) {
-        System.out.println("Log In");
-    }
 
-    public static void signUpAdmin(View view){
-        System.out.println("Sign up for admins");
-    }
-
-    public static void signUpClient(View view) {
-        System.out.println("Sign up for clients");
-    }
 }

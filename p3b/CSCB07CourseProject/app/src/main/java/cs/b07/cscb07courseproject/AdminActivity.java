@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import cs.b07.cscb07courseproject.database.Database;
 import cs.b07.cscb07courseproject.fragments.AddThroughFileFragment;
 import cs.b07.cscb07courseproject.fragments.ClientListFragment;
 import cs.b07.cscb07courseproject.fragments.FlightListFragment;
@@ -21,6 +22,7 @@ import cs.b07.cscb07courseproject.users.Admin;
 public class AdminActivity extends AppCompatActivity {
 
     public static Admin admin;
+    public static Database db;
 
     public static final String originKey = "originKey";
     public static final String destinationKey = "destinationKey";
@@ -36,6 +38,7 @@ public class AdminActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         admin = (Admin) intent.getSerializableExtra(LogInActivity.userKey);
+        db = (Database) intent.getSerializableExtra(LogInActivity.dataKey);
 
         Bundle bundle = new Bundle();
         Fragment frag = new MainAdminFragment();

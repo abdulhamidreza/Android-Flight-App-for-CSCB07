@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,7 +22,7 @@ import cs.b07.cscb07courseproject.users.Client;
 
 
 // The class for storing information in JSON files.
-public class Database {
+public class Database implements Serializable {
 
     private List<Client> clients;
     private List<Admin> admins;
