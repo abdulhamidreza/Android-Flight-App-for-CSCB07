@@ -58,8 +58,6 @@ public class Database implements Serializable {
 
 
         update();
-
-        //This is the part where files will be created, or read in.
     }
 
 

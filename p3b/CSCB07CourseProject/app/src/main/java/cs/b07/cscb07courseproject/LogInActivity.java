@@ -1,6 +1,7 @@
 package cs.b07.cscb07courseproject;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,7 +45,7 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         File thisContext = this.getApplicationContext().getFilesDir();
-        String appPath = thisContext.getAbsolutePath();
+        String appPath = Environment.getExternalStorageDirectory().toString();
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println(appPath);
         db = new Database(appPath + "/client.txt", appPath + "/admin.txt", appPath + "/flight.txt");
