@@ -492,10 +492,10 @@ public class Database implements Serializable {
         FileOutputStream outStream;
 
         try {
-            File db = new File("client.txt");
+            File db = new File(clientDir);
             db.delete();
             db.createNewFile();
-            outStream = new FileOutputStream("client.txt");
+            outStream = new FileOutputStream(db);
             for( Client curr : clients) {
                 outStream.write(curr.getBytes());
                 outStream.write("\n".getBytes());
@@ -513,10 +513,10 @@ public class Database implements Serializable {
         FileOutputStream outStream;
 
         try {
-            File db = new File("admin.txt");
+            File db = new File(adminDir);
             db.delete();
             db.createNewFile();
-            outStream = new FileOutputStream("admin.txt");
+            outStream = new FileOutputStream(db);
             for( Admin curr : admins) {
                 outStream.write(curr.toString().getBytes());
                 outStream.write("\n".getBytes());
@@ -534,10 +534,10 @@ public class Database implements Serializable {
         FileOutputStream outStream;
 
         try {
-            File db = new File("flight.txt");
+            File db = new File(flightDir);
             db.delete();
             db.createNewFile();
-            outStream = new FileOutputStream("flight.txt");
+            outStream = new FileOutputStream(db);
             for( Flight curr : flights) {
                 outStream.write(curr.getBytes());
                 outStream.write("\n".getBytes());
