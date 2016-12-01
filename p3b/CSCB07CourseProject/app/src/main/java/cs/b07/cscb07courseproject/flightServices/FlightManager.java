@@ -69,7 +69,8 @@ public class FlightManager implements FlightService {
     for (Flight flight : mapOfFlights.get(origin)) {
 
       // Checks departure dates are the same
-      if (date.format(flight.getDepartureDate().getTime()).equals(departureDate)) {
+      if (date.format(flight.getDepartureDate().getTime()).equals(departureDate)
+              && flight.getAvailableSeats() > 0) {
         // Checks if the <code>Flight</code> destination is wanted destination
         // This is for direct flights
         if (flight.getDestination().equals(destination)) {
@@ -120,7 +121,8 @@ public class FlightManager implements FlightService {
       // Checks to make sure the layover time between transfers is within the
       // limit
       if (flight.timeBetweenFlights(nextFlight) - MIN_LAYOVER >= 0
-          && flight.timeBetweenFlights(nextFlight) - MAX_LAYOVER <= 0) {
+          && flight.timeBetweenFlights(nextFlight) - MAX_LAYOVER <= 0
+              && flight.getAvailableSeats() > 0) {
         // Checks if next <code>Flight</code> goes to desired destination
         if (nextFlight.getDestination().equals(destination)) {
           // Adds new valid path into paths
