@@ -42,9 +42,10 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String[] permissions = {"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"};
+        requestPermissions(permissions, 200);   
         setContentView(R.layout.activity_login);
 
-        File thisContext = this.getApplicationContext().getFilesDir();
         String appPath = Environment.getExternalStorageDirectory().toString();
         System.out.println(appPath);
         db = new Database(appPath + "/client.txt", appPath + "/admin.txt", appPath + "/flight.txt");
