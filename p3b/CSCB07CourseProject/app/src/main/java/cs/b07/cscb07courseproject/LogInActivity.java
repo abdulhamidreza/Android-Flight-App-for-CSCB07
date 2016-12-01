@@ -32,6 +32,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         File thisContext = this.getApplicationContext().getFilesDir();
         String appPath = thisContext.getAbsolutePath();
         Database db = new Database(appPath + "/client.txt", appPath + "./admin.txt", appPath + "./flight.txt");

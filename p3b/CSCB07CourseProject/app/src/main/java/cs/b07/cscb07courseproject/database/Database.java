@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cs.b07.cscb07courseproject.flight.Flight;
+import cs.b07.cscb07courseproject.itinerary.Itinerary;
 import cs.b07.cscb07courseproject.users.Admin;
 import cs.b07.cscb07courseproject.users.Client;
 
@@ -162,13 +163,33 @@ public class Database {
             DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
             Client toAdd = new Client(strArr[2], strArr[3], strArr[1], strArr[0], strArr[4], strArr[5],
                     strArr[6]);
+            String[] itinArr = strArr[7].split(",");
+            if(itinArr.length == 1 && itinArr[0].equals("[]")) {
+
+                //do Nothing
+
+            } else if(itinArr.length == 1) {
+
+                toAdd.book(parseItinerary(itinArr[0].substring(1, itinArr[0].length()-1)));
+
+            } else {
+
+                List<Itinerary> toBook = parseItinerarys(itinArr[0].substring(1, itinArr[0].length()-1));
+
+                for(Itinerary book : toBook ) {
+
+                    toAdd.book(book);
+
+                }
+
+
+            }
             // Check if this Client is already contained in the Database
-            Client exists = this.getClient(toAdd.getEmail());
+            Client exists = getClient(toAdd.getEmail());
 
             if (exists != null) {
 
                 this.deleteClient(exists);
-
 
             }
             this.AddNewClient(toAdd);
@@ -176,6 +197,87 @@ public class Database {
 
         updateClient();
 
+
+    }
+
+    public static List<Itinerary> parseItinerarys(String toParse) throws ParseException {
+
+        if (toParse.equals("[]")) {
+            return null;
+        } else {
+
+            List<Itinerary> toReturn = new ArrayList<Itinerary>();
+            String strArr[] = toParse.split(",");
+            for(int i = 0; i < strArr.length ; i++) {
+
+                String currStr;
+                if(i == 0) {
+
+                    currStr = strArr[i].substring(1);
+
+                } else if(i == strArr.length - 2) {
+
+                    currStr = strArr[i].substring(0, strArr[i].length()-1);
+
+                } else {
+
+                    currStr = strArr[i];
+
+                }
+
+                toReturn.add(parseItinerary(currStr));
+
+            }
+
+            return toReturn;
+        }
+
+    }
+
+    public static Itinerary parseItinerary(String toParse) throws ParseException {
+
+        if(toParse.equals("[]")) {
+
+            return null;
+
+        } else {
+
+            Itinerary toReturn = new Itinerary();
+
+            String strArr[] = toParse.split(",");
+
+            for(int i = 0; i < strArr.length ; i++) {
+
+                String currStr;
+                if(i == 0) {
+
+                    currStr = strArr[i].substring(1);
+
+                } else if(i == strArr.length - 2) {
+
+                    currStr = strArr[i].substring(0, strArr[i].length()-1);
+
+                } else {
+
+                    currStr = strArr[i];
+
+                }
+
+                toReturn.addFlight(parseFlight(currStr));
+            }
+
+            return toReturn;
+        }
+
+    }
+
+    public static Flight parseFlight(String toParse) throws ParseException {
+
+        String strArr[] = toParse.split(";");
+
+        Flight toReturn = new Flight(strArr[0],strArr[4],strArr[5],strArr[3],strArr[1],strArr[2],Integer.valueOf(strArr[7]),Double.valueOf(strArr[6]));
+
+        return toReturn;
 
     }
 

@@ -125,9 +125,14 @@ public class Itinerary implements Serializable {
     // the difference in time between the departure of the first flight, and the
     // arrival of the last
     // flight
-    /*long min = ChronoUnit.MINUTES.between(flights.get(0).getDepartureDate().toInstant(),
-        flights.get(flights.size() - 1).getArrivalDate().toInstant());
-    this.totalTime = Duration.ofMinutes(min);*/
+    if(flights.size() == 0) {
+      totalTime = 0;
+    } else if (flights.size() == 1) {
+      totalTime = flights.get(0).getDuration();
+    } else {
+      totalTime = flights.get(flights.size()-1).getArrivalDate().getTimeInMillis() - flights.get(0).getDepartureDate().getTimeInMillis();
+    }
+
   }
 
   @Override
@@ -178,13 +183,13 @@ public class Itinerary implements Serializable {
   public String toString() {
     String itineraryFormat = "";
     for (Flight flight : flights) {
-      itineraryFormat += String.format("%s;%s;%s;%s;%s;%s\n", flight.getFlightNum(),
+      itineraryFormat += String.format("%s;%s;%s;%s;%s;%s%n", flight.getFlightNum(),
           dateTime.format(flight.getDepartureDate().getTime()),
           dateTime.format(flight.getArrivalDate().getTime()), flight.getAirline(),
           flight.getOrigin(), flight.getDestination());
     }
 
-    itineraryFormat += String.format("%.2f\n%.2f", totalCost, totalTime);
+    itineraryFormat += String.format("%.2f%n%s", totalCost, totalTime);
 
     return itineraryFormat;
   }
