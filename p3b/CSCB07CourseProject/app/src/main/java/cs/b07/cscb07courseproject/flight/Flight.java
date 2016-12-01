@@ -11,6 +11,8 @@ import java.util.GregorianCalendar;
 
 import cs.b07.cscb07courseproject.util.ValidDate;
 
+import static java.lang.Math.abs;
+
 /**
  * A representation of a flight from one city to another that leaves on a
  * certain date and time and arrives on another date and time. Also has a flight
@@ -230,7 +232,7 @@ public class Flight implements Serializable {
    */
   private void setDuration() {
     this.flightDuration =
-            (departureDate.getTimeInMillis() - arrivalDate.getTimeInMillis())/1000;
+            abs(departureDate.getTimeInMillis() - arrivalDate.getTimeInMillis())/1000;
   }
 
   /**
@@ -261,11 +263,11 @@ public class Flight implements Serializable {
    * @return time difference between both <code>Flight</code>s.
    */
   public long timeBetweenFlights(Flight flight) {
-    return (flight.getDepartureDate().getTimeInMillis() - arrivalDate.getTimeInMillis())/1000;
+    return (arrivalDate.getTimeInMillis() - flight.getDepartureDate().getTimeInMillis())/1000;
   }
 
   public byte[] getBytes() {
-
+    setDuration();
     return String.format("%s;%s;%s;%s;%s;%s;%.2f;%s", flightNum,
             dateTime.format(departureDate.getTime()), dateTime.format(arrivalDate.getTime()), airline,
             origin, destination, cost, flightDuration).getBytes();

@@ -174,8 +174,8 @@ public class Client extends User implements Serializable {
   }
 
   public byte[] getBytes() {
-    // LastName;FirstNames;Email;Password;Address;CreditCardNumber;ExpiryDate
-    return String.format("%s;%s;%s;%s;%s;%s;%s", getLastName(), getFirstName(), getEmail(), getPassword(), getAddress(), getCreditCard(), getCreditExpiry().toString()).getBytes();
+    // LastName;FirstNames;Email;Password;Address;CreditCardNumber;ExpiryDate;bookedItinerary
+    return String.format("%s;%s;%s;%s;%s;%s;%s;%s", getLastName(), getFirstName(), getEmail(), getPassword(), getAddress(), getCreditCard(), getCreditExpiry().toString(),bookedItinerary.toString()).getBytes();
   }
 
 

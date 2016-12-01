@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -31,9 +32,9 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
-        Database db = new Database("./client.txt", "./admin.txt", "./flight.txt");
+        File thisContext = this.getApplicationContext().getFilesDir();
+        String appPath = thisContext.getAbsolutePath();
+        Database db = new Database(appPath + "/client.txt", appPath + "./admin.txt", appPath + "./flight.txt");
 
 
         setFragment(new LogInFragment());
