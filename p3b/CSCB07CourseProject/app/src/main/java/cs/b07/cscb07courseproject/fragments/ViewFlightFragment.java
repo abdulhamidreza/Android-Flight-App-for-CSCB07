@@ -14,6 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import cs.b07.cscb07courseproject.AdminActivity;
+import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.flight.Flight;
@@ -27,6 +29,7 @@ public class ViewFlightFragment extends Fragment {
     private static EditText viewFlightNum,viewOrigin, viewDestination, viewAirline,
     viewDepDate, viewArrivalDate, viewSeats, viewCost;
     private static Button updateFlightBtn;
+    private static String flightId;
     private static Flight flight;
     private static boolean isClient;
 
@@ -65,14 +68,17 @@ public class ViewFlightFragment extends Fragment {
 
         updateFlightBtn = (Button) rootView.findViewById(R.id.updateFlightBtn);
 
-        flight = (Flight) getArguments().getSerializable(FlightListFragment.flightKey);
+        flightId = getArguments().getString(FlightListFragment.flightKey);
         isClient = getArguments().getBoolean(LogInActivity.isClientKey);
 
-        setFlightInfo();
-
         if (!isClient){
+            flight = AdminActivity.db.getFlight(flightId);
             setAdminView();
+        } else {
+            flight = ClientActivity.db.getFlight(flightId);
         }
+
+        setFlightInfo();
 
         return rootView;
     }
@@ -113,14 +119,22 @@ public class ViewFlightFragment extends Fragment {
      */
     public static boolean updateFlightInfo(){
         try {
-            flight.setFlightNum(viewFlightNum.getText().toString());
-            flight.setOrigin(viewOrigin.getText().toString());
-            flight.setDestination(viewDestination.getText().toString());
-            flight.setAirline(viewAirline.getText().toString());
-            flight.setDepartureDate(viewDepDate.getText().toString());
-            flight.setArrivalDate(viewArrivalDate.getText().toString());
-            flight.setAvailableSeats(Integer.parseInt(viewSeats.getText().toString()));
-            flight.setCost(Double.parseDouble(viewCost.getText().toString().substring(1)));
+            AdminActivity.db.getFlight(flightId)
+                    .setFlightNum(viewFlightNum.getText().toString());
+            AdminActivity.db.getFlight(flightId)
+                    .setOrigin(viewOrigin.getText().toString());
+            AdminActivity.db.getFlight(flightId)
+                    .setDestination(viewDestination.getText().toString());
+            AdminActivity.db.getFlight(flightId)
+                    .setAirline(viewAirline.getText().toString());
+            AdminActivity.db.getFlight(flightId)
+                    .setDepartureDate(viewDepDate.getText().toString());
+            AdminActivity.db.getFlight(flightId)
+                    .setArrivalDate(viewArrivalDate.getText().toString());
+            AdminActivity.db.getFlight(flightId)
+                    .setAvailableSeats(Integer.parseInt(viewSeats.getText().toString()));
+            AdminActivity.db.getFlight(flightId)
+                    .setCost(Double.parseDouble(viewCost.getText().toString().substring(1)));
             return true;
         }catch(ParseException ex){
             return false;

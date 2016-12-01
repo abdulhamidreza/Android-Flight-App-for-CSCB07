@@ -98,7 +98,7 @@ public class FlightListFragment extends Fragment {
 
                 // Switch to detail view of Itinerary
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(flightKey, itineraries.get(position).getFlights().get(0));
+                bundle.putSerializable(flightKey, itineraries.get(position).getFlights().get(0).getFlightNum());
                 if (isClient) {
                     bundle.putBoolean(LogInActivity.isClientKey, true);
                 } else {
@@ -109,8 +109,6 @@ public class FlightListFragment extends Fragment {
                 setFragment(frag);
             }
         });
-
-
 
         return rootView;
     }

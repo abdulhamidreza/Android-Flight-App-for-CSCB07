@@ -85,7 +85,6 @@ public class EditClientFragment extends Fragment {
             } else {
                 return false;
             }
-            // add update client profile to database
             return true;
         }catch(ParseException ex){
             return false;
