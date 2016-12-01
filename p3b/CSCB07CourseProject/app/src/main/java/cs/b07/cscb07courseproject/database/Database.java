@@ -45,6 +45,18 @@ public class Database implements Serializable {
         this.clientDir = inClientDir;
         this.adminDir = inAdminDir;
         this.flightDir = inFlightDir;
+        try {
+            File client = new File(clientDir);
+            client.createNewFile();
+            File admin = new File(adminDir);
+            admin.createNewFile();
+            File flight = new File(flightDir);
+            flight.createNewFile();
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
         update();
 
         //This is the part where files will be created, or read in.
@@ -493,9 +505,7 @@ public class Database implements Serializable {
 
         try {
             File db = new File(clientDir);
-            db.delete();
-            db.createNewFile();
-            outStream = new FileOutputStream(db);
+            outStream = new FileOutputStream(db, true);
             for( Client curr : clients) {
                 outStream.write(curr.getBytes());
                 outStream.write("\n".getBytes());
@@ -514,9 +524,7 @@ public class Database implements Serializable {
 
         try {
             File db = new File(adminDir);
-            db.delete();
-            db.createNewFile();
-            outStream = new FileOutputStream(db);
+            outStream = new FileOutputStream(db, true);
             for( Admin curr : admins) {
                 outStream.write(curr.toString().getBytes());
                 outStream.write("\n".getBytes());
@@ -535,9 +543,7 @@ public class Database implements Serializable {
 
         try {
             File db = new File(flightDir);
-            db.delete();
-            db.createNewFile();
-            outStream = new FileOutputStream(db);
+            outStream = new FileOutputStream(db, true);
             for( Flight curr : flights) {
                 outStream.write(curr.getBytes());
                 outStream.write("\n".getBytes());
