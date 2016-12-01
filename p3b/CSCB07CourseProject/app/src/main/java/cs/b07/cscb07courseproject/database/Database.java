@@ -42,6 +42,7 @@ public class Database implements Serializable {
         this.clients = new ArrayList<Client>();
         this.admins = new ArrayList<Admin>();
         this.flights = new ArrayList<Flight>();
+        update();
         this.clientDir = inClientDir;
         this.adminDir = inAdminDir;
         this.flightDir = inFlightDir;
