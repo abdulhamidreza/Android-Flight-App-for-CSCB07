@@ -23,7 +23,7 @@ import cs.b07.cscb07courseproject.users.User;
 import cs.b07.cscb07courseproject.util.ValidDate;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple Create User subclass.
  */
 public class CreateUserFragment extends Fragment {
 
@@ -37,7 +37,13 @@ public class CreateUserFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    /**
+     * Method called when CreateUserFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,10 +72,18 @@ public class CreateUserFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Checks if current user is a client.
+     * @return returns true if user is a client
+     */
     public static boolean getIsClient() {
         return isClient;
     }
 
+    /**
+     * Creates a user and returns the user object
+     * @return the user that is created
+     */
     public static User createUser() throws ParseException, NullPointerException{
         if (isClient) {
             String ccExpiryDate = creditCardExpiry.getText().toString();
@@ -98,6 +112,9 @@ public class CreateUserFragment extends Fragment {
         }
     }
 
+    /**
+     * Sets the client's view
+     */
     private void setClientView(){
         clientInfoContainer.setVisibility(View.VISIBLE);
         createUser.setText(R.string.create_client);

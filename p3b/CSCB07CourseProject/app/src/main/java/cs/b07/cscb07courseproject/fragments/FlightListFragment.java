@@ -23,7 +23,7 @@ import cs.b07.cscb07courseproject.flightServices.FlightService;
 import cs.b07.cscb07courseproject.itinerary.Itinerary;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple FlightListFragment subclass.
  */
 public class FlightListFragment extends Fragment {
 
@@ -37,11 +37,20 @@ public class FlightListFragment extends Fragment {
 
     public static final String flightKey = "flightKey";
 
+    /**
+     * The FlightListFragment constructor
+     */
     public FlightListFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * Method called when FlightListFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -100,6 +109,10 @@ public class FlightListFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Changes the fragment to the given fragment.
+     * @param fragment the fragment being set to
+     */
     private void setFragment (Fragment fragment){
         // changes the fragment
         android.support.v4.app.FragmentTransaction ft =

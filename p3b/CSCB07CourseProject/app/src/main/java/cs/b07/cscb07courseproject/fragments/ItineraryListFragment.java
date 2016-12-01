@@ -27,7 +27,7 @@ import cs.b07.cscb07courseproject.flightServices.InvalidSortException;
 import cs.b07.cscb07courseproject.itinerary.Itinerary;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple List of Itinerary subclass.
  */
 public class ItineraryListFragment extends Fragment {
 
@@ -42,11 +42,20 @@ public class ItineraryListFragment extends Fragment {
 
     public static final String itineraryKey = "itineraryKey";
 
+    /**
+     * The ItineraryListFragment constructor
+     */
     public ItineraryListFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * Method called when ItineraryListFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -130,6 +139,10 @@ public class ItineraryListFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Changes the fragment to the given fragment.
+     * @param fragment the fragment being set to
+     */
     private void setFragment (Fragment fragment){
         // changes the fragment
         android.support.v4.app.FragmentTransaction ft =
@@ -139,6 +152,9 @@ public class ItineraryListFragment extends Fragment {
         ft.commit();
     }
 
+    /**
+     * Sorts Itineraries by time order.
+     */
     private void sortByTime() {
         try {
             flightService.sortItineraries(itineraries, "Time", isIncreasing);
@@ -154,6 +170,10 @@ public class ItineraryListFragment extends Fragment {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * Sorts Itineraries by cost order.
+     */
     private void sortByCost() {
         try {
             flightService.sortItineraries(itineraries, "Cost", isIncreasing);
@@ -170,6 +190,9 @@ public class ItineraryListFragment extends Fragment {
         }
     }
 
+    /**
+     * Reverses the sorting order (descending -> ascending, ascending -> descending).
+     */
     private void changeSortOrder(){
         if (isIncreasing){
             isIncreasing = false;

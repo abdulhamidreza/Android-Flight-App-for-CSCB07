@@ -16,7 +16,7 @@ import static cs.b07.cscb07courseproject.ClientActivity.db;
 import static cs.b07.cscb07courseproject.ClientActivity.client;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple Itinerary Book subclass.
  */
 public class ItineraryBookFragment extends Fragment {
 
@@ -24,11 +24,20 @@ public class ItineraryBookFragment extends Fragment {
     private static boolean isClient;
     private static Itinerary itinerary;
 
+    /**
+     * The ItineraryBookFragment constructor
+     */
     public ItineraryBookFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * Method called when ItineraryBookFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +61,10 @@ public class ItineraryBookFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Books an itinerary.
+     * @return Returns true if itinerary is booked successfully
+     */
     public static boolean bookItinerary() {
         if (db.getClient(client).book(itinerary)) {
             return true;

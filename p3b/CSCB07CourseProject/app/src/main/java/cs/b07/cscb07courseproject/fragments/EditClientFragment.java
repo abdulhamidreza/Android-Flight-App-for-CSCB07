@@ -17,7 +17,7 @@ import static cs.b07.cscb07courseproject.ClientActivity.db;
 import static cs.b07.cscb07courseproject.ClientActivity.client;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple Edit Client subclass.
  */
 public class EditClientFragment extends Fragment {
 
@@ -26,11 +26,20 @@ public class EditClientFragment extends Fragment {
 
     private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 
+    /**
+     * The EditClientFragment constructor
+     */
     public EditClientFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * Method called when EditClientFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +62,10 @@ public class EditClientFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Updates the client's profile
+     * @return returns true if profile is successfully updated.
+     */
     public static boolean updateProfile(){
         try {
             String pass = password.getText().toString();

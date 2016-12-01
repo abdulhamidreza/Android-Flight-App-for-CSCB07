@@ -12,16 +12,26 @@ import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple Login subclass.
  */
 public class LogInFragment extends Fragment {
 
     private View rootView;
 
+    /**
+     * The LoginFragment constructor
+     */
     public LogInFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Method called when LoginFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

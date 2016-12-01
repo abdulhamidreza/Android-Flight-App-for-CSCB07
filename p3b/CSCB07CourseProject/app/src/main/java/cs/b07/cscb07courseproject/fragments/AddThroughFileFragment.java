@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import cs.b07.cscb07courseproject.R;
 
 /**
- * A simple AddThroughFile subclass.
+ * A simple add through file subclass.
  */
 public class AddThroughFileFragment extends Fragment {
 
@@ -22,7 +22,7 @@ public class AddThroughFileFragment extends Fragment {
     }
 
     /**
-     * Method called when AddThroughFile fragment is called.
+     * Method called when AddThroughFile fragment is called to be viewed.
      * @param inflater the inflater of this fragment
      * @param container the container of this fragment
      * @param savedInstanceState savedInstanceState the saved instance of this fragment

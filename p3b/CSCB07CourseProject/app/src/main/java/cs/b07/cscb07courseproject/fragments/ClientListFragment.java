@@ -21,7 +21,7 @@ public class ClientListFragment extends Fragment {
     }
 
     /**
-     * Method called when onCreateView fragment is called.
+     * Method called when ClientListFragment fragment is called to be viewed.
      * @param inflater the inflater of this fragment
      * @param container the container of this fragment
      * @param savedInstanceState savedInstanceState the saved instance of this fragment

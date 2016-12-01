@@ -15,7 +15,7 @@ import static cs.b07.cscb07courseproject.ClientActivity.db;
 import static cs.b07.cscb07courseproject.ClientActivity.client;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple Client Profile subclass.
  */
 public class ClientProfileFragment extends Fragment {
 
@@ -25,7 +25,13 @@ public class ClientProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    /**
+     * Method called when ClientProfileFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
