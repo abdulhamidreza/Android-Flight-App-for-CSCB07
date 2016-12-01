@@ -158,7 +158,7 @@ public class Database {
             // Usually this is a terrible way to parse value separated files. This is acceptable here,
             // because data cannot contain semicolons
             String[] strArr = line.split(";");
-            // email,password,first,last,address, CC
+            // email,password,first,last,address, CC, CC Expiry
             DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
             Client toAdd = new Client(strArr[2], strArr[3], strArr[1], strArr[0], strArr[4], strArr[5],
                     strArr[6]);
