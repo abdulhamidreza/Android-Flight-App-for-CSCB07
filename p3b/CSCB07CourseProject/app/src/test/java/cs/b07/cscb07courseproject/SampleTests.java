@@ -42,7 +42,7 @@ public class SampleTests {
 
         Driver.uploadFlightInfo(FLIGHTS1);
 
-        String expected = "KL490;2016-09-30 22:40;2016-10-01 01:59;Go Airline;New York;Boston;532.00;03.19";
+        String expected = "KL490;2016-09-30 22:40;2016-10-01 01:59;Go Airline;New York;Boston;532.00;03:19";
         List<String> found = Driver.getFlights("2016-09-30", "New York", "Boston");
         String msg =
                 "Unexpected (incorrect or incorrectly formatted) flight information "

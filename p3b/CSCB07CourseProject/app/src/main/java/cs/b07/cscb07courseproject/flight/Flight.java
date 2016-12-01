@@ -261,14 +261,22 @@ public class Flight implements Serializable {
    * @return time difference between both <code>Flight</code>s.
    */
   public long timeBetweenFlights(Flight flight) {
-    return (arrivalDate.getTimeInMillis() - flight.getDepartureDate().getTimeInMillis())/1000;
+    return (flight.getDepartureDate().getTimeInMillis() - arrivalDate.getTimeInMillis())/1000;
+  }
+
+  public byte[] getBytes() {
+
+    return String.format("%s;%s;%s;%s;%s;%s;%.2f;%s", flightNum,
+            dateTime.format(departureDate.getTime()), dateTime.format(arrivalDate.getTime()), airline,
+            origin, destination, cost, flightDuration).getBytes();
+
   }
 
   @Override
   public String toString() {
-    return String.format("%s;%s;%s;%s;%s;%s;%.2f", flightNum,
+    return String.format("%s;%s;%s;%s;%s;%s;%.2f;%s", flightNum,
         dateTime.format(departureDate.getTime()), dateTime.format(arrivalDate.getTime()), airline,
-        origin, destination, cost);
+        origin, destination, cost, flightDuration);
   }
 
 }

@@ -173,6 +173,11 @@ public class Client extends User implements Serializable {
     this.bookedItinerary = bookedItinerary;
   }
 
+  public byte[] getBytes() {
+    // LastName;FirstNames;Email;Password;Address;CreditCardNumber;ExpiryDate
+    return String.format("%s;%s;%s;%s;%s;%s;%s", getLastName(), getFirstName(), getEmail(), getPassword(), getAddress(), getCreditCard(), getCreditExpiry().toString()).getBytes();
+  }
+
 
   public String toString() {
     return String.format("Email: %s\nFirst Name: %s\nLast Name: %s" +

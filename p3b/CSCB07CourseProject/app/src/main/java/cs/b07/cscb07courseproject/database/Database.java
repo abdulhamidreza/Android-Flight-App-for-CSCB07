@@ -395,7 +395,8 @@ public class Database {
             db.createNewFile();
             outStream = new FileOutputStream("client.txt");
             for( Client curr : clients) {
-                outStream.write(curr.toString().getBytes());
+                outStream.write(curr.getBytes());
+                outStream.write("\n".getBytes());
             }
             outStream.close();
 
@@ -416,6 +417,7 @@ public class Database {
             outStream = new FileOutputStream("admin.txt");
             for( Admin curr : admins) {
                 outStream.write(curr.toString().getBytes());
+                outStream.write("\n".getBytes());
             }
             outStream.close();
 
@@ -435,7 +437,8 @@ public class Database {
             db.createNewFile();
             outStream = new FileOutputStream("flight.txt");
             for( Flight curr : flights) {
-                outStream.write(curr.toString().getBytes());
+                outStream.write(curr.getBytes());
+                outStream.write("\n".getBytes());
             }
             outStream.close();
 
