@@ -27,7 +27,7 @@ public class EditClientFragment extends Fragment {
     private static DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
-     * The EditClientFragment constructor
+     * The EditClientFragment constructor.
      */
     public EditClientFragment() {
         // Required empty public constructor

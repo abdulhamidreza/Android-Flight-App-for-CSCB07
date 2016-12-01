@@ -18,10 +18,7 @@ import cs.b07.cscb07courseproject.flight.Flight;
 
 /**
  * Class that will manage the search and sorting algorithms for
- * <code>Flight</code> and <code>Itinerary</code>
- * 
- * @author lucsteph
- *
+ * flights and itineraries
  */
 public class FlightManager implements FlightService {
 
@@ -33,10 +30,9 @@ public class FlightManager implements FlightService {
   private static final long MAX_LAYOVER = 6 * 60 * 60; // 6 hours in seconds
 
   /**
-   * Creates the <code>FlightManager</code>.
+   * Initializes the Flight Manager
    * 
-   * @param flights
-   *          List of all <code>Flight</code> from database.
+   * @param flights list of all flights from the database
    */
   public FlightManager(List<Flight> flights) {
     mapOfFlights = new HashMap<String, List<Flight>>();
@@ -48,11 +44,13 @@ public class FlightManager implements FlightService {
     }
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see FlightServices.FlightService#getItinerary(java.lang.String,
-   * java.lang.String, java.util.Date)
+  /**
+   * Finds itineraries that suit the user's given info and returns them
+   * @param origin the origin/beginning location
+   * @param destination the destination
+   * @param departureDate the departure date
+   * @param isDirect boolean expression of if flight should be direct
+   * @return the list of suitable itineraries
    */
   @Override
   public List<Itinerary> getItinerary(String origin, String destination, String departureDate, boolean isDirect)
@@ -101,17 +99,11 @@ public class FlightManager implements FlightService {
   /**
    * Recursive method which finds all possible connection flights to the desired
    * destination.
-   * 
-   * @param flight
-   *          Current <code>Flight</code>.
-   * @param destination
-   *          Desired destination.
-   * @param location
-   *          All cities already visited.
-   * @param connection
-   *          Previous <code>Flight</code>s.
-   * @param allItineraries
-   *          All valid paths so far.
+   * @param flight the target flight
+   * @param destination Desired destination.
+   * @param location All cities already visited.
+   * @param connection The previous Flight
+   * @param allItineraries All valid paths so far.
    */
   private void getFlights(Flight flight, String destination, Stack<String> location,
       Stack<Flight> connection, List<Itinerary> allItineraries) {
@@ -148,11 +140,11 @@ public class FlightManager implements FlightService {
     }
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see FlightServices.FlightService#sortFlight(java.util.List,
-   * java.lang.String)
+  /**
+   * Sorts itineraries by given order type
+   * @param itineraries the itineraries that will be sorted
+   * @param sortBy the order type to sort by
+   * @param increasingOrder if true, function sorts in increasing order
    */
   @Override
   public void sortItineraries(List<Itinerary> itineraries, String sortBy, boolean increasingOrder)

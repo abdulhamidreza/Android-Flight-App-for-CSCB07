@@ -43,7 +43,7 @@ public class ItineraryListFragment extends Fragment {
     public static final String itineraryKey = "itineraryKey";
 
     /**
-     * The ItineraryListFragment constructor
+     * The ItineraryListFragment constructor.
      */
     public ItineraryListFragment() {
         // Required empty public constructor

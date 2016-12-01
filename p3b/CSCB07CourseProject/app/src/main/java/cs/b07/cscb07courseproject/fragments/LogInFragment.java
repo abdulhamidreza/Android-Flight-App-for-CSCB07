@@ -19,7 +19,7 @@ public class LogInFragment extends Fragment {
     private View rootView;
 
     /**
-     * The LoginFragment constructor
+     * The LoginFragment constructor.
      */
     public LogInFragment() {
         // Required empty public constructor

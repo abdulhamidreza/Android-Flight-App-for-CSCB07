@@ -7,9 +7,6 @@ import cs.b07.cscb07courseproject.itinerary.Itinerary;
 
 /**
  * Interface that provides all different flight services.
- * 
- * @author lucsteph
- *
  */
 public interface FlightService {
 

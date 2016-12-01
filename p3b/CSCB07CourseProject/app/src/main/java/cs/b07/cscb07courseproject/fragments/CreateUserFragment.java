@@ -81,7 +81,7 @@ public class CreateUserFragment extends Fragment {
     }
 
     /**
-     * Creates a user and returns the user object
+     * Creates a user and returns the user object.
      * @return the user that is created
      */
     public static User createUser() throws ParseException, NullPointerException{
@@ -113,7 +113,7 @@ public class CreateUserFragment extends Fragment {
     }
 
     /**
-     * Sets the client's view
+     * Sets the client's view.
      */
     private void setClientView(){
         clientInfoContainer.setVisibility(View.VISIBLE);

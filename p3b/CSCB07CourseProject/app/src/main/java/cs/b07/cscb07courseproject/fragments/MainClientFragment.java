@@ -22,7 +22,7 @@ public class MainClientFragment extends Fragment {
     private static EditText originET, destinationET, dateET;
 
     /**
-     * The MainClientFragment constructor
+     * The MainClientFragment constructor.
      */
     public MainClientFragment() {
         // Required empty public constructor
@@ -51,7 +51,7 @@ public class MainClientFragment extends Fragment {
     }
 
     /**
-     * Returns the flight detail in a bundle
+     * Returns the flight detail in a bundle.
      * @return the bundle with flight details
      */
     public static Bundle bundleFlightDetail(){

@@ -36,7 +36,7 @@ public class ViewFlightFragment extends Fragment {
     private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
 
     /**
-     * The ViewFlightFragment constructor
+     * The ViewFlightFragment constructor.
      */
     public ViewFlightFragment() {
         // Required empty public constructor
@@ -84,7 +84,7 @@ public class ViewFlightFragment extends Fragment {
     }
 
     /**
-     * Sets the view of the user to the admin's and allows clickable permissions
+     * Sets the view of the user to the admin's and allows clickable permissions.
      */
     private void setAdminView (){
         viewFlightNum.setClickable(true);
@@ -100,7 +100,7 @@ public class ViewFlightFragment extends Fragment {
     }
 
     /**
-     * Sets flight's information with the given information
+     * Sets flight's information with the given information.
      */
     private void setFlightInfo() {
         viewFlightNum.setText(flight.getFlightNum());
@@ -114,7 +114,7 @@ public class ViewFlightFragment extends Fragment {
     }
 
     /**
-     * Updates the flight's information with the given information
+     * Updates the flight's information with the given information.
      * @return returns true if flight was updated successfully
      */
     public static boolean updateFlightInfo(){

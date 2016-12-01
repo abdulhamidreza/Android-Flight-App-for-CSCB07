@@ -25,7 +25,7 @@ public class ItineraryBookFragment extends Fragment {
     private static Itinerary itinerary;
 
     /**
-     * The ItineraryBookFragment constructor
+     * The ItineraryBookFragment constructor.
      */
     public ItineraryBookFragment() {
         // Required empty public constructor

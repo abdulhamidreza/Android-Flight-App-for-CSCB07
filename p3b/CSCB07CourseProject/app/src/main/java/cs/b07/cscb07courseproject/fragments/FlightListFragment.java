@@ -40,7 +40,7 @@ public class FlightListFragment extends Fragment {
     public static final String flightKey = "flightKey";
 
     /**
-     * The FlightListFragment constructor
+     * The FlightListFragment constructor.
      */
     public FlightListFragment() {
         // Required empty public constructor

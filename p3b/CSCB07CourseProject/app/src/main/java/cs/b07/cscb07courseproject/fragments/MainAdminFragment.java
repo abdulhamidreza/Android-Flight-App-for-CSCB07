@@ -23,7 +23,7 @@ public class MainAdminFragment extends Fragment {
     private static EditText originET, destinationET, dateET;
 
     /**
-     * The MainAdminFragment constructor
+     * The MainAdminFragment constructor.
      */
     public MainAdminFragment() {
         // Required empty public constructor
@@ -53,7 +53,7 @@ public class MainAdminFragment extends Fragment {
     }
 
     /**
-     * Returns the flight detail in a bundle
+     * Returns the flight detail in a bundle.
      * @return the bundle with flight details
      */
     public static Bundle bundleFlightDetail(){
