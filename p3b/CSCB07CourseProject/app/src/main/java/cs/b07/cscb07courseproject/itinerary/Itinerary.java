@@ -114,7 +114,7 @@ public class Itinerary implements Serializable {
   }
 
   public String getTotalTimeString(){
-    return String.format("%02d:%02d", Math.floor(totalTime / 360), Math.floor((totalTime%360)/60));
+    return String.format("%s:%s", (int)Math.floor(totalTime / 360), (int) Math.floor((totalTime%360)/60));
   }
 
   /**

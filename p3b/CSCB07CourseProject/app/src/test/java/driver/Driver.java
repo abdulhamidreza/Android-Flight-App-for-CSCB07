@@ -10,6 +10,7 @@ package driver;
     import java.util.List;
     import java.util.concurrent.TimeUnit;
 
+    import cs.b07.cscb07courseproject.SampleTests;
     import cs.b07.cscb07courseproject.database.Database;
     import cs.b07.cscb07courseproject.flight.Flight;
     import cs.b07.cscb07courseproject.flightServices.FlightManager;
@@ -28,7 +29,7 @@ public class Driver {
     private static final DateFormat date = new SimpleDateFormat("yyyy-MM-dd", locale);
     private static final DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", locale);
     private static final DateFormat time = new SimpleDateFormat("HH:mm", locale);
-    public static Database db = new Database("/client.txt", "/admin.txt", "/flight.txt");
+    public static Database db = new Database(SampleTests.PATH + "client.txt", SampleTests.PATH + "admin.txt", SampleTests.PATH + "flight.txt");
     public static FlightService fs;
 
     /**
