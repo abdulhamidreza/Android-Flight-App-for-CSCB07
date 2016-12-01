@@ -487,7 +487,7 @@ public class Database implements Serializable {
 
     }
 
-    void updateClient() {
+    public void updateClient() {
 
         FileOutputStream outStream;
 
@@ -508,7 +508,7 @@ public class Database implements Serializable {
 
     }
 
-    void updateAdmin() {
+    public void updateAdmin() {
 
         FileOutputStream outStream;
 
@@ -529,7 +529,7 @@ public class Database implements Serializable {
 
     }
 
-    void updateFlight() {
+    public void updateFlight() {
 
         FileOutputStream outStream;
 
@@ -554,7 +554,7 @@ public class Database implements Serializable {
      * Updates all stored data.
      *
      */
-    void update() {
+    public void update() {
 
         updateAdmin();
         updateClient();
