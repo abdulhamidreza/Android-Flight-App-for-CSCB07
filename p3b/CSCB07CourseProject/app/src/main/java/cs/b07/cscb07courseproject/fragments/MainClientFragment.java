@@ -13,7 +13,7 @@ import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.util.ValidDate;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple Main Client subclass.
  */
 public class MainClientFragment extends Fragment {
 
@@ -21,11 +21,20 @@ public class MainClientFragment extends Fragment {
 
     private static EditText originET, destinationET, dateET;
 
+    /**
+     * The MainClientFragment constructor
+     */
     public MainClientFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * Method called when MainClientFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,6 +50,10 @@ public class MainClientFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Returns the flight detail in a bundle
+     * @return the bundle with flight details
+     */
     public static Bundle bundleFlightDetail(){
         Bundle bundle = new Bundle();
         String origin = originET.getText().toString();

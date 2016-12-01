@@ -19,7 +19,7 @@ import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.flight.Flight;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple View Flight subclass.
  */
 public class ViewFlightFragment extends Fragment {
 
@@ -32,12 +32,20 @@ public class ViewFlightFragment extends Fragment {
 
     private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
 
-
+    /**
+     * The ViewFlightFragment constructor
+     */
     public ViewFlightFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * Method called when ViewFlightFragment fragment is called to be viewed.
+     * @param inflater the inflater of this fragment
+     * @param container the container of this fragment
+     * @param savedInstanceState savedInstanceState the saved instance of this fragment
+     * @return the view set for the user to see
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +77,9 @@ public class ViewFlightFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Sets the view of the user to the admin's and allows clickable permissions
+     */
     private void setAdminView (){
         viewFlightNum.setClickable(true);
         viewOrigin.setClickable(true);
@@ -82,6 +93,9 @@ public class ViewFlightFragment extends Fragment {
         updateFlightBtn.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Sets flight's information with the given information
+     */
     private void setFlightInfo() {
         viewFlightNum.setText(flight.getFlightNum());
         viewOrigin.setText(flight.getOrigin());
@@ -93,6 +107,10 @@ public class ViewFlightFragment extends Fragment {
         viewCost.setText(String.format("$%f",flight.getCost()));
     }
 
+    /**
+     * Updates the flight's information with the given information
+     * @return returns true if flight was updated successfully
+     */
     public static boolean updateFlightInfo(){
         try {
             flight.setFlightNum(viewFlightNum.getText().toString());
