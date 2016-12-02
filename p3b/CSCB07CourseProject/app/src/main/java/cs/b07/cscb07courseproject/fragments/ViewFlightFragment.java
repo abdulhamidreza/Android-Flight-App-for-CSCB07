@@ -33,7 +33,7 @@ public class ViewFlightFragment extends Fragment {
     private static Flight flight;
     private static boolean isClient;
 
-    private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+    private static DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     /**
      * The ViewFlightFragment constructor.
@@ -78,7 +78,16 @@ public class ViewFlightFragment extends Fragment {
             flight = ClientActivity.db.getFlight(flightId);
         }
         System.out.println(flight);
-        System.out.println(flightId);
+        System.out.println(flight.getFlightNum());
+
+        viewFlightNum.setText(flight.getFlightNum());
+        viewOrigin.setText(flight.getOrigin());
+        viewDestination.setText(flight.getDestination());
+        viewAirline.setText(flight.getAirline());
+        viewDepDate.setText(dateTime.format(flight.getDepartureDate().getTime()));
+        viewArrivalDate.setText(dateTime.format(flight.getArrivalDate().getTime()));
+        viewSeats.setText(String.format("%d",flight.getAvailableSeats()));
+        viewCost.setText(String.format("$%.2f",flight.getCost()));
 
         //setFlightInfo();
 
@@ -112,7 +121,7 @@ public class ViewFlightFragment extends Fragment {
         viewDepDate.setText(dateTime.format(flight.getDepartureDate().getTime()));
         viewAirline.setText(dateTime.format(flight.getArrivalDate().getTime()));
         viewSeats.setText(flight.getAvailableSeats());
-        //viewCost.setText(String.format("$%.2f",flight.getCost()));
+        viewCost.setText(String.format("$%.2f",flight.getCost()));
     }
 
     /**

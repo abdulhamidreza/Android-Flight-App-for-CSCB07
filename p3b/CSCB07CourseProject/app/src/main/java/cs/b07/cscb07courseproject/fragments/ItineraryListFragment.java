@@ -76,7 +76,7 @@ public class ItineraryListFragment extends Fragment {
             flightService = new FlightManager(AdminActivity.db.getFlights());
         }
         isIncreasing = true;
-
+        itineraries = new ArrayList<>();
         try {
             itineraries = flightService.getItinerary(origin, destination, date, isDirect);
         }catch (ParseException | NullPointerException ex) {

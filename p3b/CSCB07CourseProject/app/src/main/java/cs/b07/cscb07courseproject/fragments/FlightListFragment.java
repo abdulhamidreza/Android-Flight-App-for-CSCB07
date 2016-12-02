@@ -72,7 +72,7 @@ public class FlightListFragment extends Fragment {
         }else{
             flightService = new FlightManager(AdminActivity.db.getFlights());
         }
-
+        itineraries = new ArrayList<>();
         try {
             itineraries = flightService.getItinerary(origin, destination, date, isDirect);
         }catch (ParseException | NullPointerException ex) {
