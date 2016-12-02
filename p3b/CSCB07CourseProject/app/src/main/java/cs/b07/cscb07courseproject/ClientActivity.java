@@ -16,6 +16,7 @@ import cs.b07.cscb07courseproject.fragments.EditClientFragment;
 import cs.b07.cscb07courseproject.fragments.FlightListFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryBookFragment;
 import cs.b07.cscb07courseproject.fragments.ItineraryListFragment;
+import cs.b07.cscb07courseproject.fragments.MainAdminFragment;
 import cs.b07.cscb07courseproject.fragments.MainClientFragment;
 import cs.b07.cscb07courseproject.fragments.ViewFlightFragment;
 import cs.b07.cscb07courseproject.users.Client;
@@ -158,6 +159,23 @@ public class ClientActivity extends AppCompatActivity {
                     getString(R.string.book_error),
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    /**
+     * Switches the client to the home screen
+     * @param view the current view
+     */
+    public void home(View view){
+        Fragment frag = new MainClientFragment();
+        setFragment(frag);
+    }
+
+    /**
+     * Logs the user out and returns them to the login fragment.
+     * @param view the current view
+     */
+    public void log_out(View view){
+        finish();
     }
 
     /**

@@ -52,6 +52,7 @@ public class MainAdminFragment extends Fragment {
         return rootView;
     }
 
+
     /**
      * Returns the flight detail in a bundle.
      * @return the bundle with flight details

@@ -2,6 +2,7 @@ package cs.b07.cscb07courseproject.fragments;
 
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class AddThroughFileFragment extends Fragment {
 
         getActivity().setTitle(R.string.add_file_title);
 
-        // /storage/emulated/0
+        System.out.println(Environment.getExternalStorageDirectory().toString());
 
         return rootView;
     }

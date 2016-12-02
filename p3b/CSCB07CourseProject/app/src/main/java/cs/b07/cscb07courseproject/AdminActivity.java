@@ -177,6 +177,8 @@ public class AdminActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                     break;
             }
+            Fragment frag = new MainAdminFragment();
+            setFragment(frag);
 
         }catch(IOException ex){
             Toast.makeText(this,
@@ -187,6 +189,23 @@ public class AdminActivity extends AppCompatActivity {
                     getString(R.string.parse_error),
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    /**
+     * Logs the user out and returns them to the login fragment.
+     * @param view the current view
+     */
+    public void log_out(View view){
+        finish();
+    }
+
+    /**
+     * Switches the admin to the home screen
+     * @param view the current view
+     */
+    public void home(View view){
+        Fragment frag = new MainAdminFragment();
+        setFragment(frag);
     }
 
     /**
