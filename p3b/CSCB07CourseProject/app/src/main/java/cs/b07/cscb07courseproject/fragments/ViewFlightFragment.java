@@ -12,13 +12,14 @@ import android.widget.EditText;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
 
 import cs.b07.cscb07courseproject.AdminActivity;
 import cs.b07.cscb07courseproject.ClientActivity;
 import cs.b07.cscb07courseproject.LogInActivity;
 import cs.b07.cscb07courseproject.R;
 import cs.b07.cscb07courseproject.flight.Flight;
+
+import static cs.b07.cscb07courseproject.AdminActivity.db;
 
 /**
  * A simple View Flight subclass.
@@ -130,21 +131,21 @@ public class ViewFlightFragment extends Fragment {
      */
     public static boolean updateFlightInfo(){
         try {
-            AdminActivity.db.getFlight(flightId)
+            db.getFlight(flightId)
                     .setFlightNum(viewFlightNum.getText().toString());
-            AdminActivity.db.getFlight(flightId)
+            db.getFlight(flightId)
                     .setOrigin(viewOrigin.getText().toString());
-            AdminActivity.db.getFlight(flightId)
+            db.getFlight(flightId)
                     .setDestination(viewDestination.getText().toString());
-            AdminActivity.db.getFlight(flightId)
+            db.getFlight(flightId)
                     .setAirline(viewAirline.getText().toString());
-            AdminActivity.db.getFlight(flightId)
+            db.getFlight(flightId)
                     .setDepartureDate(viewDepDate.getText().toString());
-            AdminActivity.db.getFlight(flightId)
+            db.getFlight(flightId)
                     .setArrivalDate(viewArrivalDate.getText().toString());
-            AdminActivity.db.getFlight(flightId)
+            db.getFlight(flightId)
                     .setAvailableSeats(Integer.parseInt(viewSeats.getText().toString()));
-            AdminActivity.db.getFlight(flightId)
+            db.getFlight(flightId)
                     .setCost(Double.parseDouble(viewCost.getText().toString().substring(1)));
             return true;
         }catch(ParseException ex){
