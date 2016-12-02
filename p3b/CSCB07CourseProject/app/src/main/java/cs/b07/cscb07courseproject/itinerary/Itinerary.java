@@ -194,10 +194,10 @@ public class Itinerary implements Serializable {
     String itineraryFormat = "[";
     for (int i = 0; i < flights.size() ; i++ ) {
       Flight flight = flights.get(i);
-      itineraryFormat += String.format("%s/%s/%s/%s/%s/%s", flight.getFlightNum(),
+      itineraryFormat += String.format("%s/%s/%s/%s/%s/%s/%s", flight.getFlightNum(),
               dateTime.format(flight.getDepartureDate().getTime()),
               dateTime.format(flight.getArrivalDate().getTime()), flight.getAirline(),
-              flight.getOrigin(), flight.getDestination());
+              flight.getOrigin(), flight.getDestination(), flight.getAvailableSeats());
       if( i != flights.size() - 1) {
         itineraryFormat += ",";
       }
