@@ -42,6 +42,8 @@ public class Database implements Serializable {
         this.flights = new ArrayList<Flight>();
         this.dir = dir;
 
+        read();
+
         update();
     }
 
@@ -523,7 +525,6 @@ public class Database implements Serializable {
      */
     public void updateClient() {
 
-        readClient();
 
         FileOutputStream outStream;
 
@@ -548,7 +549,6 @@ public class Database implements Serializable {
      */
     public void updateAdmin() {
 
-        readAdmin();
 
         FileOutputStream outStream;
 
@@ -573,7 +573,6 @@ public class Database implements Serializable {
      */
     public void updateFlight() {
 
-        readFlight();
 
         FileOutputStream outStream;
 
