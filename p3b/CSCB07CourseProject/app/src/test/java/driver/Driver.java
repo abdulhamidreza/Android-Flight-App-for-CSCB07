@@ -125,6 +125,8 @@ public class Driver {
         List<String> flights = new ArrayList<>();
         for (Itinerary itinerary: itineraries){
             flights.add(itinerary.getFlights().get(0).toString());
+            System.out.println(itinerary.getFlights().get(0).getArrivalDate().getTimeInMillis());
+            System.out.println(itinerary.getFlights().get(0).getDepartureDate().getTimeInMillis());
         }
 
         /*String flightNum = "KL490";
@@ -180,6 +182,7 @@ public class Driver {
         List<String> itineraries = new ArrayList<>();
         for (Itinerary itinerary: flights){
             itineraries.add(itinerary.toString());
+            //System.out.println(itinerary.getTotalTime());
         }
 
         /*String flightNum0 = "UA490";

@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 //import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.concurrent.TimeUnit;
 
 import cs.b07.cscb07courseproject.util.ValidDate;
 
@@ -232,11 +233,13 @@ public class Flight implements Serializable {
    */
   private void setDuration() {
     this.flightDuration =
-            abs(departureDate.getTimeInMillis() - arrivalDate.getTimeInMillis())/1000;
+            (arrivalDate.getTimeInMillis() - departureDate.getTimeInMillis());
   }
 
   public String getTotalTimeString(){
-    return String.format("%02d:%02d", Math.floor(flightDuration / 360), Math.floor((flightDuration%360)/60));
+    return String.format("%02d:%02d", TimeUnit.MILLISECONDS.toHours(flightDuration),
+            TimeUnit.MILLISECONDS.toMinutes(flightDuration)
+                    - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(flightDuration)));
   }
 
   /**
@@ -267,7 +270,7 @@ public class Flight implements Serializable {
    * @return time difference between both <code>Flight</code>s.
    */
   public long timeBetweenFlights(Flight flight) {
-    return (arrivalDate.getTimeInMillis() - flight.getDepartureDate().getTimeInMillis())/1000;
+    return (flight.getDepartureDate().getTimeInMillis() - arrivalDate.getTimeInMillis())/1000;
   }
 
   public byte[] getBytes() {

@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 //import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import cs.b07.cscb07courseproject.flight.Flight;
 
@@ -114,7 +115,8 @@ public class Itinerary implements Serializable {
   }
 
   public String getTotalTimeString(){
-    return String.format("%s:%s", (int)Math.floor(totalTime / 360), (int) Math.floor((totalTime%360)/60));
+    return String.format("%02d:%02d", TimeUnit.MILLISECONDS.toHours(totalTime),TimeUnit.MILLISECONDS.toMinutes(totalTime)
+            - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(totalTime)));
   }
 
   /**
@@ -130,7 +132,7 @@ public class Itinerary implements Serializable {
     } else if (flights.size() == 1) {
       totalTime = flights.get(0).getDuration();
     } else {
-      totalTime = flights.get(flights.size()-1).getArrivalDate().getTimeInMillis() - flights.get(0).getDepartureDate().getTimeInMillis();
+      totalTime = (flights.get(flights.size()-1).getArrivalDate().getTimeInMillis() - flights.get(0).getDepartureDate().getTimeInMillis());
     }
 
   }
