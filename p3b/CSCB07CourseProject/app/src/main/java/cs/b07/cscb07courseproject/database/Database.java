@@ -286,7 +286,7 @@ public class Database implements Serializable {
      */
     public static Flight parseFlight(String toParse) throws ParseException {
 
-        String strArr[] = toParse.split(";");
+        String strArr[] = toParse.split("/");
 
         Flight toReturn = new Flight(strArr[0],strArr[4],strArr[5],strArr[3],strArr[1],strArr[2],Integer.valueOf(strArr[7]),Double.valueOf(strArr[6]));
 
