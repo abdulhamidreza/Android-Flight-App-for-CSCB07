@@ -17,6 +17,7 @@ import cs.b07.cscb07courseproject.R;
 public class AddThroughFileFragment extends Fragment {
 
     private static View rootView;
+    private static final String PATH = "/storage/emulated/0/";
 
     public AddThroughFileFragment() {
         // Required empty public constructor
@@ -36,6 +37,8 @@ public class AddThroughFileFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_add_through_file, container, false);
 
         getActivity().setTitle(R.string.add_file_title);
+
+        // /storage/emulated/0
 
         return rootView;
     }
