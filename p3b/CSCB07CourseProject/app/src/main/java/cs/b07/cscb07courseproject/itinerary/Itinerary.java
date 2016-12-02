@@ -120,8 +120,7 @@ public class Itinerary implements Serializable {
   }
 
   /**
-   * Refreshes the total time of this Itinerary.s
-   * 
+   * Refreshes the total time of this Itinerary.
    */
   private void setTotalTime() {
     // the difference in time between the departure of the first flight, and the
@@ -137,6 +136,10 @@ public class Itinerary implements Serializable {
 
   }
 
+  /**
+   * Generates this itinerary's hashcode.
+   * @return the hashcode representation of this itinerary
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -149,6 +152,11 @@ public class Itinerary implements Serializable {
     return result;
   }
 
+  /**
+   * Check if this itinerary is equal to the given object.
+   * @param obj the object being compared to this itinerary
+   * @return returns true if the two are equal
+   */
   @Override
   public boolean equals(Object obj) {
     if (this == obj)
@@ -198,6 +206,11 @@ public class Itinerary implements Serializable {
     return itineraryFormat;
 
   }
+
+  /**
+   * Generates this itinerary's string representation.
+   * @return the string representation of this itinerary
+   */
   @Override
   public String toString() {
     String itineraryFormat = "";

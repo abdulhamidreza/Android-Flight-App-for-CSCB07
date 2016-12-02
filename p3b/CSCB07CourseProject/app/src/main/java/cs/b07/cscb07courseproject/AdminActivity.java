@@ -1,11 +1,15 @@
 package cs.b07.cscb07courseproject;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.text.ParseException;
 
 import cs.b07.cscb07courseproject.database.Database;
 import cs.b07.cscb07courseproject.fragments.AddThroughFileFragment;
@@ -24,11 +28,12 @@ public class AdminActivity extends AppCompatActivity {
     public static String admin;
     public static Database db;
 
+    private static String fileType;
+
     public static final String originKey = "originKey";
     public static final String destinationKey = "destinationKey";
     public static final String dateKey = "dateKey";
     public static final String isDirectKey = "isDirectKey";
-    public static final String clientKey = "clientKey";
 
     /**
      * Initializes the admin activity.
@@ -50,6 +55,9 @@ public class AdminActivity extends AppCompatActivity {
         setFragment(frag);
     }
 
+    /**
+     * Updates the database upon end of application.
+     */
     protected  void onDestroy() {
         super.onDestroy();
         db.update();
@@ -62,6 +70,7 @@ public class AdminActivity extends AppCompatActivity {
     public void addClient(View view) {
         Bundle bundle = new Bundle();
         Fragment frag = new AddThroughFileFragment();
+        fileType = "Client";
         frag.setArguments(bundle);
         setFragment(frag);
     }
@@ -82,6 +91,7 @@ public class AdminActivity extends AppCompatActivity {
     public void addFlight(View view) {
         Bundle bundle = new Bundle();
         Fragment frag = new AddThroughFileFragment();
+        fileType = "Flight";
         frag.setArguments(bundle);
         setFragment(frag);
     }
@@ -137,6 +147,44 @@ public class AdminActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this,
                     getString(R.string.msg_update_flight_unsuccessful),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Loads a file.
+     * @param view the current view
+     */
+    public void loadFile(View view){
+       String fileName = AddThroughFileFragment.loadFileClick();
+        try {
+            switch (fileType) {
+                case "Flight":
+                    db.readFlightTxt(Environment.getExternalStorageDirectory().toString(), fileName);
+                    Toast.makeText(this,
+                            getString(R.string.success_upload_file),
+                            Toast.LENGTH_LONG).show();
+                    break;
+                case "Client":
+                    db.readInClientTxt(Environment.getExternalStorageDirectory().toString(), fileName);
+                    Toast.makeText(this,
+                            getString(R.string.success_upload_file),
+                            Toast.LENGTH_LONG).show();
+                    break;
+                default:
+                    Toast.makeText(this,
+                            getString(R.string.wrong_file_type),
+                            Toast.LENGTH_LONG).show();
+                    break;
+            }
+
+        }catch(IOException ex){
+            Toast.makeText(this,
+                    getString(R.string.error_finding_file),
+                    Toast.LENGTH_LONG).show();
+        }catch(ParseException ex){
+            Toast.makeText(this,
+                    getString(R.string.parse_error),
                     Toast.LENGTH_LONG).show();
         }
     }

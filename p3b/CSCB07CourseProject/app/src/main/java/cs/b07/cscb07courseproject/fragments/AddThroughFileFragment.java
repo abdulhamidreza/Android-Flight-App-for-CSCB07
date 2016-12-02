@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
+import cs.b07.cscb07courseproject.AdminActivity;
 import cs.b07.cscb07courseproject.R;
 
 /**
@@ -15,7 +17,6 @@ import cs.b07.cscb07courseproject.R;
 public class AddThroughFileFragment extends Fragment {
 
     private static View rootView;
-
 
     public AddThroughFileFragment() {
         // Required empty public constructor
@@ -39,4 +40,8 @@ public class AddThroughFileFragment extends Fragment {
         return rootView;
     }
 
+    public static String loadFileClick() {
+        EditText pathToFile = (EditText) rootView.findViewById(R.id.pathToFile);
+        return pathToFile.getText().toString();
+    }
 }

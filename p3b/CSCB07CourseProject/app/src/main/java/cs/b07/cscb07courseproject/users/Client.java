@@ -190,6 +190,8 @@ public class Client extends User implements Serializable {
     return toReturn;
   }
 
+
+
   public String toString() {
     return String.format("Email: %s\nFirst Name: %s\nLast Name: %s" +
             "\nAddress: %s\nCredit Card Number: %s\nCredit Card Expiry Date: %s" +

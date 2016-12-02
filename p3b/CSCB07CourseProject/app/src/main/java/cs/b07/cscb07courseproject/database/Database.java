@@ -420,22 +420,22 @@ public class Database implements Serializable {
 
         String clientEmail = client.getEmail();
         boolean alreadyIn = false;
-
+        Client toRemove = null;
         for (Client curr : clients) {
 
             if (curr.getEmail().equals(clientEmail) && curr != client) {
 
-                clients.remove(curr);
+                toRemove = curr;
                 alreadyIn = true;
+
 
             }
         }
-
-        if (!alreadyIn) {
-
-            clients.add(client);
-
+        if(alreadyIn) {
+            clients.remove(toRemove);
         }
+        clients.add(client);
+
 
         updateClient();
     }
@@ -448,22 +448,22 @@ public class Database implements Serializable {
 
         String adminEmail = admin.getEmail();
         boolean alreadyIn = false;
+        Admin toRemove = null;
 
         for (Admin curr : admins) {
 
             if (curr.getEmail().equals(adminEmail) && curr != admin) {
 
-                admins.remove(curr);
+                toRemove = curr;
                 alreadyIn = true;
 
             }
         }
 
-        if (!alreadyIn) {
-
-            admins.add(admin);
-
+        if (alreadyIn) {
+            admins.remove(toRemove);
         }
+        admins.add(admin);
 
         updateAdmin();
     }
@@ -476,22 +476,22 @@ public class Database implements Serializable {
 
         String flightNum = flight.getFlightNum();
         boolean alreadyIn = false;
+        Flight toRemove = null;
 
         for (Flight curr : flights) {
 
             if (curr.getFlightNum().equals(flightNum) && curr != flight) {
 
-                flights.remove(curr);
+                toRemove = curr;
                 alreadyIn = true;
 
             }
         }
 
         if (!alreadyIn) {
-
-            flights.add(flight);
-
+            flights.remove(toRemove);
         }
+        flights.add(flight);
 
         updateFlight();
 

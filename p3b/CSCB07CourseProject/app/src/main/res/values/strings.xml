@@ -87,4 +87,8 @@
     <string name="book_error">Error booking itinerary</string>
     <string name="book_success">Booked itinerary</string>
     <string name="fill_out_details">Fill in origin, destination and departure date</string>
+    <string name="error_finding_file">Couldn't find file</string>
+    <string name="parse_error">Date error</string>
+    <string name="wrong_file_type">That's the wrong file type!</string>
+    <string name="success_upload_file">Successfully Uploaded File</string>
 </resources>
