@@ -29,7 +29,7 @@ public class Driver {
     private static final DateFormat date = new SimpleDateFormat("yyyy-MM-dd", locale);
     private static final DateFormat dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", locale);
     private static final DateFormat time = new SimpleDateFormat("HH:mm", locale);
-    public static Database db = new Database(SampleTests.PATH + "client.txt", SampleTests.PATH + "admin.txt", SampleTests.PATH + "flight.txt");
+    public static Database db = new Database(SampleTests.PATH);
     public static FlightService fs;
 
     /**

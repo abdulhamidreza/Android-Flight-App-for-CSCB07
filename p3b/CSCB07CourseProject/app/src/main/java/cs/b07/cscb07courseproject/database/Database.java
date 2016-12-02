@@ -41,29 +41,6 @@ public class Database implements Serializable {
         this.admins = new ArrayList<Admin>();
         this.flights = new ArrayList<Flight>();
         this.dir = dir;
-        try {
-            File client = new File(dir, "client.txt");
-            if(client.exists()) {
-                this.readClientTxt(dir);
-            } else {
-                client.createNewFile();
-            }
-            File admin = new File(dir, "admin.txt");
-            if(admin.exists()) {
-                this.readAdminTxt(dir);
-            } else {
-                admin.createNewFile();
-            }
-            File flight = new File(dir, "flight.txt");
-            if(client.exists()) {
-                this.readFlightTxt(dir, "flight.txt");
-            } else {
-                flight.createNewFile();
-            }
-        }catch (IOException | ParseException ex) {
-            ex.printStackTrace();
-        }
-
 
         update();
     }
@@ -421,7 +398,7 @@ public class Database implements Serializable {
 
 
     /**
-     * Adds a new client into the database.
+     * Adds a new client into the database. if a client with the same email is already in the database, they are overwritten,
      * @param client the client being added
      */
     public void AddNewClient(Client client) {
@@ -449,7 +426,7 @@ public class Database implements Serializable {
     }
 
     /**
-     * Adds a new admin to the database.
+     * Adds a new admin to the database. if a admin with the same email is already in the database, they are overwritten,
      * @param admin the admin being added
      */
     public void AddNewAdmin(Admin admin) {
@@ -531,7 +508,7 @@ public class Database implements Serializable {
 
     /**
      * Deletes an admin from the database.
-     * @param admin the client being removed
+     * @param admin the admin being removed
      */
     void deleteAdmin(Admin admin) {
 
@@ -545,6 +522,8 @@ public class Database implements Serializable {
      * Updates client information in the database.
      */
     public void updateClient() {
+
+        readClient();
 
         FileOutputStream outStream;
 
@@ -569,6 +548,8 @@ public class Database implements Serializable {
      */
     public void updateAdmin() {
 
+        readAdmin();
+
         FileOutputStream outStream;
 
         try {
@@ -591,6 +572,8 @@ public class Database implements Serializable {
      * Updates flight information in the database.
      */
     public void updateFlight() {
+
+        readFlight();
 
         FileOutputStream outStream;
 
@@ -619,5 +602,55 @@ public class Database implements Serializable {
         updateClient();
         updateFlight();
 
+    }
+
+    /**
+     * Reads all information from database
+     */
+    public void read() {
+        readClient();
+        readAdmin();
+        readFlight();
+    }
+
+    public void readClient() {
+        try {
+            File client = new File(dir, "client.txt");
+            if(client.exists()) {
+                this.readClientTxt(dir);
+            } else {
+                client.createNewFile();
+            }
+
+        }catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void readAdmin() {
+        try {
+            File admin = new File(dir, "admin.txt");
+            if(admin.exists()) {
+                this.readAdminTxt(dir);
+            } else {
+                admin.createNewFile();
+            }
+
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void readFlight() {
+        try {
+            File flight = new File(dir, "flight.txt");
+            if(flight.exists()) {
+                this.readFlightTxt(dir, "flight.txt");
+            } else {
+                flight.createNewFile();
+            }
+        }catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
     }
 }
