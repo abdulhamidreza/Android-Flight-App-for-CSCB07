@@ -48,7 +48,7 @@ public class LogInActivity extends AppCompatActivity {
 
         String appPath = Environment.getExternalStorageDirectory().toString();
         System.out.println(appPath);
-        db = new Database(appPath + "/client.txt", appPath + "/admin.txt", appPath + "/flight.txt");
+        db = new Database(appPath);
 
 
         setFragment(new LogInFragment());

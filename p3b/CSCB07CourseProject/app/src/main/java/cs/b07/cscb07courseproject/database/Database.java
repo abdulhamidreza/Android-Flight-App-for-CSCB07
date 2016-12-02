@@ -27,9 +27,7 @@ public class Database implements Serializable {
     private static List<Client> clients;
     private static List<Admin> admins;
     private static List<Flight> flights;
-    private String clientDir;
-    private String adminDir;
-    private String flightDir;
+    private String dir;
 
     /**
      * Constructs this Database object, initializing it's fields as empty Lists.
@@ -37,22 +35,32 @@ public class Database implements Serializable {
      * @throws IOException
      *
      */
-    public Database(String inClientDir, String inAdminDir, String inFlightDir) {
+    public Database(String dir) {
         // reads in data from files
         this.clients = new ArrayList<Client>();
         this.admins = new ArrayList<Admin>();
         this.flights = new ArrayList<Flight>();
-        this.clientDir = inClientDir;
-        this.adminDir = inAdminDir;
-        this.flightDir = inFlightDir;
+        this.dir = dir;
         try {
-            File client = new File(clientDir);
-            client.createNewFile();
-            File admin = new File(adminDir);
-            admin.createNewFile();
-            File flight = new File(flightDir);
-            flight.createNewFile();
-        }catch (IOException ex) {
+            File client = new File(dir, "client.txt");
+            if(client.exists()) {
+                this.readClientTxt(dir);
+            } else {
+                client.createNewFile();
+            }
+            File admin = new File(dir, "admin.txt");
+            if(admin.exists()) {
+                this.readAdminTxt(dir);
+            } else {
+                admin.createNewFile();
+            }
+            File flight = new File(dir, "flight.txt");
+            if(client.exists()) {
+                this.readFlightTxt(dir, "flight.txt");
+            } else {
+                flight.createNewFile();
+            }
+        }catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
 
@@ -541,7 +549,7 @@ public class Database implements Serializable {
         FileOutputStream outStream;
 
         try {
-            File db = new File(clientDir);
+            File db = new File(dir, "client.txt");
             db.delete();
             outStream = new FileOutputStream(db, true);
             for( Client curr : clients) {
@@ -564,7 +572,7 @@ public class Database implements Serializable {
         FileOutputStream outStream;
 
         try {
-            File db = new File(adminDir);
+            File db = new File(dir, "admin.txt");
             db.delete();
             outStream = new FileOutputStream(db, true);
             for( Admin curr : admins) {
@@ -587,7 +595,7 @@ public class Database implements Serializable {
         FileOutputStream outStream;
 
         try {
-            File db = new File(flightDir);
+            File db = new File(dir, "flight.txt");
             db.delete();
             outStream = new FileOutputStream(db, true);
             for( Flight curr : flights) {
