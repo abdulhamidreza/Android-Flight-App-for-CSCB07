@@ -79,13 +79,13 @@ public class ItineraryListFragment extends Fragment {
 
         try {
             itineraries = flightService.getItinerary(origin, destination, date, isDirect);
-        }catch (ParseException ex) {
+        }catch (ParseException | NullPointerException ex) {
             ex.printStackTrace();
         }
 
         stringItineraries = new ArrayList<>();
         for (Itinerary itinerary: itineraries) {
-            stringItineraries.add(String.format("%d\n%s --> %s\n$ %f\n%s",
+            stringItineraries.add(String.format("%d\n%s --> %s\n$ %.2f\n%s",
                     itinerary.getItineraryId(), origin, destination,
                     itinerary.getTotalCost(), itinerary.getTotalTimeString()));
         }
@@ -160,7 +160,7 @@ public class ItineraryListFragment extends Fragment {
             flightService.sortItineraries(itineraries, "Time", isIncreasing);
             stringItineraries = new ArrayList<>();
             for (Itinerary itinerary: itineraries) {
-                stringItineraries.add(String.format("%d\n%s --> %s\n$ %f\n%s",
+                stringItineraries.add(String.format("%d\n%s --> %s\n$ %.2f\n%s",
                         itinerary.getItineraryId(), origin, destination,
                         itinerary.getTotalCost(), itinerary.getTotalTimeString()));
             }

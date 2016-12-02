@@ -54,7 +54,7 @@ public class FlightManager implements FlightService {
    */
   @Override
   public List<Itinerary> getItinerary(String origin, String destination, String departureDate, boolean isDirect)
-      throws ParseException {
+      throws ParseException, NullPointerException {
     Stack<String> location = new Stack<String>(); // all visited cities
     Stack<Flight> connection = new Stack<Flight>(); // all connection
                                                     // <code>Flight</code>
@@ -62,38 +62,42 @@ public class FlightManager implements FlightService {
     List<Itinerary> allItineraries = new ArrayList<Itinerary>();
 
     location.push(origin);
+    if (mapOfFlights.containsKey(origin)) {
 
-    // Loop that goes through all the flights from origin city
-    for (Flight flight : mapOfFlights.get(origin)) {
+      // Loop that goes through all the flights from origin city
+      for (Flight flight : mapOfFlights.get(origin)) {
 
-      // Checks departure dates are the same
-      if (date.format(flight.getDepartureDate().getTime()).equals(departureDate)
-              && flight.getAvailableSeats() > 0) {
-        // Checks if the <code>Flight</code> destination is wanted destination
-        // This is for direct flights
-        if (flight.getDestination().equals(destination)) {
-          // Adds Flight as a valid path to destination
+        // Checks departure dates are the same
+        if (date.format(flight.getDepartureDate().getTime()).equals(departureDate)
+                && flight.getAvailableSeats() > 0) {
+          // Checks if the <code>Flight</code> destination is wanted destination
+          // This is for direct flights
+          if (flight.getDestination().equals(destination)) {
+            // Adds Flight as a valid path to destination
           /*Stack<Flight> temp = new Stack<Flight>();
           temp.push(flight);
           paths.add(temp);*/
-          
-          Itinerary newPath = new Itinerary();
-          newPath.addFlight(flight);
-          allItineraries.add(newPath);
 
-          // Else if checks to make sure the <code>Flight</code> destination
-          // has <code>Flight</code>'s leaving from that destination
-          // This is for transfer flights
-        } else if (mapOfFlights.containsKey(flight.getDestination()) && !isDirect) {
-          connection.push(flight);
-          // Calls private recursive method to find all connection
-          // <code>Flight</code>
-          getFlights(flight, destination, location, connection, allItineraries);
-          connection.pop();
+            Itinerary newPath = new Itinerary();
+            newPath.addFlight(flight);
+            allItineraries.add(newPath);
+
+            // Else if checks to make sure the <code>Flight</code> destination
+            // has <code>Flight</code>'s leaving from that destination
+            // This is for transfer flights
+          } else if (mapOfFlights.containsKey(flight.getDestination()) && !isDirect) {
+            connection.push(flight);
+            // Calls private recursive method to find all connection
+            // <code>Flight</code>
+            getFlights(flight, destination, location, connection, allItineraries);
+            connection.pop();
+          }
         }
       }
+      return allItineraries;
+    }else{
+      throw new NullPointerException();
     }
-    return allItineraries;
   }
 
   /**

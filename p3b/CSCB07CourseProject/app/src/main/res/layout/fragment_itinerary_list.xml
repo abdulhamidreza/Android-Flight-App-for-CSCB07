@@ -13,21 +13,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sortByTime"
-            android:layout_weight="0.33"
+            android:layout_weight="0.2"
             android:onClick="sortByTime"/>
         <Button
             android:id="@+id/sortByCostBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sortByCost"
-            android:layout_weight="0.33"
+            android:layout_weight="0.2"
             android:onClick="sortByCost"/>
         <Button
             android:id="@+id/sortIncreaseBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sortIncreasing"
-            android:layout_weight="0.33"
+            android:layout_weight="0.2"
             android:onClick="sortIncreasing"/>
     </LinearLayout>
     <ListView

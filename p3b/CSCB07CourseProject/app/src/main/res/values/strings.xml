@@ -31,7 +31,7 @@
     <string name="updateFlight">Update Flight</string>
     <string name="sortByTime">Sort by Time</string>
     <string name="sortByCost">Sort by Cost</string>
-    <string name="sortIncreasing">\u21F5</string>
+    <string name="sortIncreasing">Reverse Order</string>
 
 
     <!-- Strings related to login -->

@@ -75,13 +75,13 @@ public class FlightListFragment extends Fragment {
 
         try {
             itineraries = flightService.getItinerary(origin, destination, date, isDirect);
-        }catch (ParseException ex) {
+        }catch (ParseException | NullPointerException ex) {
             ex.printStackTrace();
         }
 
         stringItineraries = new ArrayList<>();
         for (Itinerary itinerary: itineraries) {
-            stringItineraries.add(String.format("%d\n%s --> %s\n$ %f\n%s",
+            stringItineraries.add(String.format("%s\n%s --> %s\n$ %.2f\n%s",
                     itinerary.getFlights().get(0).getFlightNum(), origin, destination,
                     itinerary.getTotalCost(), itinerary.getTotalTimeString()));
         }
@@ -98,7 +98,7 @@ public class FlightListFragment extends Fragment {
 
                 // Switch to detail view of Itinerary
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(flightKey, itineraries.get(position).getFlights().get(0).getFlightNum());
+                bundle.putString(flightKey, itineraries.get(position).getFlights().get(0).getFlightNum());
                 if (isClient) {
                     bundle.putBoolean(LogInActivity.isClientKey, true);
                 } else {

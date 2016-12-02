@@ -45,9 +45,9 @@ public class MainAdminFragment extends Fragment {
         getActivity().setTitle(R.string.main_title);
 
 
-        originET = (EditText) rootView.findViewById(R.id.clientOrigin);
-        destinationET = (EditText) rootView.findViewById(R.id.clientDestination);
-        dateET = (EditText) rootView.findViewById(R.id.clientDate);
+        originET = (EditText) rootView.findViewById(R.id.adminOrigin);
+        destinationET = (EditText) rootView.findViewById(R.id.adminDestination);
+        dateET = (EditText) rootView.findViewById(R.id.adminDate);
 
         return rootView;
     }

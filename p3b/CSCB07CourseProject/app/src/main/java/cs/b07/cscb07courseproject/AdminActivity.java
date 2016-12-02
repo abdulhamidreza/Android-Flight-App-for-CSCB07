@@ -120,6 +120,7 @@ public class AdminActivity extends AppCompatActivity {
      */
     public void searchItineraries(View view) {
         Bundle bundle = MainAdminFragment.bundleFlightDetail();
+        System.out.println(db.getFlights());
         if (!bundle.isEmpty()) {
             bundle.putBoolean(isDirectKey, false);
             bundle.putBoolean(LogInActivity.isClientKey, false);

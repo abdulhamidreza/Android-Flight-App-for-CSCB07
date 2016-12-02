@@ -77,8 +77,10 @@ public class ViewFlightFragment extends Fragment {
         } else {
             flight = ClientActivity.db.getFlight(flightId);
         }
+        System.out.println(flight);
+        System.out.println(flightId);
 
-        setFlightInfo();
+        //setFlightInfo();
 
         return rootView;
     }
@@ -110,7 +112,7 @@ public class ViewFlightFragment extends Fragment {
         viewDepDate.setText(dateTime.format(flight.getDepartureDate().getTime()));
         viewAirline.setText(dateTime.format(flight.getArrivalDate().getTime()));
         viewSeats.setText(flight.getAvailableSeats());
-        viewCost.setText(String.format("$%f",flight.getCost()));
+        //viewCost.setText(String.format("$%.2f",flight.getCost()));
     }
 
     /**
