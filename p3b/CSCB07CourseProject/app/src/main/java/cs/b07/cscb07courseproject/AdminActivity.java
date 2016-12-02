@@ -136,7 +136,7 @@ public class AdminActivity extends AppCompatActivity {
     /**
      * Updates a flight information.
      */
-    public void updateFlight(){
+    /*public void updateFlight(){
         if(ViewFlightFragment.updateFlightInfo()){
             Fragment frag = new MainAdminFragment();
             setFragment(frag);
@@ -149,7 +149,7 @@ public class AdminActivity extends AppCompatActivity {
                     getString(R.string.msg_update_flight_unsuccessful),
                     Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
     /**
      * Loads a file.

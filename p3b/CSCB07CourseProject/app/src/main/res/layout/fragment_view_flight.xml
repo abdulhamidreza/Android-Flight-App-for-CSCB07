@@ -15,62 +15,70 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/flightNumber"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:focusable="false"/>
     <EditText
         android:id = "@+id/viewAirline"
         android:inputType="textCapWords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/airline"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:focusable="false"/>
     <EditText
         android:id = "@+id/viewDepartureDate"
         android:inputType="datetime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/departureDate"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:focusable="false"/>
     <EditText
         android:id = "@+id/viewArrivalDate"
         android:inputType="datetime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/arrivalDate"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:focusable="false"/>
     <EditText
         android:id = "@+id/viewOrigin"
         android:inputType="textCapWords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/origin"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:focusable="false"/>
     <EditText
         android:id = "@+id/viewDestination"
         android:inputType="textCapWords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/destination"
-        android:clickable = "false"/>
+        android:clickable = "false"
+        android:focusable="false"/>
     <EditText
         android:id = "@+id/viewAvailableSeats"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/availableSeats"
-        android:clickable = "false"/>
+        android:clickable = "false"
+        android:focusable="false"/>
     <EditText
         android:id = "@+id/viewCost"
         android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/cost"
-        android:clickable="false"/>
-    <Button
+        android:clickable="false"
+        android:focusable="false"/>
+    <!--<Button
         android:id="@+id/updateFlightBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/updateFlight"
         android:visibility="gone"
-        android:onClick="updateFlight"/>
+        android:onClick="updateFlight"/>-->
 </LinearLayout>

@@ -67,7 +67,7 @@ public class ViewFlightFragment extends Fragment {
         viewSeats = (EditText) rootView.findViewById(R.id.viewAvailableSeats);
         viewCost = (EditText) rootView.findViewById(R.id.viewCost);
 
-        updateFlightBtn = (Button) rootView.findViewById(R.id.updateFlightBtn);
+        //updateFlightBtn = (Button) rootView.findViewById(R.id.updateFlightBtn);
 
         flightId = getArguments().getString(FlightListFragment.flightKey);
         isClient = getArguments().getBoolean(LogInActivity.isClientKey);
@@ -108,7 +108,7 @@ public class ViewFlightFragment extends Fragment {
         viewSeats.setClickable(true);
         viewCost.setClickable(true);
 
-        updateFlightBtn.setVisibility(View.VISIBLE);
+        //updateFlightBtn.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -128,29 +128,28 @@ public class ViewFlightFragment extends Fragment {
     /**
      * Updates the flight's information with the given information.
      * @return returns true if flight was updated successfully
-     */
     public static boolean updateFlightInfo(){
         try {
             db.getFlight(flightId)
                     .setFlightNum(viewFlightNum.getText().toString());
-            db.getFlight(flightId)
+            *//*db.getFlight(flightId)
                     .setOrigin(viewOrigin.getText().toString());
             db.getFlight(flightId)
                     .setDestination(viewDestination.getText().toString());
             db.getFlight(flightId)
                     .setAirline(viewAirline.getText().toString());
             db.getFlight(flightId)
-                    .setDepartureDate(viewDepDate.getText().toString());
+                    .setDepartureDate(viewDepDate.getText().toString());*//*
             db.getFlight(flightId)
                     .setArrivalDate(viewArrivalDate.getText().toString());
-            db.getFlight(flightId)
+            *//*db.getFlight(flightId)
                     .setAvailableSeats(Integer.parseInt(viewSeats.getText().toString()));
             db.getFlight(flightId)
-                    .setCost(Double.parseDouble(viewCost.getText().toString().substring(1)));
+                    .setCost(Double.parseDouble(viewCost.getText().toString().substring(1)));*//*
             return true;
         }catch(ParseException ex){
             return false;
         }
-    }
+    }*/
 
 }
