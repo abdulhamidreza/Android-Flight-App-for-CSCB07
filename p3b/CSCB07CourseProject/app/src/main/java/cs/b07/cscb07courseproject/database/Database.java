@@ -542,6 +542,7 @@ public class Database implements Serializable {
 
         try {
             File db = new File(clientDir);
+            db.delete();
             outStream = new FileOutputStream(db, true);
             for( Client curr : clients) {
                 outStream.write(curr.getBytes());
@@ -564,6 +565,7 @@ public class Database implements Serializable {
 
         try {
             File db = new File(adminDir);
+            db.delete();
             outStream = new FileOutputStream(db, true);
             for( Admin curr : admins) {
                 outStream.write(curr.getBytes());
@@ -586,6 +588,7 @@ public class Database implements Serializable {
 
         try {
             File db = new File(flightDir);
+            db.delete();
             outStream = new FileOutputStream(db, true);
             for( Flight curr : flights) {
                 outStream.write(curr.getBytes());
