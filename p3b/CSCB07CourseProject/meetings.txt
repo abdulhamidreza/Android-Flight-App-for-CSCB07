@@ -1,0 +1,4 @@
+Progress Meeting:
+Present: William, Stephen
+William will finish the Database over the weekend so others can test. Will rework Itinerary class for Unix time. (Since Android doesn't support duration from Java 1.8)
+Stephen will edit the flight manager, and flight class. Will also work on templates for UI.
