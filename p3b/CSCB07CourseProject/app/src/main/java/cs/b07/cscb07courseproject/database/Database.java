@@ -566,7 +566,7 @@ public class Database implements Serializable {
             File db = new File(adminDir);
             outStream = new FileOutputStream(db, true);
             for( Admin curr : admins) {
-                outStream.write(curr.toString().getBytes());
+                outStream.write(curr.getBytes());
                 outStream.write("\n".getBytes());
             }
             outStream.close();
