@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -130,7 +131,9 @@ public class Driver {
      * flights.add(oneFlightFormatted);
      */
 
-    return flights;
+    // ANYA HACK
+    return new ArrayList<String>(new HashSet<String>(flights));
+    //return flights;
   }
 
   /**
@@ -197,7 +200,9 @@ public class Driver {
      * itineraries.add(oneItineraryFormatted);
      */
 
-    return itineraries;
+    // ANYA HACK
+    return new ArrayList<String>(new HashSet<String>(itineraries));
+    //return itineraries;
   }
 
   /**
